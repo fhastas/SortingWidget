@@ -2,37 +2,30 @@ package com.softgenie.sortingwidget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.widget.RemoteViews;
 
 public class WidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // 여기서 데이터 생성 또는 받아오기
-        String widgetText = "위젯에 나타낼 텍스트";
-
-        // 각 위젯 ID에 대해 업데이트 수행
+        // 모든 위젯 ID에 대해 업데이트 수행
         for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId, widgetText);
+            updateAppWidget(context, appWidgetManager, appWidgetId);
         }
     }
 
-    // 위젯 업데이트를 처리하는 메서드
-    private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String widgetText) {
-        // 위젯 업데이트에 사용할 뷰 레이아웃 설정
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_grid_layout);
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+        // 원격 뷰 생성
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
 
-        // 데이터를 위젯에 적용
-        //    views.setTextViewText(R.id.widget_data_text, widgetText);
+        // 여기서 버튼에 대한 추가적인 동작을 설정할 수 있습니다.
 
-        // 위젯 업데이트 적용
+        // 위젯 업데이트
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 }
+
 
 
 
