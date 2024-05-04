@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">zolzak</string>
+    <string name="back">Back</string>
+    <string name="skip">Skip</string>
+    <string name="include">위젯에 반드시 포함될 앱을 고르시오</string>
+    <string name="prioritize">우선순위를 고르시오</string>
 </resources>
