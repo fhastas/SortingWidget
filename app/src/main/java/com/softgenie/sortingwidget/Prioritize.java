@@ -21,6 +21,7 @@ public class Prioritize extends AppCompatActivity {
         setContentView(R.layout.activity_prioritize);
         skip2 = findViewById(R.id.skip2);
         back2 = findViewById(R.id.back2);
+        next2 = findViewById(R.id.next2); // next2 버튼 초기화 추가
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -41,6 +42,5 @@ public class Prioritize extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Include.class);
             startActivity(intent);
         });
-
     }
 }
