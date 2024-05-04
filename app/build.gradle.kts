@@ -35,9 +35,6 @@ dependencies {
 
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.gridlayout)
-    implementation(libs.ui.text.android)
-    implementation(libs.material3.android)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
