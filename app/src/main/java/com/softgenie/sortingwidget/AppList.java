@@ -57,13 +57,13 @@ public class AppList {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> packages = pm.getInstalledPackages(0);
 
-        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    /*    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
         List<UsageStats> getAppUsageStats(Context context){
             UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
             long endTime = System.currentTimeMillis();
             long beginTime = endTime - 1000*3600*24;
             List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY,beginTime,endTime);
-        }
+        }*/
 
         for (PackageInfo packageInfo : packages) {
             String appName = packageInfo.applicationInfo.loadLabel(pm).toString();
