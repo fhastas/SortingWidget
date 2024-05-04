@@ -24,8 +24,8 @@ public class Include extends AppCompatActivity {
         });
 
         findViewById(R.id.next3).setOnClickListener(v -> {
-            Intent intentSkip = new Intent(getApplicationContext(), Exclude.class);
-            startActivity(intentSkip);
+            Intent intentNext = new Intent(getApplicationContext(), Exclude.class);
+            startActivity(intentNext);
         });
     }
 }

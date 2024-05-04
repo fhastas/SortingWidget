@@ -22,6 +22,7 @@ public class Exclude extends AppCompatActivity {
         setContentView(R.layout.activity_exclude);
 
         back4 = findViewById(R.id.back4);
+        next4 = findViewById(R.id.next4); // next4 버튼 초기화 추가
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -35,7 +36,7 @@ public class Exclude extends AppCompatActivity {
         });
 
         next4.setOnClickListener(v -> {
-            // 마지막 단게를 마치고서 알고리즘에 정보를 넘겨준다
+            // 마지막 단계를 마치고서 알고리즘에 정보를 넘겨준다
         });
 
     }
