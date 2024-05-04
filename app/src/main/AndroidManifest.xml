@@ -27,4 +27,5 @@
         <activity android:name=".Exclude"/>
 
     </application>
+
 </manifest>
