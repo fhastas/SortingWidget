@@ -24,7 +24,7 @@ public class WidgetProvider extends AppWidgetProvider {
     // 위젯 업데이트를 처리하는 메서드
     private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String widgetText) {
         // 위젯 업데이트에 사용할 뷰 레이아웃 설정
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_layout);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_grid_layout);
 
         // 데이터를 위젯에 적용
         //    views.setTextViewText(R.id.widget_data_text, widgetText);
