@@ -12,7 +12,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Prioritize extends AppCompatActivity {
 
-    Button skip2, back2, next2;
+    Button skip2;
+    Button back2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +34,6 @@ public class Prioritize extends AppCompatActivity {
         });
 
         skip2.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Include.class);
-            startActivity(intent);
-        });
-
-        next2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Include.class);
             startActivity(intent);
         });
