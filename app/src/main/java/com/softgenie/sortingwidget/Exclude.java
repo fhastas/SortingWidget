@@ -9,11 +9,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-
-
 public class Exclude extends AppCompatActivity {
 
-    Button back4;
+    Button back4, next4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +19,8 @@ public class Exclude extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_exclude);
         back4 = findViewById(R.id.back4);
+        next4 = findViewById(R.id.next4);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -32,5 +32,8 @@ public class Exclude extends AppCompatActivity {
             startActivity(intent);
         });
 
+        next4.setOnClickListener(v -> {
+            finish(); // 현재 액티비티 종료
+        });
     }
 }
