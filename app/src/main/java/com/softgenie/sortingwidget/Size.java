@@ -94,14 +94,9 @@ public class Size extends AppCompatActivity {
 
         });
 
-
-
     }
     private void requestUsageAccessPermission() {
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(intent);
     }
-
-
-
 }

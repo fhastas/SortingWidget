@@ -6,7 +6,6 @@
     android:orientation="horizontal"
     android:rowCount="12">
 
-    <!-- 예시로 button 대신 ImageView와 TextView를 사용 -->
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
