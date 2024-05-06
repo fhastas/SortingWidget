@@ -11,6 +11,7 @@ import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 
 import java.util.Collections;
+import java.util.Comparator;
 
 public class AppInfoTrackerService extends Service {
     private static final int NOTIFICATION_ID = 1;
@@ -28,7 +29,11 @@ public class AppInfoTrackerService extends Service {
         // 스레드에서 AppList 객체 생성 작업 수행
         new Thread(() -> {
             AppList appList = new AppList(getApplicationContext());
-            Collections.sort(appList.getAppList());
+            appList.getAppList().sort(new Comparator<AppInfo>() {
+                public int compare(AppInfo o1, AppInfo o2) {
+                    return o1.getAppName().compareTo(o2.getAppName());
+                }
+            });
             SharedPreferencesHelper.saveAppList(getApplicationContext(), appList);
 
             stopSelf();

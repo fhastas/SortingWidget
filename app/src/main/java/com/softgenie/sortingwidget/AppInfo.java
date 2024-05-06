@@ -26,10 +26,7 @@ public class AppInfo implements Comparable<AppInfo> {
     @NonNull
     @Override
     public String toString() {
-        return "AppInfo{" +
-                "appName=" + appName +
-                ", usageTime=" + usageTime +
-                '}';
+        return appName;
     }
 
     public String getAppName() {
