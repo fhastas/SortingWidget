@@ -1,18 +1,20 @@
 package com.softgenie.sortingwidget;
 
-import android.appwidget.AppWidgetManager;
-import android.appwidget.AppWidgetProvider;
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.RemoteViews;
-import android.content.Intent;
-import android.app.PendingIntent;
+import android.appwidget.AppWidgetManager;
+import android.appwidget.AppWidgetProvider;
 
+import java.util.ArrayList;
 import java.util.List;
-
 
 public class WidgetProvider extends AppWidgetProvider {
 
@@ -34,19 +36,16 @@ public class WidgetProvider extends AppWidgetProvider {
                 int index = i * 6 + j;
                 if (index < appInfoList.size()) {
                     AppInfo appInfo = appInfoList.get(index);
-                    views.setImageViewBitmap(getButtonId(context, i, j), drawableToBitmap(appInfo.getAppIcon()));
-                    views.setTextViewText(getLabelId(context, i, j), appInfo.getAppName());
+                    int buttonId = context.getResources().getIdentifier("button" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
+                    int labelId = context.getResources().getIdentifier("label" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
+                    views.setImageViewBitmap(buttonId, drawableToBitmap(appInfo.getAppIcon()));
+                    views.setTextViewText(labelId, appInfo.getAppName());
+
+                    // 사용 시간 데이터를 가져와서 표시합니다.
+                    views.setTextViewText(labelId, String.valueOf(appInfo.getUsageTime()));
                 }
             }
         }
-    }
-
-    private int getButtonId(Context context, int rowIndex, int colIndex) {
-        return context.getResources().getIdentifier("button" + (rowIndex + 1) + "_" + (colIndex + 1), "id", context.getPackageName());
-    }
-
-    private int getLabelId(Context context, int rowIndex, int colIndex) {
-        return context.getResources().getIdentifier("label" + (rowIndex + 1) + "_" + (colIndex + 1), "id", context.getPackageName());
     }
 
     private Bitmap drawableToBitmap(Drawable drawable) {
@@ -61,5 +60,72 @@ public class WidgetProvider extends AppWidgetProvider {
         drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
         return bitmap;
+    }
+
+    private static class AppInfo {
+        private String appName;
+        private Drawable appIcon;
+        private long usageTime;
+
+        public AppInfo(String appName, Drawable appIcon, long usageTime) {
+            this.appName = appName;
+            this.appIcon = appIcon;
+            this.usageTime = usageTime;
+        }
+
+        public String getAppName() {
+            return appName;
+        }
+
+        public Drawable getAppIcon() {
+            return appIcon;
+        }
+
+        public long getUsageTime() {
+            return usageTime;
+        }
+    }
+
+    private static class AppList {
+        private final List<AppInfo> appInfoList;
+
+        public AppList(Context context) {
+            this.appInfoList = new ArrayList<>();
+            PackageManager pm = context.getPackageManager();
+            List<PackageInfo> packages = pm.getInstalledPackages(0);
+
+            for (PackageInfo packageInfo : packages) {
+                String appName = packageInfo.applicationInfo.loadLabel(pm).toString();
+                Drawable appIcon = packageInfo.applicationInfo.loadIcon(pm);
+                long usageTime = getUsageTimeForPackage(context, packageInfo.packageName);
+                this.appInfoList.add(new AppInfo(appName, appIcon, usageTime));
+            }
+        }
+
+        public List<AppInfo> getAppInfoList() {
+            return appInfoList;
+        }
+
+        private long getUsageTimeForPackage(Context context, String packageName) {
+            UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
+            if (usageStatsManager == null) {
+                return 0;
+            }
+
+            long currentTime = System.currentTimeMillis();
+            long oneDayAgo = currentTime - (24 * 60 * 60 * 1000); // 24시간 전
+
+            List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, oneDayAgo, currentTime);
+
+            if (usageStatsList != null) {
+                for (UsageStats usageStats : usageStatsList) {
+                    if (usageStats.getPackageName().equals(packageName)) {
+                        return usageStats.getTotalTimeInForeground();
+                    }
+                }
+            }
+
+            return 0; // 해당 패키지의 사용 시간 데이터를 찾을 수 없을 경우 0 반환
+        }
     }
 }
