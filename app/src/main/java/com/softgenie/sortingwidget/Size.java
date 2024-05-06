@@ -91,12 +91,18 @@ public class Size extends AppCompatActivity {
             imageViewx42.setVisibility(View.INVISIBLE);
             imageViewx22.setVisibility(View.VISIBLE);
             // AlgorithmClass.performAlgorithm(x22);
+
         });
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        startActivity(intent);
+
 
     }
     private void requestUsageAccessPermission() {
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(intent);
     }
+
+
 
 }
