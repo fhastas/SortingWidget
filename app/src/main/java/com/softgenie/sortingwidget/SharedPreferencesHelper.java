@@ -7,7 +7,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 public class SharedPreferencesHelper {
     private static final String PREF_NAME = "AppListPref";
@@ -21,7 +20,7 @@ public class SharedPreferencesHelper {
         editor.apply();
     }
 
-    public static List<AppData> loadAppList(Context context) {
+    public static AppList loadAppList(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = preferences.getString("appList", null);
