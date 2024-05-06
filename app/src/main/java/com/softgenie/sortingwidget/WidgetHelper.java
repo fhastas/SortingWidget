@@ -1,7 +1,9 @@
 package com.softgenie.sortingwidget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -9,7 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.RemoteViews;
-
+import android.app.PendingIntent;
 import java.util.List;
 
 public class WidgetHelper {
@@ -19,23 +21,33 @@ public class WidgetHelper {
         List<ApplicationInfo> installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
 
         int maxAppsToShow = 16;
+
+        // Create RemoteViews for the widget layout
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.activity_widget);
 
+        // Clear any previous views from the GridView
+        views.removeAllViews(R.id.grid_view);
+
+        // Loop through installed apps and add them to the GridView
         for (int i = 0; i < maxAppsToShow && i < installedApps.size(); i++) {
             ApplicationInfo appInfo = installedApps.get(i);
             Drawable icon = packageManager.getApplicationIcon(appInfo);
             CharSequence appName = packageManager.getApplicationLabel(appInfo);
 
-            // Update ImageView using RemoteViews.setImageViewBitmap() method
-            views.setImageViewBitmap(R.id.imageView1 + i, drawableToBitmap(icon));
+            // Convert drawable to bitmap
+            Bitmap iconBitmap = drawableToBitmap(icon);
 
-// Update TextView using RemoteViews.setTextViewText() method
+            // Add app icon and name to the GridView
+            views.setImageViewBitmap(R.id.imageView1 + i, iconBitmap);
             views.setTextViewText(R.id.textView1 + i, appName.toString());
-
-
-
         }
 
+        // Set an intent to launch the app when its icon is clicked
+        Intent launchIntent = new Intent(context, Size.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, PendingIntent.FLAG_IMMUTABLE);
+        views.setOnClickPendingIntent(R.id.grid_view, pendingIntent);
+
+        // Update the app widget with the modified RemoteViews
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
