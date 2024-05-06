@@ -10,6 +10,7 @@ import android.widget.RemoteViews;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class WidgetProvider extends AppWidgetProvider {
@@ -24,7 +25,12 @@ public class WidgetProvider extends AppWidgetProvider {
     }
 
     private void setGridItems(Context context, RemoteViews views) {
-        AppList appList = new AppList(context);
+        AppList appList = SharedPreferencesHelper.loadAppList(context);
+        if (appList == null) {
+            appList.setAppList(new AppList().getAppList());
+            appList.appList.sort(Comparator.comparing(AppData::getAppName));
+        }
+
         List<AppData> appDataList = appList.getAppList();
 
         // 예시로 4x6 그리드에 앱 정보를 표시하는 코드

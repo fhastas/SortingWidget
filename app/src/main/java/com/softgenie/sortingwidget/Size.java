@@ -22,6 +22,8 @@ public class Size extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_size);
 
+        startService();
+
         skip1 = findViewById(R.id.skip1);
         next1 = findViewById(R.id.next1);
         button4x6 = findViewById(R.id.button4x6); // Initialize button4x6
@@ -92,4 +94,8 @@ public class Size extends AppCompatActivity {
         });
     }
 
+    public void startService(){
+        Intent intent = new Intent(this, AppInfoTrackerService.class);
+        startService(intent);
+    }
 }

@@ -14,6 +14,10 @@ import java.util.List;
 public class AppList {
     List<AppData> appList = new ArrayList<>();
 
+    public AppList() {
+        this(null);
+    }
+
     public AppList(Context context) {
         PackageManager pm = context.getPackageManager();
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> apps = pm.getInstalledApplications(0);
@@ -43,5 +47,8 @@ public class AppList {
 
     public List<AppData> getAppList() {
         return appList;
+    }
+    public void setAppList(List<AppData> appList) {
+        this.appList = appList;
     }
 }
