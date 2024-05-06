@@ -27,7 +27,7 @@ public class WidgetProvider extends AppWidgetProvider {
     private void setGridItems(Context context, RemoteViews views) {
         AppList appList = SharedPreferencesHelper.loadAppList(context);
         if (appList == null) {
-            appList.setAppList(new AppList().getAppList());
+            appList = new AppList();
             appList.appList.sort(Comparator.comparing(AppData::getAppName));
         }
 

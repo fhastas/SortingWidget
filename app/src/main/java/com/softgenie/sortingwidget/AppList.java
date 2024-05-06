@@ -15,7 +15,7 @@ public class AppList {
     List<AppData> appList = new ArrayList<>();
 
     public AppList() {
-        this(null);
+        this.appList = null;
     }
 
     public AppList(Context context) {
