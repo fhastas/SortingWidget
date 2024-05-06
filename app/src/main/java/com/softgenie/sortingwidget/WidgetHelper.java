@@ -1,5 +1,6 @@
 package com.softgenie.sortingwidget;
 
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
@@ -20,7 +21,7 @@ public class WidgetHelper {
 
     public static void updateWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         PackageManager packageManager = context.getPackageManager();
-        List<ApplicationInfo> installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
+        @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
 
         int maxAppsToShow = 16;
 
