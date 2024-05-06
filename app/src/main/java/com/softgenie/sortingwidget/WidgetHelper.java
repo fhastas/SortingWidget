@@ -48,7 +48,7 @@ public class WidgetHelper {
             // Set click intent for launching the app
             Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(appInfo.packageName);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            appItemView.setOnClickPendingIntent(R.id.app_item_layout, pendingIntent);
+            appItemView.setOnClickPendingIntent(R.id.grid_view, pendingIntent);
 
             // Add the app item view to the GridView
             views.addView(R.id.grid_view, appItemView);
