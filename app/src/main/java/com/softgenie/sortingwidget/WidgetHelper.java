@@ -39,20 +39,24 @@ public class WidgetHelper {
             // Convert drawable to bitmap
             Bitmap iconBitmap = drawableToBitmap(icon);
 
-            // Add app icon and name to the GridView
-            views.setImageViewBitmap(R.id.icon_image_view, iconBitmap);
-            views.setTextViewText(R.id.name_text_view, appName.toString());
-
+            // Create RemoteViews for each app item
+            RemoteViews appItemView = new RemoteViews(context.getPackageName(), R.layout.app_widget_item);
+            appItemView.setImageViewBitmap(R.id.icon_image_view, iconBitmap);
+            appItemView.setTextViewText(R.id.name_text_view, appName.toString());
 
             // Set click intent for launching the app
             Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(appInfo.packageName);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-            views.setOnClickPendingIntent(R.id.grid_view, pendingIntent);
+            appItemView.setOnClickPendingIntent(R.id.app_item_layout, pendingIntent);
+
+            // Add the app item view to the GridView
+            views.addView(R.id.grid_view, appItemView);
         }
 
         // Update the app widget with the modified RemoteViews
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
+
 
     private static Bitmap drawableToBitmap(Drawable drawable) {
         if (drawable instanceof BitmapDrawable) {
