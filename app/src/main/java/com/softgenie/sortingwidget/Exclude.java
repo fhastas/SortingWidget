@@ -11,9 +11,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Comparator;
 
-public class Exclude extends AppCompatActivity {
 
-    Button back4, next4;
+public class Exclude extends AppCompatActivity {
+    Button back4, done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class Exclude extends AppCompatActivity {
         }
 
         back4 = findViewById(R.id.back4);
-        next4 = findViewById(R.id.next4);
+        done = findViewById(R.id.done);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -43,7 +43,7 @@ public class Exclude extends AppCompatActivity {
             startActivity(intent);
         });
 
-        next4.setOnClickListener(v -> {
+        done.setOnClickListener(v -> {
             finish(); // 현재 액티비티 종료
         });
     }

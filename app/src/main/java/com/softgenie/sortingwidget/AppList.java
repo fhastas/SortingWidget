@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class AppList {
     private List<AppData> appList = new ArrayList<>();
 
