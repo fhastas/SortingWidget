@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppList {
-    List<AppInfo> appList = new ArrayList<>();
+    List<AppData> appList = new ArrayList<>();
 
-    AppList(Context context) {
+    public AppList(Context context) {
         PackageManager pm = context.getPackageManager();
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> apps = pm.getInstalledApplications(0);
 
@@ -23,7 +23,7 @@ public class AppList {
             long usageTime = getUsageTime(app.packageName, context);
             Intent shortcut = pm.getLaunchIntentForPackage(app.packageName);
 
-            appList.add(new AppInfo(name, icon, usageTime, shortcut));
+            appList.add(new AppData(name, icon, usageTime, shortcut));
         }
     }
 
@@ -40,7 +40,7 @@ public class AppList {
         return 0;
     }
 
-    public List<AppInfo> getAppList() {
+    public List<AppData> getAppList() {
         return appList;
     }
 }

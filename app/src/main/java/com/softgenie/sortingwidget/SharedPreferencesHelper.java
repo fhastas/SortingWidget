@@ -21,7 +21,7 @@ public class SharedPreferencesHelper {
         editor.apply();
     }
 
-    public static List<AppInfo> loadAppList(Context context) {
+    public static List<AppData> loadAppList(Context context) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = preferences.getString("appList", null);
