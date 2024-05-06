@@ -30,16 +30,19 @@ public class Prioritize extends AppCompatActivity {
 
         back2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Size.class);
+            finish();
             startActivity(intent);
         });
 
         skip2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Include.class);
+            finish();
             startActivity(intent);
         });
 
         next2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Include.class);
+            finish();
             startActivity(intent);
         });
     }

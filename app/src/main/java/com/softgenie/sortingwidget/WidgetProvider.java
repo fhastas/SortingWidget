@@ -29,7 +29,7 @@ public class WidgetProvider extends AppWidgetProvider {
 
     private void setGridItems(Context context, RemoteViews views) {
         AppList appList = new AppList(context);
-        List<AppInfo> appInfoList = appList.getAppInfoList();
+        List<AppInfo> appInfoList = appList.getAppList();
 
         for (int i = 0; i < 4; i++) { // 4x6 그리드에 대한 루프
             for (int j = 0; j < 6; j++) {
@@ -62,4 +62,4 @@ public class WidgetProvider extends AppWidgetProvider {
         return bitmap;
     }
 
-
+}

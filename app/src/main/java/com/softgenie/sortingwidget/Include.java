@@ -30,16 +30,19 @@ public class Include extends AppCompatActivity {
 
         back3.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Prioritize.class);
+            finish();
             startActivity(intent);
         });
 
         skip3.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Exclude.class);
+            finish();
             startActivity(intent);
         });
 
         next3.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Exclude.class);
+            finish();
             startActivity(intent);
         });
     }

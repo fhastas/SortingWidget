@@ -47,11 +47,13 @@ public class Size extends AppCompatActivity {
 
         skip1.setOnClickListener(v -> {
             Intent intent = new Intent(Size.this, Prioritize.class);
+            finish();
             startActivity(intent);
         });
 
         next1.setOnClickListener(v -> {
             Intent intent = new Intent(Size.this, Prioritize.class);
+            finish();
             startActivity(intent);
         });
 

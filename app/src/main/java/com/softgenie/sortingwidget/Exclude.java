@@ -29,6 +29,7 @@ public class Exclude extends AppCompatActivity {
 
         back4.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Include.class);
+            finish();
             startActivity(intent);
         });
 
