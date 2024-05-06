@@ -9,6 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Comparator;
+
 
 public class Include extends AppCompatActivity {
     Button back3, next3, skip3;
@@ -18,6 +20,14 @@ public class Include extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_include);
+
+        AppList appList = SharedPreferencesHelper.loadAppList(getApplicationContext());
+        if (appList == null) {
+            appList = new AppList();
+            appList.getAppList().sort(Comparator.comparing(AppData::getAppName));
+            SharedPreferencesHelper.saveAppList(getApplicationContext(), appList);
+        }
+
         back3 = findViewById(R.id.back3);
         skip3 = findViewById(R.id.skip3);
         next3 = findViewById(R.id.next3);

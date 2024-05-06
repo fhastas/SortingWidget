@@ -9,6 +9,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.Comparator;
+
 public class Exclude extends AppCompatActivity {
 
     Button back4, next4;
@@ -18,6 +20,14 @@ public class Exclude extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_exclude);
+
+        AppList appList = SharedPreferencesHelper.loadAppList(getApplicationContext());
+        if (appList == null) {
+            appList = new AppList();
+            appList.getAppList().sort(Comparator.comparing(AppData::getAppName));
+            SharedPreferencesHelper.saveAppList(getApplicationContext(), appList);
+        }
+
         back4 = findViewById(R.id.back4);
         next4 = findViewById(R.id.next4);
 
