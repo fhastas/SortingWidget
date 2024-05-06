@@ -12,7 +12,7 @@ import java.util.List;
 public class SharedPreferencesHelper {
     private static final String PREF_NAME = "AppListPref";
 
-    public static void saveAppList(Context context, List<AppInfo> appList) {
+    public static void saveAppList(Context context, AppList appList) {
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         Gson gson = new Gson();
@@ -25,7 +25,7 @@ public class SharedPreferencesHelper {
         SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = preferences.getString("appList", null);
-        Type type = new TypeToken<List<AppInfo>>(){}.getType();
+        Type type = new TypeToken<AppList>(){}.getType();
         return gson.fromJson(json, type);
     }
 }
