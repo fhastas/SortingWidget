@@ -31,18 +31,19 @@ public class WidgetProvider extends AppWidgetProvider {
         AppList appList = new AppList(context);
         List<AppInfo> appInfoList = appList.getAppList();
 
-        for (int i = 0; i < 4; i++) { // 4x6 그리드에 대한 루프
+        // 예시로 4x6 그리드에 앱 정보를 표시하는 코드
+        for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
                 int index = i * 6 + j;
                 if (index < appInfoList.size()) {
                     AppInfo appInfo = appInfoList.get(index);
                     int buttonId = context.getResources().getIdentifier("button" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
                     int labelId = context.getResources().getIdentifier("label" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
-                    views.setImageViewBitmap(buttonId, drawableToBitmap(appInfo.getAppIcon()));
-                    views.setTextViewText(labelId, appInfo.getAppName());
 
-                    // 사용 시간 데이터를 가져와서 표시합니다.
-                    views.setTextViewText(labelId, String.valueOf(appInfo.getUsageTime()));
+                    // 앱 아이콘 설정
+                    views.setImageViewBitmap(buttonId, drawableToBitmap(appInfo.getAppIcon()));
+                    // 앱 이름 설정
+                    views.setTextViewText(labelId, appInfo.getAppName());
                 }
             }
         }
