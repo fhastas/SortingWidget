@@ -5,13 +5,13 @@ import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 
-public class AppInfo implements Comparable<AppInfo> {
+public class AppData implements Comparable<AppData> {
     private String appName;
     private Drawable appIcon;
     private long usageTime;
     private Intent shortcut;
 
-    public AppInfo(String appName, Drawable appIcon, long usageTime, Intent shortcut) {
+    public AppData(String appName, Drawable appIcon, long usageTime, Intent shortcut) {
         this.appName = appName;
         this.appIcon = appIcon;
         this.usageTime = usageTime;
@@ -19,8 +19,8 @@ public class AppInfo implements Comparable<AppInfo> {
     }
 
     @Override
-    public int compareTo(AppInfo appInfo) {
-        return Long.compare(this.usageTime, appInfo.usageTime);
+    public int compareTo(AppData appData) {
+        return Long.compare(this.usageTime, appData.usageTime);
     }
 
     @NonNull
