@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 
+import java.util.Collections;
+
 public class AppInfoTrackerService extends Service {
     private static final int NOTIFICATION_ID = 1;
     private static final String CHANNEL_ID = "AppInfoTrackerChannel";
@@ -28,6 +30,7 @@ public class AppInfoTrackerService extends Service {
             @Override
             public void run() {
                 AppList appList = new AppList(getApplicationContext());
+                Collections.sort(appList.getAppList());
                 SharedPreferencesHelper.saveAppList(getApplicationContext(), appList);
 
                 stopSelf();
