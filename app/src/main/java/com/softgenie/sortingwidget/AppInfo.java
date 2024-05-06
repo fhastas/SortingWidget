@@ -1,16 +1,19 @@
 package com.softgenie.sortingwidget;
 
-import android.app.usage.UsageStats;
-import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+import android.os.Build;
 import android.graphics.drawable.Drawable;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.List;
 
-private static class AppInfo {
+class AppInfo {
     private String appName;
     private Drawable appIcon;
     private long usageTime;
@@ -25,55 +28,57 @@ private static class AppInfo {
         return appName;
     }
 
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
     public Drawable getAppIcon() {
         return appIcon;
+    }
+
+    public void setAppIcon(Drawable appIcon) {
+        this.appIcon = appIcon;
     }
 
     public long getUsageTime() {
         return usageTime;
     }
+
+    public void setUsageTime(long usageTime) {
+        this.usageTime = usageTime;
+    }
 }
 
-private static class AppList {
-    private final List<AppInfo> appInfoList;
+public class AppList {
+    private List<AppInfo> appInfoList;
 
     public AppList(Context context) {
         this.appInfoList = new ArrayList<>();
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> packages = pm.getInstalledPackages(0);
 
+    /*    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+        List<UsageStats> getAppUsageStats(Context context){
+            UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
+            long endTime = System.currentTimeMillis();
+            long beginTime = endTime - 1000*3600*24;
+            List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY,beginTime,endTime);
+        }*/
+
         for (PackageInfo packageInfo : packages) {
             String appName = packageInfo.applicationInfo.loadLabel(pm).toString();
             Drawable appIcon = packageInfo.applicationInfo.loadIcon(pm);
-            long usageTime = getUsageTimeForPackage(context, packageInfo.packageName);
+            long usageTime = 0;
+
             this.appInfoList.add(new AppInfo(appName, appIcon, usageTime));
         }
     }
 
-    public List<AppInfo> getAppInfoList() {
-        return appInfoList;
-    }
-
-    private long getUsageTimeForPackage(Context context, String packageName) {
-        UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
-        if (usageStatsManager == null) {
-            return 0;
+    public void printAppList() {
+        for (AppInfo appInfo : this.appInfoList) {
+            System.out.println("App Icon: " + appInfo.getAppIcon());
+            System.out.println("App Name: " + appInfo.getAppName());
+            System.out.println("Usage Time: " + appInfo.getUsageTime());
         }
-
-        long currentTime = System.currentTimeMillis();
-        long oneDayAgo = currentTime - (24 * 60 * 60 * 1000); // 24시간 전
-
-        List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, oneDayAgo, currentTime);
-
-        if (usageStatsList != null) {
-            for (UsageStats usageStats : usageStatsList) {
-                if (usageStats.getPackageName().equals(packageName)) {
-                    return usageStats.getTotalTimeInForeground();
-                }
-            }
-        }
-
-        return 0; // 해당 패키지의 사용 시간 데이터를 찾을 수 없을 경우 0 반환
     }
-}
 }
