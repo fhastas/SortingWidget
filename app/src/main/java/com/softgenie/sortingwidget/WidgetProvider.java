@@ -1,17 +1,8 @@
 package com.softgenie.sortingwidget;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.widget.RemoteViews;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
 
 public class WidgetProvider extends AppWidgetProvider {
 
@@ -20,5 +11,14 @@ public class WidgetProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             WidgetHelper.updateWidget(context, appWidgetManager, appWidgetId);
         }
+    }
+    @Override
+    public void onEnabled(Context context) {
+        // Enter relevant functionality for when the first widget is created
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        // Enter relevant functionality for when the last widget is disabled
     }
 }

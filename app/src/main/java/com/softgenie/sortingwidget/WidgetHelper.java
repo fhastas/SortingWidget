@@ -12,6 +12,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.RemoteViews;
 
+import com.softgenie.sortingwidget.R;
+
 import java.util.List;
 
 public class WidgetHelper {
@@ -38,14 +40,15 @@ public class WidgetHelper {
             Bitmap iconBitmap = drawableToBitmap(icon);
 
             // Add app icon and name to the GridView
-            views.setImageViewBitmap(R.id.grid_view, iconBitmap);
-            views.setTextViewText(R.id.grid_view, appName.toString());
-        }
+            views.setImageViewBitmap(R.id.icon_image_view, iconBitmap);
+            views.setTextViewText(R.id.name_text_view, appName.toString());
 
-        // Set an intent to launch the app when its icon is clicked
-        Intent launchIntent = new Intent(context, WidgetActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        views.setOnClickPendingIntent(R.id.grid_view, pendingIntent);
+
+            // Set click intent for launching the app
+            Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(appInfo.packageName);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            views.setOnClickPendingIntent(R.id.grid_view, pendingIntent);
+        }
 
         // Update the app widget with the modified RemoteViews
         appWidgetManager.updateAppWidget(appWidgetId, views);
