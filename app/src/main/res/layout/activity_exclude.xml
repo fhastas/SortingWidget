@@ -36,4 +36,15 @@
         android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/next4" />
+
+    <GridView
+        android:id="@+id/gridView2"
+        android:layout_width="409dp"
+        android:layout_height="491dp"
+        app:layout_constraintBottom_toTopOf="@+id/next4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exclude">
+
+    </GridView>
 </androidx.constraintlayout.widget.ConstraintLayout>
