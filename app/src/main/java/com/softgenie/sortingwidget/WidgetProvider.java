@@ -1,5 +1,6 @@
 package com.softgenie.sortingwidget;
 
+import android.annotation.SuppressLint;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
@@ -37,8 +38,8 @@ public class WidgetProvider extends AppWidgetProvider {
                 int index = i * 6 + j;
                 if (index < appInfoList.size()) {
                     AppInfo appInfo = appInfoList.get(index);
-                    int buttonId = context.getResources().getIdentifier("button" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
-                    int labelId = context.getResources().getIdentifier("label" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
+                    @SuppressLint("DiscouragedApi") int buttonId = context.getResources().getIdentifier("button" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
+                    @SuppressLint("DiscouragedApi") int labelId = context.getResources().getIdentifier("label" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
 
                     // 앱 아이콘 설정
                     views.setImageViewBitmap(buttonId, drawableToBitmap(appInfo.getAppIcon()));

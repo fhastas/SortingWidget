@@ -4,14 +4,28 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.lang.reflect.Type;
 import java.util.List;
 
 public class SharedPreferencesHelper {
-    private final SharedPreferences Pref;
-    private final SharedPreferences.Editor memoEditor;
-    private final Gson gson;
+    private static final String PREF_NAME = "AppListPref";
+
+    public static void saveAppList(Context context, List<AppInfo> appList) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(appList);
+        editor.putString("appList", json);
+        editor.apply();
+    }
+
+    public static List<AppInfo> loadAppList(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("appList", null);
+        Type type = new TypeToken<List<AppInfo>>(){}.getType();
+        return gson.fromJson(json, type);
+    }
 }
