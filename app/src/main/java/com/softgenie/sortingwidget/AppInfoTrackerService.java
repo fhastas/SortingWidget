@@ -26,15 +26,12 @@ public class AppInfoTrackerService extends Service {
         startForeground(NOTIFICATION_ID, createNotification());
 
         // 스레드에서 AppList 객체 생성 작업 수행
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                AppList appList = new AppList(getApplicationContext());
-                Collections.sort(appList.getAppList());
-                SharedPreferencesHelper.saveAppList(getApplicationContext(), appList);
+        new Thread(() -> {
+            AppList appList = new AppList(getApplicationContext());
+            Collections.sort(appList.getAppList());
+            SharedPreferencesHelper.saveAppList(getApplicationContext(), appList);
 
-                stopSelf();
-            }
+            stopSelf();
         }).start();
 
         return START_NOT_STICKY;
