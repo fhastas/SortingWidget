@@ -2,6 +2,7 @@ package com.softgenie.sortingwidget;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import androidx.activity.EdgeToEdge;
@@ -21,6 +22,7 @@ public class Size extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_size);
+        requestUsageAccessPermission();
 
         skip1 = findViewById(R.id.skip1);
         next1 = findViewById(R.id.next1);
@@ -90,6 +92,11 @@ public class Size extends AppCompatActivity {
             imageViewx22.setVisibility(View.VISIBLE);
             // AlgorithmClass.performAlgorithm(x22);
         });
+
+    }
+    private void requestUsageAccessPermission() {
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        startActivity(intent);
     }
 
 }
