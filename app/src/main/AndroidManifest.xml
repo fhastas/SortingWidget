@@ -5,6 +5,8 @@
     <uses-permission
         android:name="android.permission.PACKAGE_USAGE_STATS"
         tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="QueryPermissionsNeeded"/>
 
     <application
         android:allowBackup="true"
@@ -16,6 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Zolzak"
         tools:targetApi="31">
+
+        <service
+            android:name=".AppInfoTrackerService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.PACKAGE_USAGE_STATS"
+            android:process=":appinfotrackerservice" />
+
         <activity
             android:name=".Size"
             android:exported="true">
@@ -25,24 +35,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Prioritize" />
+        <activity android:name=".Include" />
+        <activity android:name=".Exclude" />
 
-        <activity android:name=".Prioritize"/>
-        <activity android:name=".Include"/>
-        <activity android:name=".Exclude"/>
-
-<<<<<<<<< Temporary merge branch 1
-=========
         <receiver
             android:name=".WidgetProvider"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
-
->>>>>>>>> Temporary merge branch 2
     </application>
+
 </manifest>

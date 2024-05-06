@@ -1,27 +1,43 @@
 package com.softgenie.sortingwidget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.app.usage.UsageStats;
-import android.app.usage.UsageStatsManager;
-import android.os.Build;
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class AppInfo {
+class AppInfo implements Comparable<AppInfo> {
     private String appName;
     private Drawable appIcon;
     private long usageTime;
+    private Intent shortcut;
 
-    public AppInfo(String appName, Drawable appIcon, long usageTime) {
+    public AppInfo(String appName, Drawable appIcon, long usageTime, Intent shortcut) {
         this.appName = appName;
         this.appIcon = appIcon;
         this.usageTime = usageTime;
+        this.shortcut = shortcut;
+    }
+
+    @Override
+    public int compareTo(AppInfo appInfo) {
+        return Long.compare(this.usageTime, appInfo.usageTime);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "AppInfo{" +
+                "appName=" + appName +
+                ", appIcon=" + appIcon +
+                ", usageTime=" + usageTime + '}';
     }
 
     public String getAppName() {
@@ -47,38 +63,43 @@ class AppInfo {
     public void setUsageTime(long usageTime) {
         this.usageTime = usageTime;
     }
+
+    public Intent getShortcut() {
+        return shortcut;
+    }
+
+    public void setShortcut(Intent shortcut) {
+        this.shortcut = shortcut;
+    }
 }
 
 public class AppList {
-    private List<AppInfo> appInfoList;
+    List<AppInfo> appList = new ArrayList<>();
 
-    public AppList(Context context) {
-        this.appInfoList = new ArrayList<>();
+    AppList(Context context) {
         PackageManager pm = context.getPackageManager();
-        List<PackageInfo> packages = pm.getInstalledPackages(0);
+        @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> apps = pm.getInstalledApplications(0);
 
-    /*    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
-        List<UsageStats> getAppUsageStats(Context context){
-            UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
-            long endTime = System.currentTimeMillis();
-            long beginTime = endTime - 1000*3600*24;
-            List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY,beginTime,endTime);
-        }*/
+        for (ApplicationInfo app : apps) {
+            String name = (String) pm.getApplicationLabel(app);
+            Drawable icon = pm.getApplicationIcon(app);
+            long usageTime = getUsageTime(app.packageName, context);
+            Intent shortcut = pm.getLaunchIntentForPackage(app.packageName);
 
-        for (PackageInfo packageInfo : packages) {
-            String appName = packageInfo.applicationInfo.loadLabel(pm).toString();
-            Drawable appIcon = packageInfo.applicationInfo.loadIcon(pm);
-            long usageTime = 0;
-
-            this.appInfoList.add(new AppInfo(appName, appIcon, usageTime));
+            appList.add(new AppInfo(name, icon, usageTime, shortcut));
         }
     }
 
-    public void printAppList() {
-        for (AppInfo appInfo : this.appInfoList) {
-            System.out.println("App Icon: " + appInfo.getAppIcon());
-            System.out.println("App Name: " + appInfo.getAppName());
-            System.out.println("Usage Time: " + appInfo.getUsageTime());
+    private long getUsageTime(String packageName, Context mContext) {
+        PackageManager packageManager = mContext.getPackageManager();
+        try {
+            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+            long installTime = packageInfo.firstInstallTime;
+
+            return System.currentTimeMillis() - installTime;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
         }
+        return 0;
     }
 }
