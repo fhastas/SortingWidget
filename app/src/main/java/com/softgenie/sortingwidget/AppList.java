@@ -102,4 +102,8 @@ public class AppList {
         }
         return 0;
     }
+
+    public List<AppInfo> getAppList() {
+        return appList;
+    }
 }
