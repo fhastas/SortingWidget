@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.widget.RemoteViews;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -32,50 +31,25 @@ public class WidgetProvider extends AppWidgetProvider {
         AppList appList = new AppList(context);
         List<AppInfo> appInfoList = appList.getAppList();
 
-        // 그리드에 앱 정보 표시
+        // 예시로 4x6 그리드에 앱 정보를 표시하는 코드
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 6; j++) {
                 int index = i * 6 + j;
                 if (index < appInfoList.size()) {
                     AppInfo appInfo = appInfoList.get(index);
-                    int imageViewId = context.getResources().getIdentifier("imageView" + (i + 1) + (j + 1), "id", context.getPackageName());
-                    int textViewId = context.getResources().getIdentifier("textView" + (i + 1) + (j + 1), "id", context.getPackageName());
+                    int buttonId = context.getResources().getIdentifier("button" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
+                    int labelId = context.getResources().getIdentifier("label" + (i + 1) + "_" + (j + 1), "id", context.getPackageName());
 
-                    // 앱 아이콘 비동기적으로 설정
-                    new LoadImageTask(context, views, imageViewId, textViewId).execute(appInfo);
+                    // 앱 아이콘 설정
+                    views.setImageViewBitmap(buttonId, drawableToBitmap(appInfo.getAppIcon()));
+                    // 앱 이름 설정
+                    views.setTextViewText(labelId, appInfo.getAppName());
                 }
             }
         }
     }
 
-    private static class LoadImageTask extends AsyncTask<AppInfo, Void, Bitmap> {
-        private Context context;
-        private RemoteViews views;
-        private int imageViewId;
-        private int textViewId;
-
-        public LoadImageTask(Context context, RemoteViews views, int imageViewId, int textViewId) {
-            this.context = context;
-            this.views = views;
-            this.imageViewId = imageViewId;
-            this.textViewId = textViewId;
-        }
-
-        @Override
-        protected Bitmap doInBackground(AppInfo... appInfos) {
-            AppInfo appInfo = appInfos[0];
-            return drawableToBitmap(appInfo.getAppIcon());
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            views.setImageViewBitmap(imageViewId, bitmap);
-            // 텍스트뷰 설정 등 다른 작업 수행
-            // ...
-        }
-    }
-
-    private static Bitmap drawableToBitmap(Drawable drawable) {
+    private Bitmap drawableToBitmap(Drawable drawable) {
         if (drawable instanceof BitmapDrawable) {
             return ((BitmapDrawable) drawable).getBitmap();
         }
@@ -88,4 +62,5 @@ public class WidgetProvider extends AppWidgetProvider {
         drawable.draw(canvas);
         return bitmap;
     }
+
 }
