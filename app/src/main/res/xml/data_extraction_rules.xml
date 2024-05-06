@@ -5,15 +5,11 @@
 -->
 <data-extraction-rules>
     <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+        <!-- Include specific files or directories -->
+        <include domain="file" path="shared_prefs/com.example.app_preferences.xml" />
+        <include domain="file" path="databases/MyAppDatabase.db" />
+
+        <!-- Exclude certain files or directories -->
+        <exclude domain="file" path="cache/" />
     </cloud-backup>
-    <!--
-    <device-transfer>
-        <include .../>
-        <exclude .../>
-    </device-transfer>
-    -->
 </data-extraction-rules>
