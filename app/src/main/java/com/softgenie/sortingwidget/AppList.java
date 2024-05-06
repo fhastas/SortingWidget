@@ -36,8 +36,8 @@ class AppInfo implements Comparable<AppInfo> {
     public String toString() {
         return "AppInfo{" +
                 "appName=" + appName +
-                ", appIcon=" + appIcon +
-                ", usageTime=" + usageTime + '}';
+                ", usageTime=" + usageTime +
+                '}';
     }
 
     public String getAppName() {
