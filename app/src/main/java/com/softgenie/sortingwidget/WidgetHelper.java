@@ -11,7 +11,7 @@ import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.RemoteViews;
-import android.app.PendingIntent;
+
 import java.util.List;
 
 public class WidgetHelper {
@@ -38,13 +38,13 @@ public class WidgetHelper {
             Bitmap iconBitmap = drawableToBitmap(icon);
 
             // Add app icon and name to the GridView
-            views.setImageViewBitmap(R.id.imageView1 + i, iconBitmap);
-            views.setTextViewText(R.id.textView1 + i, appName.toString());
+            views.setImageViewBitmap(R.id.grid_view, iconBitmap);
+            views.setTextViewText(R.id.grid_view, appName.toString());
         }
 
         // Set an intent to launch the app when its icon is clicked
-        Intent launchIntent = new Intent(context, Size.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, PendingIntent.FLAG_IMMUTABLE);
+        Intent launchIntent = new Intent(context, WidgetActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, launchIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         views.setOnClickPendingIntent(R.id.grid_view, pendingIntent);
 
         // Update the app widget with the modified RemoteViews
