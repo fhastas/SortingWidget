@@ -10,12 +10,24 @@ public class AppData implements Comparable<AppData> {
     private Drawable appIcon;
     private long usageTime;
     private Intent shortcut;
+    private boolean selected;
 
     public AppData(String appName, Drawable appIcon, long usageTime, Intent shortcut) {
         this.appName = appName;
         this.appIcon = appIcon;
         this.usageTime = usageTime;
         this.shortcut = shortcut;
+        this.selected = false;
+    }
+
+    // 체크 상태 반환 메서드
+    public boolean isSelected() {
+        return selected;
+    }
+
+    // 체크 상태 설정 메서드
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 
     @Override

@@ -26,7 +26,9 @@
         app:layout_constraintTop_toBottomOf="@id/exclude"
         app:layout_constraintBottom_toTopOf="@id/next4"
         app:layout_constraintStart_toStartOf="parent"
+        android:choiceMode="multipleChoice"
         app:layout_constraintEnd_toEndOf="parent" />
+
 
     <Button
         android:id="@+id/next4"

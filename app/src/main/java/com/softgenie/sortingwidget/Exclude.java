@@ -66,4 +66,5 @@ public class Exclude extends AppCompatActivity {
         }
         return selectedApps;
     }
+
 }
