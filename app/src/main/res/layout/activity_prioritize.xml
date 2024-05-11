@@ -8,17 +8,17 @@
     tools:context=".Prioritize">
 
     <TextView
-        android:id="@+id/titlePrioritize"
+        android:id="@+id/DescriptionPrioritize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="8dp"
         android:text="@string/prioritize"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/PrioritizeX46"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.842" />
 
     <Button
         android:id="@+id/back2"
@@ -27,6 +27,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/back"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/next2" />
 
@@ -37,12 +38,14 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/skip"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
     <HorizontalScrollView
+        android:id="@+id/horizontalScrollView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -54,7 +57,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="visible">
 
             <Button
                 android:id="@+id/number1"
@@ -62,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="1 순위" />
+                android:text="1 순위"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/number2"
@@ -70,7 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="2 순위" />
+                android:text="2 순위"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/number3"
@@ -78,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="3 순위" />
+                android:text="3 순위"
+                android:visibility="visible" />
 
             <Button
                 android:id="@+id/number4"
@@ -86,7 +93,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:text="4 순위" />
+                android:text="4 순위"
+                android:visibility="visible" />
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -97,7 +105,402 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Next"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/skip2" />
+
+    <ImageView
+        android:id="@+id/PrioritizeX46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.871"
+        app:srcCompat="@drawable/x46"
+        tools:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/PrioritizeX44"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/x44"
+        tools:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/PrioritizeX42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toBottomOf="@+id/DescriptionPrioritize"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/x42"
+        tools:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/PrioritizeX22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX42"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX42"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX44"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/x22"
+        tools:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton14"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.9135"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.053"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton13"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.053"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton12"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.053"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton11"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.053"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton21"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.23"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton22"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.23"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton23"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.23"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton24"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.9135"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.23"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton31"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.413"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton32"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.413"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton33"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.413"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton34"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.9135"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.413"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton41"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.589"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton42"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.589"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton43"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.589"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton44"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.9135"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.589"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton51"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.764"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton52"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.764"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton53"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.764"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton54"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.9135"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.764"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton61"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.944"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton62"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.358"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.944"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton63"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX46"
+        app:layout_constraintHorizontal_bias="0.636"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX46"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.944"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/prioritizeButton64"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/prioritize"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/PrioritizeX46"
+        app:layout_constraintEnd_toEndOf="@+id/PrioritizeX44"
+        app:layout_constraintHorizontal_bias="0.9135"
+        app:layout_constraintStart_toStartOf="@+id/PrioritizeX44"
+        app:layout_constraintTop_toTopOf="@+id/PrioritizeX46"
+        app:layout_constraintVertical_bias="0.944"
+        app:srcCompat="@drawable/gray_square" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

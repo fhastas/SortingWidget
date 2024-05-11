@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="위젯 크기를 고르시오"
+        android:text="@string/size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,44 +39,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="4 x 6" />
+                android:text="@string/x46" />
 
             <Button
                 android:id="@+id/button4x4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="4 x 4" />
+                android:text="@string/x44" />
 
             <Button
                 android:id="@+id/button4x2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="4 x 2" />
+                android:text="@string/x42" />
 
             <Button
                 android:id="@+id/button2x2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="2 x 2" />
+                android:text="@string/x22" />
         </LinearLayout>
     </HorizontalScrollView>
 
     <ImageView
-        android:id="@+id/imageViewx46"
+        android:id="@+id/PrioritizeX46"
         android:layout_width="317dp"
         android:layout_height="465dp"
         android:layout_marginTop="4dp"
+        android:contentDescription="@string/x46"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleWidgetSize"
-        app:srcCompat="@drawable/x46"/>
+        app:srcCompat="@drawable/x46" />
 
     <ImageView
-        android:id="@+id/imageViewx44"
+        android:id="@+id/PrioritizeX44"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
