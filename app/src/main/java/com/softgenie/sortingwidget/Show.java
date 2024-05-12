@@ -8,18 +8,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 import java.util.Comparator;
 
 
-public class Exclude extends AppCompatActivity {
+public class Show extends AppCompatActivity {
 
-    Button back4, next4;
+    Button back5, done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_exclude);
+        setContentView(R.layout.activity_include);
 
         AppList appList = SharedPreferencesHelper.loadAppList(getApplicationContext());
         if (appList == null) {
@@ -34,16 +35,14 @@ public class Exclude extends AppCompatActivity {
             return insets;
         });
 
-        back4.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Include.class);
+        back5.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Exclude.class);
             finish();
             startActivity(intent);
         });
 
-        next4.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Show.class);
+        done.setOnClickListener(v -> {
             finish();
-            startActivity(intent);
         });
     }
 }
