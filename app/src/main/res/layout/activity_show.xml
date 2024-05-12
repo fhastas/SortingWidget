@@ -7,13 +7,12 @@
     android:layout_height="match_parent"
     tools:context=".Show">
 
-<GridView
+    <GridView
         android:id="@+id/showgird"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:numColumns="4"
-        android:verticalSpacing="30dp"
+        android:verticalSpacing="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
