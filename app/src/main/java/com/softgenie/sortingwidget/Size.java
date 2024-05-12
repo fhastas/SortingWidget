@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import android.widget.ImageView;
 
+
 public class Size extends AppCompatActivity {
 
     Button skip1, next1, button4x6, button4x4, button4x2, button2x2;
@@ -24,10 +25,12 @@ public class Size extends AppCompatActivity {
 
         skip1 = findViewById(R.id.skip1);
         next1 = findViewById(R.id.next1);
+
         button4x6 = findViewById(R.id.button4x6); // Initialize button4x6
         button4x4 = findViewById(R.id.button4x4); // Initialize button4x4
         button4x2 = findViewById(R.id.button4x2); // Initialize button4x2
         button2x2 = findViewById(R.id.button2x2); // Initialize button2x2
+
         imageViewx46 = findViewById(R.id.imageViewx46);
         imageViewx44 = findViewById(R.id.imageViewx44);
         imageViewx42 = findViewById(R.id.imageViewx42);

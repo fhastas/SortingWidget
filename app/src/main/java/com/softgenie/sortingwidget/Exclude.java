@@ -21,6 +21,9 @@ public class Exclude extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_exclude);
 
+        back4 = findViewById(R.id.back4);
+        next4 = findViewById(R.id.next4);
+
         AppList appList = SharedPreferencesHelper.loadAppList(getApplicationContext());
         if (appList == null) {
             appList = new AppList();

@@ -16,11 +16,15 @@ public class Show extends AppCompatActivity {
 
     Button back5, done;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_include);
+        setContentView(R.layout.activity_show);
+
+        back5 = findViewById(R.id.back5);
+        done = findViewById(R.id.done);
 
         AppList appList = SharedPreferencesHelper.loadAppList(getApplicationContext());
         if (appList == null) {
