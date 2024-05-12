@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Prioritize extends AppCompatActivity {
 
     ImageView imageViewx46, imageViewx44, imageViewx42, imageViewx22;
-    Button prioritizeButton11, prioritizeButton12, prioritizeButton13, prioritizeButton14,
+    ImageButton prioritizeButton11, prioritizeButton12, prioritizeButton13, prioritizeButton14,
             prioritizeButton21, prioritizeButton22, prioritizeButton23, prioritizeButton24,
             prioritizeButton31, prioritizeButton32, prioritizeButton33, prioritizeButton34,
             prioritizeButton41, prioritizeButton42, prioritizeButton43, prioritizeButton44,
@@ -133,16 +134,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton11.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton11.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton11.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton11.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton11.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton11.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton11.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton11.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -151,16 +152,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton12.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton12.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton12.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton12.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton12.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton12.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton12.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton12.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -169,16 +170,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton13.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton13.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton13.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton13.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton13.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton13.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton13.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton13.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -187,16 +188,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton14.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton14.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton14.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton14.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton14.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton14.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton14.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton14.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -205,16 +206,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton21.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton21.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton21.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton21.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton21.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton21.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton21.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton21.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -223,16 +224,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton22.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton22.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton22.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton22.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton22.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton22.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton22.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton22.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -241,16 +242,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton23.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton23.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton23.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton23.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton23.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton23.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton23.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton23.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -259,16 +260,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton24.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton24.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton24.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton24.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton24.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton24.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton24.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton24.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -277,16 +278,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton31.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton31.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton31.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton31.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton31.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton31.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton31.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton31.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -295,16 +296,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton32.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton32.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton32.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton32.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton32.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton32.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton32.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton32.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -313,16 +314,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton33.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton33.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton33.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton33.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton33.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton33.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton33.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton33.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -331,16 +332,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton34.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton34.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton34.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton34.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton34.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton34.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton34.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton34.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -349,16 +350,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton41.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton41.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton41.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton41.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton41.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton41.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton41.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton41.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -367,16 +368,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton42.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton42.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton42.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton42.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton42.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton42.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton42.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton42.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -385,16 +386,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton43.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton43.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton43.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton43.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton43.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton43.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton43.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton43.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -403,16 +404,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton44.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton44.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton44.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton44.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton44.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton44.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton44.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton44.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -421,16 +422,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton51.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton51.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton51.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton51.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton51.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton51.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton51.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton51.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -439,16 +440,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton52.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton52.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton52.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton52.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton52.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton52.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton52.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton52.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -457,16 +458,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton53.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton53.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton53.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton53.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton53.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton53.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton53.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton53.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -475,16 +476,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton54.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton54.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton54.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton54.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton54.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton54.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton54.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton54.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -493,16 +494,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton61.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton61.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton61.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton61.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton61.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton61.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton61.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton61.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -511,16 +512,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton62.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton62.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton62.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton62.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton62.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton62.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton62.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton62.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -529,16 +530,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton63.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton63.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton63.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton63.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton63.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton63.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton63.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton63.setImageResource(R.drawable.gray_square);
                     break;
             }
         });
@@ -547,16 +548,16 @@ public class Prioritize extends AppCompatActivity {
 
             switch (prioritize.get()){
                 case 1:
-                    prioritizeButton64.setBackgroundResource(R.drawable.red_square);
+                    prioritizeButton64.setImageResource(R.drawable.red_square);
                     break;
                 case 2:
-                    prioritizeButton64.setBackgroundResource(R.drawable.orange_square);
+                    prioritizeButton64.setImageResource(R.drawable.orange_square);
                     break;
                 case 3:
-                    prioritizeButton64.setBackgroundResource(R.drawable.yellow_square);
+                    prioritizeButton64.setImageResource(R.drawable.yellow_square);
                     break;
                 default:
-                    prioritizeButton64.setBackgroundResource(R.drawable.gray_square);
+                    prioritizeButton64.setImageResource(R.drawable.gray_square);
                     break;
             }
         });

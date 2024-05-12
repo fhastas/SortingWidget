@@ -1,11 +1,14 @@
 package com.softgenie.sortingwidget;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,15 +17,18 @@ public class Exclude extends AppCompatActivity {
     private ListView appListView;
     private AppDataAdapter adapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exclude);
 
+        Intent intent = new Intent(this, Show.class);
+
         appListView = findViewById(R.id.appListView);
 
         // 앱 목록 가져오기
-        List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
+        @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
         List<String> appNames = new ArrayList<>();
         for (ApplicationInfo appInfo : installedApps) {
             appNames.add(getAppName(appInfo));
@@ -46,8 +52,11 @@ public class Exclude extends AppCompatActivity {
         Button doneButton = findViewById(R.id.next4);
         doneButton.setOnClickListener(v -> {
             List<AppData> selectedApps = getSelectedApps();
-            Toast.makeText(Exclude.this, "선택한 앱: " + selectedApps, Toast.LENGTH_SHORT).show();
+            List<String> selectedAppNames = selectedApps.stream().map(AppData::getAppName).toList();
+            intent.putExtra("excluded", selectedAppNames.toArray());// 선택된 앱 목록을 Intent에 추가)
             // 여기서 선택한 앱 데이터를 다른 액티비티로 전달할 수 있습니다.
+            startActivity(intent);
+            finish();
         });
     }
 

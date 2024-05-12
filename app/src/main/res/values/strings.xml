@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">zolzak</string>
+    <string name="app_name">App Soring Genie</string>
     <string name="back">Back</string>
     <string name="skip">Skip</string>
     <string name="include">위젯에 반드시 포함될 앱을 고르시오</string>
@@ -7,4 +7,9 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
+    <string name="size">위젯에 반영될 크기를 고르시오</string>
+    <string name="x46">4 x 6</string>
+    <string name="x44">4 x 4</string>
+    <string name="x42">4 x 2</string>
+    <string name="x22">2 x 2</string>
 </resources>

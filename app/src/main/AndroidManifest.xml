@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Zolzak"
+        android:theme="@style/SortingWidgetTheme"
         tools:targetApi="31">
         <service
             android:name=".MyAppWidgetService"
@@ -49,6 +49,7 @@
         <activity android:name=".Prioritize" />
         <activity android:name=".Include" />
         <activity android:name=".Exclude" />
+        <activity android:name=".Show" />
 
 
 
