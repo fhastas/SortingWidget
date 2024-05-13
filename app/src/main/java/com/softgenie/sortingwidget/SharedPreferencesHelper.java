@@ -7,25 +7,42 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
 public class SharedPreferencesHelper {
-    private static final String PREF_NAME = "AppListPref";
+    private static final String appListPREF = "AppListPref";
+    private static final String userInfoPREF = "UserInfoPref";
 
     public static void saveAppList(Context context, AppList appList) {
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(appListPREF, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(appList);
+        String json = gson.toJson(appList, AppList.class);
         editor.putString("appList", json);
         editor.apply();
     }
 
     public static AppList loadAppList(Context context) {
-        SharedPreferences preferences = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(appListPREF, Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = preferences.getString("appList", null);
         Type type = new TypeToken<AppList>(){}.getType();
+        return gson.fromJson(json, type);
+    }
+
+    public static void saveUserInfo(Context context, UserInfo userInfo){
+        SharedPreferences preferences = context.getSharedPreferences(userInfoPREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(userInfo, UserInfo.class);
+        editor.putString("userInfo", json);
+        editor.apply();
+    }
+
+    public static UserInfo loadUserInfo(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(userInfoPREF, Context.MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("userInfo", null);
+        Type type = new TypeToken<UserInfo>(){}.getType();
         return gson.fromJson(json, type);
     }
 }

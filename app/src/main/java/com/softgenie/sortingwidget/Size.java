@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Size extends AppCompatActivity {
 
-    Button skip1, next1, button4x6, button4x4, button4x2, button2x2;
+    Button next1, button4x6, button4x4, button4x2, button2x2;
     ImageView imageViewx46, imageViewx44, imageViewx42, imageViewx22;
 
     @Override
@@ -24,11 +24,10 @@ public class Size extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_size);
 
-        AtomicInteger size = new AtomicInteger(24); // 다음 Activity에 전달할 변수 데이터 생성과 함께 초기화
+        AtomicInteger size = new AtomicInteger(46); // 다음 Activity에 전달할 변수 데이터 생성과 함께 초기화
 
-        //startService();
+        startService();
 
-        skip1 = findViewById(R.id.skip1);
         next1 = findViewById(R.id.next1);
         button4x6 = findViewById(R.id.button4x6); // Initialize button4x6
         button4x4 = findViewById(R.id.button4x4); // Initialize button4x4
@@ -49,12 +48,6 @@ public class Size extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-        });
-
-        skip1.setOnClickListener(v -> {
-            Intent intent = new Intent(Size.this, Prioritize.class);
-            finish();
-            startActivity(intent);
         });
 
         next1.setOnClickListener(v -> {

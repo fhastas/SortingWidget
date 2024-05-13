@@ -3,6 +3,7 @@ package com.softgenie.sortingwidget;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,7 +37,7 @@ public class Show extends AppCompatActivity {
         back5 = findViewById(R.id.back5);
         done = findViewById(R.id.done);
 
-        GridView gridView = (GridView) findViewById(R.id.showgird);
+        GridView gridView = findViewById(R.id.showgird);
         gridViewAdapter adapter = new gridViewAdapter();
 
         AppList appList = SharedPreferencesHelper.loadAppList(getApplicationContext());
@@ -60,9 +61,7 @@ public class Show extends AppCompatActivity {
             startActivity(intent);
         });
 
-        done.setOnClickListener(v -> {
-            finish();
-        });
+        done.setOnClickListener(v -> finish());
     }
 
     class gridViewAdapter extends BaseAdapter {
@@ -92,15 +91,19 @@ public class Show extends AppCompatActivity {
                 LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = inflater.inflate(R.layout.show_list_item, viewGroup, false);
 
-                TextView tv_name = (TextView) convertView.findViewById(R.id.tv_name);
-                ImageView iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon);
+                TextView tv_name = convertView.findViewById(R.id.tv_name);
+                ImageView iv_icon = convertView.findViewById(R.id.iv_icon);
 
                 tv_name.setText(appData.getAppName());
-                iv_icon.setImageDrawable(appData.getAppIcon());
+                if(appData.getAppIcon() == null) {
+                    iv_icon.setImageBitmap(appData.getAppIcon());
+                } else{
+                    iv_icon.setImageResource(R.drawable.ic_launcher_foreground);
+                }
                 Log.d(TAG, "getView() - [ "+position+" ]" + appData.getAppName());
             }else{
                 View view = new View(context);
-                view = (View) convertView;
+                view = convertView;
             }
 
             convertView.setOnClickListener(v -> {

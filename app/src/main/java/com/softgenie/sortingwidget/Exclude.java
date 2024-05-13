@@ -3,6 +3,9 @@ package com.softgenie.sortingwidget;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
@@ -37,9 +40,17 @@ public class Exclude extends AppCompatActivity {
         // 앱 데이터 리스트 생성
         List<AppData> appDataList = new ArrayList<>();
         for (ApplicationInfo appInfo : installedApps) {
+            if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                continue; // 시스템 앱은 제외
+            }
             String appName = getAppName(appInfo);
+            Drawable appIconDrawable = appInfo.loadIcon(getPackageManager());
+            Bitmap appIconBitmap = null;
+            if(appIconDrawable instanceof BitmapDrawable bitmapDrawable){
+                appIconBitmap = bitmapDrawable.getBitmap();
+            }
             // 앱 데이터 객체 생성 후 리스트에 추가
-            AppData appData = new AppData(appName, appInfo.loadIcon(getPackageManager()), 0, null);
+            AppData appData = new AppData(appName, appIconBitmap, 0, null);
             appDataList.add(appData);
         }
 

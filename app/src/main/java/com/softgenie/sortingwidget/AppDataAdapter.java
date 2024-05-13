@@ -1,6 +1,7 @@
 package com.softgenie.sortingwidget;
 
 import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,11 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
         CheckBox checkBox = listItemView.findViewById(R.id.checkBox);
 
         // 앱 아이콘 설정
-        iconImageView.setImageDrawable(currentAppData.getAppIcon());
-
+        if(currentAppData.getAppIcon() != null) {
+            iconImageView.setImageBitmap(currentAppData.getAppIcon());
+        } else{
+            iconImageView.setImageResource(R.drawable.ic_launcher_foreground);
+        }
         // 앱 이름 설정
         nameTextView.setText(currentAppData.getAppName());
 

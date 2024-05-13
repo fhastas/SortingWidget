@@ -77,7 +77,6 @@ public class Prioritize extends AppCompatActivity {
         number2 = findViewById(R.id.number2);
         number3 = findViewById(R.id.number3);
         number4 = findViewById(R.id.number4);
-        skip2 = findViewById(R.id.skip2);
         back2 = findViewById(R.id.back2);
         next2 = findViewById(R.id.next2);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -569,12 +568,6 @@ public class Prioritize extends AppCompatActivity {
 
         back2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Size.class);
-            finish();
-            startActivity(intent);
-        });
-
-        skip2.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), Include.class);
             finish();
             startActivity(intent);
         });

@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,13 +21,20 @@ public class AppList {
         PackageManager pm = context.getPackageManager();
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> apps = pm.getInstalledApplications(0);
 
+        int i = 0;
+
         for (ApplicationInfo app : apps) {
+            if ((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                continue;
+            }
             String name = (String) pm.getApplicationLabel(app);
             Drawable icon = pm.getApplicationIcon(app);
+            Bitmap iconBitmap = ((BitmapDrawable)icon).getBitmap();
             long usageTime = getUsageTime(app.packageName, context);
             Intent shortcut = pm.getLaunchIntentForPackage(app.packageName);
 
-            appList.add(new AppData(name, icon, usageTime, shortcut));
+            Log.d(this.getClass().getSimpleName(), (i++) +"App name: " + name );
+            appList.add(new AppData(name, iconBitmap, usageTime, shortcut));
         }
     }
 

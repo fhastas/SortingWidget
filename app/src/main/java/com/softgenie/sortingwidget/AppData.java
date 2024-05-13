@@ -1,18 +1,21 @@
 package com.softgenie.sortingwidget;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 
 public class AppData implements Comparable<AppData> {
     private String appName;
-    private Drawable appIcon;
+    private Bitmap appIcon;
     private long usageTime;
     private Intent shortcut;
     private boolean selected;
 
-    public AppData(String appName, Drawable appIcon, long usageTime, Intent shortcut) {
+    public AppData(String appName, Bitmap appIcon, long usageTime, Intent shortcut) {
         this.appName = appName;
         this.appIcon = appIcon;
         this.usageTime = usageTime;
@@ -49,11 +52,11 @@ public class AppData implements Comparable<AppData> {
         this.appName = appName;
     }
 
-    public Drawable getAppIcon() {
+    public Bitmap getAppIcon() {
         return appIcon;
     }
 
-    public void setAppIcon(Drawable appIcon) {
+    public void setAppIcon(Bitmap appIcon) {
         this.appIcon = appIcon;
     }
 

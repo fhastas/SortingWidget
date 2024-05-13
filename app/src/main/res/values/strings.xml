@@ -1,15 +1,28 @@
 <resources>
     <string name="app_name">App Soring Genie</string>
+    <string name="exclude">위젯에 반드시 제외할 앱을 골라주세요</string>
+    <string name="include">위젯에 반드시 포함될 앱을 골라주세요</string>
+    <string name="prioritize">우선순위 칸를 설정해 주세요</string>
+    <string name="size">위젯에 반영될 크기를 골라주세요</string>
+
+    <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="skip">Skip</string>
-    <string name="include">위젯에 반드시 포함될 앱을 고르시오</string>
-    <string name="prioritize">우선순위를 고르시오</string>
+
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
-    <string name="size">위젯에 반영될 크기를 고르시오</string>
+
+    <string name="rank_1st">1 순위</string>
+    <string name="rank_2nd">2 순위</string>
+    <string name="rank_3rd">3 순위</string>
+    <string name="rank_4th">4 순위</string>
     <string name="x46">4 x 6</string>
     <string name="x44">4 x 4</string>
     <string name="x42">4 x 2</string>
     <string name="x22">2 x 2</string>
+    <string name="show_item_image">grid_item_image</string>
+    <string name="show_item_text">grid_item_text</string>
+
+
 </resources>
