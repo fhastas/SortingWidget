@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Exclude extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class Exclude extends AppCompatActivity {
         back4 = findViewById(R.id.back4);
         appListView = findViewById(R.id.appListView);
         Intent intent = new Intent(this, Show.class);
+
 
         // 앱 목록 가져오기
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
@@ -59,13 +61,13 @@ public class Exclude extends AppCompatActivity {
         appListView.setAdapter(adapter);
         appListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        // Done 버튼 클릭 시 선택된 앱 목록 가져오기
+        // Next 버튼 클릭 시 선택된 앱 목록 가져오기
         Button doneButton = findViewById(R.id.next4);
         doneButton.setOnClickListener(v -> {
             List<AppData> selectedApps = getSelectedApps();
             List<String> selectedAppNames = selectedApps.stream().map(AppData::getAppName).toList();
-            intent.putExtra("excluded", selectedAppNames.toArray());// 선택된 앱 목록을 Intent에 추가)
-            // 여기서 선택한 앱 데이터를 다른 액티비티로 전달할 수 있습니다.
+            intent.putExtra("excluded", selectedAppNames.toArray());// 선택된 앱 목록을 Intent에 추가
+            intent.setClass(Exclude.this, Show.class);
             startActivity(intent);
             finish();
         });
