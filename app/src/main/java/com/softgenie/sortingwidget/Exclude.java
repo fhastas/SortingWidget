@@ -19,16 +19,16 @@ import java.util.List;
 public class Exclude extends AppCompatActivity {
     private ListView appListView;
     private AppDataAdapter adapter;
+    Button back4;
 
     @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exclude);
-
-        Intent intent = new Intent(this, Show.class);
-
+        back4 = findViewById(R.id.back4);
         appListView = findViewById(R.id.appListView);
+        Intent intent = new Intent(this, Show.class);
 
         // 앱 목록 가져오기
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
@@ -69,6 +69,13 @@ public class Exclude extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+        back4.setOnClickListener(v -> {
+            intent.setClass(Exclude.this, Include.class); // 이미 정의된 intent 변수를 재사용
+            startActivity(intent);
+            finish();
+        });
+
     }
 
     // ApplicationInfo를 통해 앱 이름 가져오기
@@ -86,5 +93,4 @@ public class Exclude extends AppCompatActivity {
         }
         return selectedApps;
     }
-
 }
