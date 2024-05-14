@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppList {
-    List<AppData> appList = new ArrayList<>();
+    private List<AppData> appList = new ArrayList<>();
 
     public AppList(Context context) {
         PackageManager pm = context.getPackageManager();
@@ -29,7 +30,8 @@ public class AppList {
             }
             String name = (String) pm.getApplicationLabel(app);
             Drawable icon = pm.getApplicationIcon(app);
-            Bitmap iconBitmap = ((BitmapDrawable)icon).getBitmap();
+            @SuppressLint("DiscouragedApi") int iconId = context.getResources().getIdentifier("icon", "drawable", context.getPackageName());
+            Bitmap iconBitmap = BitmapFactory.decodeResource(context.getResources(), iconId);
             long usageTime = getUsageTime(app.packageName, context);
             Intent shortcut = pm.getLaunchIntentForPackage(app.packageName);
 
@@ -54,4 +56,5 @@ public class AppList {
     public List<AppData> getAppList() {
         return appList;
     }
+    public void setAppList(List<AppData> appList) { this.appList = appList; }
 }

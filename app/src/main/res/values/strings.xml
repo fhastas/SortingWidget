@@ -8,6 +8,7 @@
     <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="skip">Skip</string>
+    <string name="done">Done</string>
 
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
@@ -17,12 +18,16 @@
     <string name="rank_2nd">2 순위</string>
     <string name="rank_3rd">3 순위</string>
     <string name="rank_4th">4 순위</string>
+
     <string name="x46">4 x 6</string>
     <string name="x44">4 x 4</string>
     <string name="x42">4 x 2</string>
     <string name="x22">2 x 2</string>
+
     <string name="show_item_image">grid_item_image</string>
     <string name="show_item_text">grid_item_text</string>
 
+    <string name="temp_widget">임시 위젯</string>
+    <string name="temp_widget_button">temp_widget_button</string>
 
 </resources>

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".TempWidget"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="-90dp">
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="580dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="580dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="492dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="492dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="580dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="492dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="294dp"
+        android:layout_marginBottom="580dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="294dp"
+        android:layout_marginBottom="492dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="404dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="316dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="404dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="316dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="294dp"
+        android:layout_marginBottom="404dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="294dp"
+        android:layout_marginBottom="316dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="404dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="316dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton64"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="140dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton61"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="294dp"
+        android:layout_marginBottom="140dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton62"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="140dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="140dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton54"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="228dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="294dp"
+        android:layout_marginBottom="228dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton52"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="206dp"
+        android:layout_marginBottom="228dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <ImageButton
+        android:id="@+id/TempWidgetButton53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="114dp"
+        android:layout_marginBottom="228dp"
+        android:contentDescription="@string/temp_widget_button"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
+
+    <Button
+        android:id="@+id/done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="26dp"
+        android:checkable="true"
+        android:text="@string/done"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

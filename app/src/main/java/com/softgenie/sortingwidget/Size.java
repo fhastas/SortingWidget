@@ -51,8 +51,11 @@ public class Size extends AppCompatActivity {
         });
 
         next1.setOnClickListener(v -> {
-            Intent intent = new Intent(Size.this, Prioritize.class);
-            intent.putExtra("size", size.get());
+            Intent intent = new Intent(this, Prioritize.class);
+            UserInfo userInfo = new UserInfo();
+            userInfo.setSize(size.get());
+            intent.putExtra("userInfo", userInfo);
+
             finish();
             startActivity(intent);
         });

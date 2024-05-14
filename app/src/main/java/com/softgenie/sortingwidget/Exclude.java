@@ -22,6 +22,8 @@ public class Exclude extends AppCompatActivity {
     private AppDataAdapter adapter;
     Button back4;
 
+    UserInfo userInfo = (UserInfo)getIntent().getSerializableExtra("userInfo");
+
     @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +31,7 @@ public class Exclude extends AppCompatActivity {
         setContentView(R.layout.activity_exclude);
         back4 = findViewById(R.id.back4);
         appListView = findViewById(R.id.appListView);
-        Intent intent = new Intent(this, Show.class);
+        Intent intent = new Intent(this, TempWidget.class);
 
 
         // 앱 목록 가져오기
@@ -66,8 +68,11 @@ public class Exclude extends AppCompatActivity {
         doneButton.setOnClickListener(v -> {
             List<AppData> selectedApps = getSelectedApps();
             List<String> selectedAppNames = selectedApps.stream().map(AppData::getAppName).toList();
-            intent.putExtra("excluded", selectedAppNames.toArray());// 선택된 앱 목록을 Intent에 추가
-            intent.setClass(Exclude.this, Show.class);
+
+            userInfo.setExcluded(selectedAppNames);
+            SharedPreferencesHelper.saveUserInfo(this, userInfo);
+
+            intent.setClass(Exclude.this, TempWidget.class);
             startActivity(intent);
             finish();
         });

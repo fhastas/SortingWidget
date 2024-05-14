@@ -1,18 +1,26 @@
 package com.softgenie.sortingwidget;
 
-public class UserInfo {
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-    final int initSize = 24;
+public class UserInfo implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
+    final int initSize = 46;
     private int size;  // 46, 44, 42, 22
     private int[][] prioritize;
 
-    public UserInfo(int size, int[][] prioritize) {
+    private List<String> included = new ArrayList<>();
+    private List<String> excluded = new ArrayList<>();
+
+    public UserInfo(int size, int[][] prioritize, List<String> included, List<String> excluded) {
         this.size = size;
         this.prioritize = prioritize;
-    }
-    public UserInfo(int size) {
-        this.size = size;
-        initPrioritize();
+        this.included = included;
+        this.excluded = excluded;
     }
     public UserInfo() {
         this.size = initSize;
@@ -28,22 +36,40 @@ public class UserInfo {
         this.prioritize[5] = new int[]{3, 2, 1, 1};
     }
 
-    int getPriority(int x, int y) {
+    public int getSize() {
+        return this.size;
+    }
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public List<String> getIncluded() {
+        return this.included;
+    }
+    public List<String> getExcluded() {
+        return this.excluded;
+    }
+
+    public void setIncluded(List<String> included) {
+        this.included = included;
+    }
+    public void setExcluded(List<String> excluded) {
+        this.excluded = excluded;
+    }
+
+    public int getPriority(int x, int y) {
         return prioritize[x][y];
     }
 
-    int getSize() {
-        return size;
+    public void setPriority2List(int[][] priority) {
+        this.prioritize = priority;
     }
-
-    void setPriorityList(int x, int[] priority) {
+    public void setPriority1List(int x, int[] priority) {
         this.prioritize[x] = priority;
     }
-    void setPriority(int x, int y, int priority) {
+    public void setPriority(int x, int y, int priority) {
         this.prioritize[x][y] = priority;
     }
 
-    void setSize(int size) {
-        this.size = size;
-    }
+
 }

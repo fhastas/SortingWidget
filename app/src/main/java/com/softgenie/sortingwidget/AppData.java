@@ -23,16 +23,6 @@ public class AppData implements Comparable<AppData> {
         this.selected = false;
     }
 
-    // 체크 상태 반환 메서드
-    public boolean isSelected() {
-        return selected;
-    }
-
-    // 체크 상태 설정 메서드
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
-
     @Override
     public int compareTo(AppData appData) {
         return Long.compare(this.usageTime, appData.usageTime);
@@ -74,5 +64,13 @@ public class AppData implements Comparable<AppData> {
 
     public void setShortcut(Intent shortcut) {
         this.shortcut = shortcut;
+    }
+
+    public boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

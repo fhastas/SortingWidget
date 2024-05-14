@@ -49,7 +49,7 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
         nameTextView.setText(currentAppData.getAppName());
 
         // 체크박스 상태 설정
-        checkBox.setChecked(currentAppData.isSelected());
+        checkBox.setChecked(currentAppData.getSelected());
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

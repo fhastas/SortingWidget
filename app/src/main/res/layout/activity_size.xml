@@ -83,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:contentDescription="@string/x44"
         android:src="@drawable/x44"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
@@ -96,6 +97,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/x42"
         android:layout_centerInParent="true"
+        android:contentDescription="@string/x42"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,6 +110,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/x22"
         android:layout_centerInParent="true"
+        android:contentDescription="@string/x22"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        android:text="Next"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

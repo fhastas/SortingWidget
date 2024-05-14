@@ -1,6 +1,7 @@
 package com.softgenie.sortingwidget;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,7 +28,9 @@ public class Prioritize extends AppCompatActivity {
             prioritizeButton51, prioritizeButton52, prioritizeButton53, prioritizeButton54,
             prioritizeButton61, prioritizeButton62, prioritizeButton63, prioritizeButton64;
     Button number1, number2, number3, number4;
-    Button skip2, back2, next2;
+    Button back2, next2;
+
+    UserInfo userInfo = (UserInfo) getIntent().getSerializableExtra("userInfo");
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -36,12 +39,16 @@ public class Prioritize extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_prioritize);
 
-        int size = getIntent().getIntExtra("size", 46);
+        if(userInfo == null) {
+            userInfo = new UserInfo();
+        }
+
+        int size = userInfo.getSize();
         AtomicInteger prioritize = new AtomicInteger(1);
-        int[][] prioritizeList = new int[6][4];
+        int[][] priorityList = new int[6][4];
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 4; j++) {
-                prioritizeList[i][j] = 4;
+                priorityList[i][j] = 4;
             }
         }
 
@@ -79,6 +86,7 @@ public class Prioritize extends AppCompatActivity {
         number4 = findViewById(R.id.number4);
         back2 = findViewById(R.id.back2);
         next2 = findViewById(R.id.next2);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -129,7 +137,7 @@ public class Prioritize extends AppCompatActivity {
         }
 
         prioritizeButton11.setOnClickListener(v -> {
-            prioritizeList[0][0] = prioritize.get();
+            priorityList[0][0] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -147,7 +155,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton12.setOnClickListener(v -> {
-            prioritizeList[0][1] = prioritize.get();
+            priorityList[0][1] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -165,7 +173,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton13.setOnClickListener(v -> {
-            prioritizeList[0][2] = prioritize.get();
+            priorityList[0][2] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -183,7 +191,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton14.setOnClickListener(v -> {
-            prioritizeList[0][3] = prioritize.get();
+            priorityList[0][3] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -201,7 +209,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton21.setOnClickListener(v -> {
-            prioritizeList[1][0] = prioritize.get();
+            priorityList[1][0] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -219,7 +227,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton22.setOnClickListener(v -> {
-            prioritizeList[1][1] = prioritize.get();
+            priorityList[1][1] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -237,7 +245,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton23.setOnClickListener(v -> {
-            prioritizeList[1][2] = prioritize.get();
+            priorityList[1][2] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -255,7 +263,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton24.setOnClickListener(v -> {
-            prioritizeList[1][3] = prioritize.get();
+            priorityList[1][3] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -273,7 +281,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton31.setOnClickListener(v -> {
-            prioritizeList[2][0] = prioritize.get();
+            priorityList[2][0] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -291,7 +299,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton32.setOnClickListener(v -> {
-            prioritizeList[2][1] = prioritize.get();
+            priorityList[2][1] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -309,7 +317,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton33.setOnClickListener(v -> {
-            prioritizeList[2][2] = prioritize.get();
+            priorityList[2][2] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -327,7 +335,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton34.setOnClickListener(v -> {
-            prioritizeList[2][3] = prioritize.get();
+            priorityList[2][3] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -345,7 +353,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton41.setOnClickListener(v -> {
-            prioritizeList[3][0] = prioritize.get();
+            priorityList[3][0] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -363,7 +371,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton42.setOnClickListener(v -> {
-            prioritizeList[3][1] = prioritize.get();
+            priorityList[3][1] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -381,7 +389,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton43.setOnClickListener(v -> {
-            prioritizeList[3][2] = prioritize.get();
+            priorityList[3][2] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -399,7 +407,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton44.setOnClickListener(v -> {
-            prioritizeList[3][3] = prioritize.get();
+            priorityList[3][3] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -417,7 +425,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton51.setOnClickListener(v -> {
-            prioritizeList[4][0] = prioritize.get();
+            priorityList[4][0] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -435,7 +443,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton52.setOnClickListener(v -> {
-            prioritizeList[4][1] = prioritize.get();
+            priorityList[4][1] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -453,7 +461,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton53.setOnClickListener(v -> {
-            prioritizeList[4][2] = prioritize.get();
+            priorityList[4][2] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -471,7 +479,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton54.setOnClickListener(v -> {
-            prioritizeList[4][3] = prioritize.get();
+            priorityList[4][3] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -489,7 +497,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton61.setOnClickListener(v -> {
-            prioritizeList[5][0] = prioritize.get();
+            priorityList[5][0] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -507,7 +515,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton62.setOnClickListener(v -> {
-            prioritizeList[5][1] = prioritize.get();
+            priorityList[5][1] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -525,7 +533,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton63.setOnClickListener(v -> {
-            prioritizeList[5][2] = prioritize.get();
+            priorityList[5][2] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -543,7 +551,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
         prioritizeButton64.setOnClickListener(v -> {
-            prioritizeList[5][3] = prioritize.get();
+            priorityList[5][3] = prioritize.get();
 
             switch (prioritize.get()){
                 case 1:
@@ -561,6 +569,8 @@ public class Prioritize extends AppCompatActivity {
             }
         });
 
+        userInfo.setPriority2List(priorityList);
+
         number1.setOnClickListener(v -> prioritize.set(1));
         number2.setOnClickListener(v -> prioritize.set(2));
         number3.setOnClickListener(v -> prioritize.set(3));
@@ -574,8 +584,9 @@ public class Prioritize extends AppCompatActivity {
 
         next2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Include.class);
-            intent.putExtra("prioritizeList", prioritizeList);
-            intent.putExtra("size", size);
+
+            intent.putExtra("userInfo", userInfo);
+
             finish();
             startActivity(intent);
         });
