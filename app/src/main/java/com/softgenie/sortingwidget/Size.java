@@ -2,6 +2,7 @@ package com.softgenie.sortingwidget;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import androidx.activity.EdgeToEdge;
@@ -50,16 +51,6 @@ public class Size extends AppCompatActivity {
             return insets;
         });
 
-        next1.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Prioritize.class);
-            UserInfo userInfo = new UserInfo();
-            userInfo.setSize(size.get());
-            intent.putExtra("userInfo", userInfo);
-
-            finish();
-            startActivity(intent);
-        });
-
         button4x6.setOnClickListener(v -> {
             size.set(46);
 
@@ -100,6 +91,16 @@ public class Size extends AppCompatActivity {
             imageViewx42.setVisibility(View.INVISIBLE);
             imageViewx22.setVisibility(View.VISIBLE);
             // AlgorithmClass.performAlgorithm(x22);
+        });
+
+        next1.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Prioritize.class);
+            UserInfo userInfo = new UserInfo(size.get());
+            intent.putExtra("userInfo", userInfo);
+            Log.d("UserInfo", "Size: " + userInfo.getSize());
+
+            finish();
+            startActivity(intent);
         });
     }
 

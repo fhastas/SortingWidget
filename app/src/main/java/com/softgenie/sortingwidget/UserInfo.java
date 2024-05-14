@@ -22,8 +22,14 @@ public class UserInfo implements Serializable {
         this.included = included;
         this.excluded = excluded;
     }
+    public UserInfo(int size) {
+        this.size = size;
+        this.prioritize = new int[6][4];
+        initPrioritize();
+    }
     public UserInfo() {
         this.size = initSize;
+        this.prioritize = new int[6][4];
         initPrioritize();
     }
 

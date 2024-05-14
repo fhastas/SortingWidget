@@ -30,7 +30,8 @@ public class Prioritize extends AppCompatActivity {
     Button number1, number2, number3, number4;
     Button back2, next2;
 
-    UserInfo userInfo = (UserInfo) getIntent().getSerializableExtra("userInfo");
+    Intent intent = getIntent();
+    UserInfo userInfo = null;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -39,10 +40,13 @@ public class Prioritize extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_prioritize);
 
-        if(userInfo == null) {
+        if (intent != null) {
+            userInfo = (UserInfo) intent.getSerializableExtra("userInfo");
+        } else {
             userInfo = new UserInfo();
         }
 
+        assert userInfo != null;
         int size = userInfo.getSize();
         AtomicInteger prioritize = new AtomicInteger(1);
         int[][] priorityList = new int[6][4];
