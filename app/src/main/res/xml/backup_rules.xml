@@ -10,5 +10,5 @@
     <include domain="sharedpref" path="."/>
 
     <!-- Exclude cache directory -->
-    <exclude domain="file" path="cache/"/>
+    <exclude domain="file"/>
 </full-backup-content>

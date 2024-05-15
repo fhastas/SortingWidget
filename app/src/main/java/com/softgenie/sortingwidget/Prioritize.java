@@ -3,6 +3,7 @@ package com.softgenie.sortingwidget;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -19,6 +20,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Prioritize extends AppCompatActivity {
 
+    private static final String TAG = "Prioritize";
+
     ImageView imageViewx46, imageViewx44, imageViewx42, imageViewx22;
     ImageButton prioritizeButton11, prioritizeButton12, prioritizeButton13, prioritizeButton14,
             prioritizeButton21, prioritizeButton22, prioritizeButton23, prioritizeButton24,
@@ -29,8 +32,7 @@ public class Prioritize extends AppCompatActivity {
     Button number1, number2, number3, number4;
     Button back2, next2;
 
-    Intent intent = getIntent();
-    UserInfo userInfo = null;
+    UserInfo userInfo;
 
     @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
@@ -39,14 +41,7 @@ public class Prioritize extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_prioritize);
 
-        if (intent != null) {
-            userInfo = (UserInfo) intent.getSerializableExtra("userInfo");
-        } else {
-            userInfo = new UserInfo();
-        }
-
-        assert userInfo != null;
-        int size = userInfo.getSize();
+        int size = getIntent().getIntExtra("size", 46);
         AtomicInteger prioritize = new AtomicInteger(1);
         int[][] priorityList = new int[6][4];
         for (int i = 0; i < 6; i++) {
@@ -572,7 +567,7 @@ public class Prioritize extends AppCompatActivity {
             }
         });
 
-        userInfo.setPriority2List(priorityList);
+        userInfo = new UserInfo(size, priorityList);
 
         number1.setOnClickListener(v -> prioritize.set(1));
         number2.setOnClickListener(v -> prioritize.set(2));
@@ -589,6 +584,8 @@ public class Prioritize extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Include.class);
 
             intent.putExtra("userInfo", userInfo);
+
+            Log.d(TAG, "onCreate: " + userInfo.toString());
 
             finish();
             startActivity(intent);

@@ -1,8 +1,11 @@
 package com.softgenie.sortingwidget;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UserInfo implements Serializable {
@@ -13,24 +16,31 @@ public class UserInfo implements Serializable {
     private int size;  // 46, 44, 42, 22
     private int[][] prioritize;
 
-    private List<String> included = new ArrayList<>();
-    private List<String> excluded = new ArrayList<>();
+    private List<String> include = new ArrayList<>();
+    private List<String> exclude = new ArrayList<>();
 
-    public UserInfo(int size, int[][] prioritize, List<String> included, List<String> excluded) {
+    public UserInfo(int size, int[][] prioritize, List<String> include, List<String> exclude) {
         this.size = size;
         this.prioritize = prioritize;
-        this.included = included;
-        this.excluded = excluded;
+        this.include = include;
+        this.exclude = exclude;
     }
-    public UserInfo(int size) {
+    public UserInfo(int size, int[][] prioritize) {
         this.size = size;
-        this.prioritize = new int[6][4];
-        initPrioritize();
+        this.prioritize = prioritize;
     }
     public UserInfo() {
         this.size = initSize;
         this.prioritize = new int[6][4];
         initPrioritize();
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "\nsize=" + size +
+                "\n, prioritize=" + Arrays.deepToString(prioritize);
     }
 
     private void initPrioritize(){
@@ -49,18 +59,18 @@ public class UserInfo implements Serializable {
         this.size = size;
     }
 
-    public List<String> getIncluded() {
-        return this.included;
+    public List<String> getInclude() {
+        return this.include;
     }
-    public List<String> getExcluded() {
-        return this.excluded;
+    public List<String> getExclude() {
+        return this.exclude;
     }
 
-    public void setIncluded(List<String> included) {
-        this.included = included;
+    public void setInclude(List<String> include) {
+        this.include = include;
     }
-    public void setExcluded(List<String> excluded) {
-        this.excluded = excluded;
+    public void setExclude(List<String> exclude) {
+        this.exclude = exclude;
     }
 
     public int getPriority(int x, int y) {

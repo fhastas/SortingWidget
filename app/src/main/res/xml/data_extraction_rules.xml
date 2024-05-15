@@ -10,6 +10,6 @@
         <include domain="file" path="databases/MyAppDatabase.db" />
 
         <!-- Exclude certain files or directories -->
-        <exclude domain="file" path="cache/" />
+        <exclude domain="file" />
     </cloud-backup>
 </data-extraction-rules>

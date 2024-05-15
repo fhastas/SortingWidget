@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Size extends AppCompatActivity {
+    private static final String TAG = "Size";
 
     Button next1, button4x6, button4x4, button4x2, button2x2;
     ImageView imageViewx46, imageViewx44, imageViewx42, imageViewx22;
@@ -95,9 +96,8 @@ public class Size extends AppCompatActivity {
 
         next1.setOnClickListener(v -> {
             Intent intent = new Intent(this, Prioritize.class);
-            UserInfo userInfo = new UserInfo(size.get());
-            intent.putExtra("userInfo", userInfo);
-            Log.d("UserInfo", "Size: " + userInfo.getSize());
+            intent.putExtra("size", size.get());
+            Log.d(TAG, "Size: " + size.get());
 
             finish();
             startActivity(intent);

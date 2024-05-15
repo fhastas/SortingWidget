@@ -48,13 +48,13 @@ public class TempWidget extends AppCompatActivity {
         }
 
         for(int i = 0; i < appList.getAppList().size(); i++){
-            for(int j = 0; j < userInfo.getIncluded().size(); j++){
+            for(int j = 0; j < userInfo.getInclude().size(); j++){
                 // AppData에 포함할 값 저장
-                if(appList.getAppList().get(i).getAppName().equals(userInfo.getIncluded().get(j))){
+                if(appList.getAppList().get(i).getAppName().equals(userInfo.getInclude().get(j))){
                     appList.getAppList().get(i).setSelected(true);
                 }
                 // AppData에 제외할 값 저장
-                if(appList.getAppList().get(i).getAppName().equals(userInfo.getExcluded().get(j))){
+                if(appList.getAppList().get(i).getAppName().equals(userInfo.getExclude().get(j))){
                     appList.getAppList().remove(i);
                 }
             }

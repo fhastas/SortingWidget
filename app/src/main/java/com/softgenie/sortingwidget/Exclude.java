@@ -6,15 +6,12 @@ import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Exclude extends AppCompatActivity {
@@ -22,17 +19,15 @@ public class Exclude extends AppCompatActivity {
     private AppDataAdapter adapter;
     Button back4;
 
-    UserInfo userInfo = (UserInfo)getIntent().getSerializableExtra("userInfo");
+    Intent intent = new Intent(Exclude.this, TempWidget.class);
+    UserInfo userInfo = getIntent().getSerializableExtra("userInfo", UserInfo.class);
 
-    @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exclude);
         back4 = findViewById(R.id.back4);
         appListView = findViewById(R.id.appListView);
-        Intent intent = new Intent(this, TempWidget.class);
-
 
         // 앱 목록 가져오기
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
@@ -69,7 +64,7 @@ public class Exclude extends AppCompatActivity {
             List<AppData> selectedApps = getSelectedApps();
             List<String> selectedAppNames = selectedApps.stream().map(AppData::getAppName).toList();
 
-            userInfo.setExcluded(selectedAppNames);
+            userInfo.setExclude(selectedAppNames);
             SharedPreferencesHelper.saveUserInfo(this, userInfo);
 
             intent.setClass(Exclude.this, TempWidget.class);

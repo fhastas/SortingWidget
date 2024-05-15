@@ -6,14 +6,10 @@ import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,16 +19,16 @@ public class Include extends AppCompatActivity {
     private AppDataAdapter adapter;
     Button back3;
 
-    UserInfo userInfo = (UserInfo)getIntent().getSerializableExtra("userInfo");
+    Intent intent = new Intent(Include.this, Exclude.class);
 
-    @RequiresApi(api = Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+    UserInfo userInfo = getIntent().getSerializableExtra("userInfo", UserInfo.class);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_include);
         back3 = findViewById(R.id.back3);
         appListView = findViewById(R.id.appListView);
-        Intent intent = new Intent(this, Exclude.class);
 
         // 앱 목록 가져오기
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
@@ -74,7 +70,7 @@ public class Include extends AppCompatActivity {
             List<AppData> selectedApps = getSelectedApps();
             List<String> selectedAppNames = selectedApps.stream().map(AppData::getAppName).toList();
 
-            userInfo.setIncluded(selectedAppNames);
+            userInfo.setInclude(selectedAppNames);
             intent.putExtra("userInfo", userInfo);
 
             intent.setClass(Include.this, Exclude.class); // 이미 정의된 intent 변수를 재사용
