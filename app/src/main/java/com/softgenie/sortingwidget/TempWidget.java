@@ -1,8 +1,8 @@
 package com.softgenie.sortingwidget;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TempWidget extends AppCompatActivity {
-
-    Context context;
+    private static final String TAG = "TempWidget";
 
     ImageButton tempWidgetButton11, tempWidgetButton12, tempWidgetButton13, tempWidgetButton14
             , tempWidgetButton21, tempWidgetButton22, tempWidgetButton23, tempWidgetButton24
@@ -35,28 +34,41 @@ public class TempWidget extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_temp_widget);
 
-        AppList appList = SharedPreferencesHelper.loadAppList(context);
+        AppList appList = SharedPreferencesHelper.loadAppList(this);
         if (appList == null) {
-            appList = new AppList(context);
-            SharedPreferencesHelper.saveAppList(context, appList);
+            Log.d(TAG, "AppList is null");
+            appList = new AppList(this);
+            SharedPreferencesHelper.saveAppList(this, appList);
         }
 
-        UserInfo userInfo = SharedPreferencesHelper.loadUserInfo(context);
+        UserInfo userInfo = SharedPreferencesHelper.loadUserInfo(this);
         if (userInfo == null) {
+            Log.d(TAG, "UserInfo is null");
             userInfo = new UserInfo();
-            SharedPreferencesHelper.saveUserInfo(context, userInfo);
+            SharedPreferencesHelper.saveUserInfo(this, userInfo);
         }
 
-        for(int i = 0; i < appList.getAppList().size(); i++){
-            for(int j = 0; j < userInfo.getInclude().size(); j++){
-                // AppData에 포함할 값 저장
-                if(appList.getAppList().get(i).getAppName().equals(userInfo.getInclude().get(j))){
-                    appList.getAppList().get(i).setSelected(true);
+        Log.d(TAG, "[TempWidget]\nAppList: " + appList + "\n" + userInfo);
+
+        if(!userInfo.getInclude().isEmpty() || !userInfo.getExclude().isEmpty()) {
+            List<AppData> toRemove = new ArrayList<>();
+            for (int i = 0; i < appList.getAppList().size(); i++) {
+                for (int j = 0; j < userInfo.getInclude().size(); j++) {
+                    if (appList.getAppList().get(i).getAppName().equals(userInfo.getInclude().get(j))) {
+                        appList.getAppList().get(i).setSelected(true);
+                    }
                 }
                 // AppData에 제외할 값 저장
-                if(appList.getAppList().get(i).getAppName().equals(userInfo.getExclude().get(j))){
-                    appList.getAppList().remove(i);
+                for (int j = 0; j < userInfo.getExclude().size(); j++) {
+                    if (appList.getAppList().get(i).getAppName().equals(userInfo.getExclude().get(j))) {
+                        toRemove.add(appList.getAppList().get(i));
+                        break;
+                    }
                 }
+            }
+
+            for (AppData appData : toRemove) {
+                appList.getAppList().remove(appData);
             }
         }
 
@@ -128,168 +140,168 @@ public class TempWidget extends AppCompatActivity {
             for(int i = 0; i < appList.getAppList().size(); i++){
                 final int temp = i;
                 switch(Integer.parseInt(seqPriority.get(i))){
-                    case 64:
+                    case 54:
                         tempWidgetButton64.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton64.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 63:
+                    case 53:
                         tempWidgetButton63.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton63.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 62:
+                    case 52:
                         tempWidgetButton62.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton62.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 61:
+                    case 51:
                         tempWidgetButton61.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton61.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 54:
+                    case 44:
                         tempWidgetButton54.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton54.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 53:
+                    case 43:
                         tempWidgetButton53.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton53.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 52:
+                    case 42:
                         tempWidgetButton52.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton52.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 51:
+                    case 41:
                         tempWidgetButton51.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton51.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 44:
+                    case 34:
                         tempWidgetButton44.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton44.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 43:
+                    case 33:
                         tempWidgetButton43.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton43.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 42:
+                    case 32:
                         tempWidgetButton42.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton42.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 41:
+                    case 31:
                         tempWidgetButton41.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton41.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 34:
+                    case 24:
                         tempWidgetButton34.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton34.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 33:
+                    case 23:
                         tempWidgetButton33.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton33.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 32:
+                    case 22:
                         tempWidgetButton32.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton32.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 31:
+                    case 21:
                         tempWidgetButton31.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton31.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 24:
+                    case 14:
                         tempWidgetButton24.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton24.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 23:
+                    case 13:
                         tempWidgetButton23.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton23.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 22:
+                    case 12:
                         tempWidgetButton22.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton22.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 21:
+                    case 11:
                         tempWidgetButton21.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton21.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 14:
+                    case 4:
                         tempWidgetButton14.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton14.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 13:
+                    case 3:
                         tempWidgetButton13.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton13.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 12:
+                    case 2:
                         tempWidgetButton12.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton12.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
                             startActivity(intent);
                         });
                         break;
-                    case 11:
+                    case 1:
                         tempWidgetButton11.setImageBitmap(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton11.setOnClickListener(v -> {
                             Intent intent = finalAppList.getAppList().get(temp).getShortcut();
@@ -313,8 +325,8 @@ public class TempWidget extends AppCompatActivity {
         List<String> priority2 = new ArrayList<>();
         List<String> priority3 = new ArrayList<>();
         List<String> priority4 = new ArrayList<>();
-        for(int i = 6; i > 0; i--){
-            for(int j = 4; j > 0; j--){
+        for(int i = 5; i >= 0; i--){
+            for(int j = 3; j >= 0; j--){
                 String number = i + "" + j;
                 switch(userInfo.getPriority(i, j)){
                     case 1:

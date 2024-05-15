@@ -583,9 +583,9 @@ public class Prioritize extends AppCompatActivity {
         next2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Include.class);
 
-            intent.putExtra("userInfo", userInfo);
+            SharedPreferencesHelper.saveUserInfo(this, userInfo);
 
-            Log.d(TAG, "onCreate: " + userInfo.toString());
+            Log.d(TAG, "[UserInfo]\n" + userInfo.toString());
 
             finish();
             startActivity(intent);

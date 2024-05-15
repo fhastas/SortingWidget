@@ -11,6 +11,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +39,15 @@ public class AppList {
             Log.d(this.getClass().getSimpleName(), (i++) +"App name: " + name );
             appList.add(new AppData(name, iconBitmap, usageTime, shortcut));
         }
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        for (AppData app : appList) {
+            Log.d(this.getClass().getSimpleName(), "App name: " + app.getAppName());
+        }
+        return appList.toString();
     }
 
     private long getUsageTime(String packageName, Context mContext) {

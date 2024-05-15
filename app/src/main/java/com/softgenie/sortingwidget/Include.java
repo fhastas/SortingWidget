@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -15,13 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Include extends AppCompatActivity {
+    private static final String TAG = "Include";
     private ListView appListView;
     private AppDataAdapter adapter;
     Button back3;
-
-    Intent intent = new Intent(Include.this, Exclude.class);
-
-    UserInfo userInfo = getIntent().getSerializableExtra("userInfo", UserInfo.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +27,10 @@ public class Include extends AppCompatActivity {
         setContentView(R.layout.activity_include);
         back3 = findViewById(R.id.back3);
         appListView = findViewById(R.id.appListView);
+
+        Intent intent = new Intent(Include.this, Exclude.class);
+
+        UserInfo userInfo = SharedPreferencesHelper.loadUserInfo(this);
 
         // 앱 목록 가져오기
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
@@ -70,8 +72,11 @@ public class Include extends AppCompatActivity {
             List<AppData> selectedApps = getSelectedApps();
             List<String> selectedAppNames = selectedApps.stream().map(AppData::getAppName).toList();
 
+            assert userInfo != null;
             userInfo.setInclude(selectedAppNames);
-            intent.putExtra("userInfo", userInfo);
+            SharedPreferencesHelper.saveUserInfo(this, userInfo);
+
+            Log.d(TAG, "[UserInfo]\n" + userInfo);
 
             intent.setClass(Include.this, Exclude.class); // 이미 정의된 intent 변수를 재사용
             startActivity(intent);
