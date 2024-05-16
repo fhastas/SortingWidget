@@ -3,29 +3,32 @@ package com.softgenie.sortingwidget;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 
 public class AppData implements Comparable<AppData> {
-    private String appName;
-    private Bitmap appIcon;
-    private long usageTime;
-    private Intent shortcut;
+    private final String appName;
+    private final byte[] appIcon;
+    private long installTime;
+    private final String packageName;
+    private final String className;
     private boolean selected;
 
-    public AppData(String appName, Bitmap appIcon, long usageTime, Intent shortcut) {
+    public AppData(String appName, byte[] appIcon, long installTime, String packageName, String className) {
         this.appName = appName;
         this.appIcon = appIcon;
-        this.usageTime = usageTime;
-        this.shortcut = shortcut;
+        this.installTime = installTime;
+        this.packageName = packageName;
+        this.className = className;
         this.selected = false;
     }
 
     @Override
     public int compareTo(AppData appData) {
-        return Long.compare(this.usageTime, appData.usageTime);
+        return Long.compare(this.installTime, appData.installTime);
     }
 
     @NonNull
@@ -38,32 +41,25 @@ public class AppData implements Comparable<AppData> {
         return appName;
     }
 
-    public void setAppName(String appName) {
-        this.appName = appName;
+    public Drawable getAppIcon(Context context) {
+        Bitmap bitmap = BitmapFactory.decodeByteArray(appIcon, 0, appIcon.length);
+        return new BitmapDrawable(context.getResources(), bitmap);
     }
 
-    public Bitmap getAppIcon() {
-        return appIcon;
+    public long getInstallTime() {
+        return installTime;
     }
 
-    public void setAppIcon(Bitmap appIcon) {
-        this.appIcon = appIcon;
+    public void setInstallTime(long installTime) {
+        this.installTime = installTime;
     }
 
-    public long getUsageTime() {
-        return usageTime;
+    public String getPackageName() {
+        return packageName;
     }
 
-    public void setUsageTime(long usageTime) {
-        this.usageTime = usageTime;
-    }
-
-    public Intent getShortcut() {
-        return shortcut;
-    }
-
-    public void setShortcut(Intent shortcut) {
-        this.shortcut = shortcut;
+    public String getClassName() {
+        return className;
     }
 
     public boolean getSelected() {

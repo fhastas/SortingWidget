@@ -43,7 +43,7 @@ public class SharedPreferencesHelper {
         Gson gson = new Gson();
         String json = gson.toJson(userInfo, UserInfo.class);
 
-        editor.remove("userInfo");
+        editor.clear();
         editor.putString("userInfo", json);
 
         editor.apply();

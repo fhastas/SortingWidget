@@ -2,23 +2,26 @@ package com.softgenie.sortingwidget;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
+import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppList {
-    private List<AppData> appList = new ArrayList<>();
+public class AppList implements Serializable {
+    private final List<AppData> appList = new ArrayList<>();
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     public AppList(Context context) {
         PackageManager pm = context.getPackageManager();
         @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> apps = pm.getInstalledApplications(0);
@@ -26,18 +29,24 @@ public class AppList {
         int i = 0;
 
         for (ApplicationInfo app : apps) {
-            if ((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                continue;
-            }
-            String name = (String) pm.getApplicationLabel(app);
-            Drawable icon = pm.getApplicationIcon(app);
-            @SuppressLint("DiscouragedApi") int iconId = context.getResources().getIdentifier("icon", "drawable", context.getPackageName());
-            Bitmap iconBitmap = BitmapFactory.decodeResource(context.getResources(), iconId);
-            long usageTime = getUsageTime(app.packageName, context);
-            Intent shortcut = pm.getLaunchIntentForPackage(app.packageName);
+//            if ((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+//                continue;
+//            }
 
-            Log.d(this.getClass().getSimpleName(), (i++) +"App name: " + name );
-            appList.add(new AppData(name, iconBitmap, usageTime, shortcut));
+            String name = (String) pm.getApplicationLabel(app);
+            Drawable icon = app.loadIcon(pm);
+            Bitmap bitmapIcon = drawableToBitmap(icon);
+            if(bitmapIcon == null){
+                bitmapIcon = drawableToBitmap(ContextCompat.getDrawable(context, android.R.drawable.stat_notify_error));
+            }
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            bitmapIcon.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            byte[] byteIcon = outputStream.toByteArray();
+
+            long installTime = getUsageTime(app.packageName, context);
+
+            Log.d(this.getClass().getSimpleName(), (i++) + "App name: " + name);
+            appList.add(new AppData(name, byteIcon, installTime, app.packageName, app.className));
         }
     }
 
@@ -48,6 +57,18 @@ public class AppList {
             Log.d(this.getClass().getSimpleName(), "App name: " + app.getAppName());
         }
         return appList.toString();
+    }
+
+    public static Bitmap drawableToBitmap(Drawable drawable) {
+        Bitmap bitmap;
+        if (drawable instanceof BitmapDrawable) {
+            bitmap = ((BitmapDrawable) drawable).getBitmap();
+        } else {
+            int width = drawable.getIntrinsicWidth();
+            int height = drawable.getIntrinsicHeight();
+            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        }
+        return bitmap;
     }
 
     private long getUsageTime(String packageName, Context mContext) {
@@ -66,5 +87,4 @@ public class AppList {
     public List<AppData> getAppList() {
         return appList;
     }
-    public void setAppList(List<AppData> appList) { this.appList = appList; }
 }

@@ -15,8 +15,8 @@ import java.util.List;
 
 public class AppDataAdapter extends ArrayAdapter<AppData> {
 
-    private Context mContext;
-    private List<AppData> mAppDataList;
+    private final Context mContext;
+    private final List<AppData> mAppDataList;
 
     public AppDataAdapter(@NonNull Context context, @NonNull List<AppData> appDataList) {
         super(context, 0, appDataList);
@@ -40,8 +40,8 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
         CheckBox checkBox = listItemView.findViewById(R.id.checkBox);
 
         // 앱 아이콘 설정
-        if(currentAppData.getAppIcon() != null) {
-            iconImageView.setImageBitmap(currentAppData.getAppIcon());
+        if(currentAppData.getAppIcon(mContext) != null) {
+            iconImageView.setImageDrawable(currentAppData.getAppIcon(mContext));
         } else{
             iconImageView.setImageResource(R.drawable.ic_launcher_foreground);
         }

@@ -1,5 +1,7 @@
 package com.softgenie.sortingwidget;
 
+import static com.softgenie.sortingwidget.AppList.drawableToBitmap;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -12,6 +14,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +25,7 @@ public class Exclude extends AppCompatActivity {
     private AppDataAdapter adapter;
     Button back4;
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +51,13 @@ public class Exclude extends AppCompatActivity {
             }
             String appName = getAppName(appInfo);
             Drawable appIconDrawable = appInfo.loadIcon(getPackageManager());
-            Bitmap appIconBitmap = null;
-            if(appIconDrawable instanceof BitmapDrawable bitmapDrawable){
-                appIconBitmap = bitmapDrawable.getBitmap();
-            }
+            Bitmap bitmapIcon = drawableToBitmap(appIconDrawable);
+
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            bitmapIcon.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            byte[] byteIcon = outputStream.toByteArray();
             // 앱 데이터 객체 생성 후 리스트에 추가
-            AppData appData = new AppData(appName, appIconBitmap, 0, null);
+            AppData appData = new AppData(appName, byteIcon, 0, appInfo.packageName, appInfo.className);
             appDataList.add(appData);
         }
 
