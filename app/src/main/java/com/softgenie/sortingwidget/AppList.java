@@ -29,9 +29,9 @@ public class AppList implements Serializable {
         int i = 0;
 
         for (ApplicationInfo app : apps) {
-//            if ((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-//                continue;
-//            }
+            if ((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                continue;
+            }
 
             String name = (String) pm.getApplicationLabel(app);
             Drawable icon = app.loadIcon(pm);
