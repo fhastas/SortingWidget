@@ -2,6 +2,7 @@ package com.softgenie.sortingwidget;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class Size extends AppCompatActivity {
         setContentView(R.layout.activity_size);
 
         AtomicInteger size = new AtomicInteger(46); // 다음 Activity에 전달할 변수 데이터 생성과 함께 초기화
-
+        requestUsageAccessPermission();
         startService();
 
         next1 = findViewById(R.id.next1);
@@ -107,5 +108,9 @@ public class Size extends AppCompatActivity {
     public void startService(){
         Intent intent = new Intent(this, AppInfoTrackerService.class);
         startService(intent);
+    }
+    private void requestUsageAccessPermission() {
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        startActivity(intent);
     }
 }
