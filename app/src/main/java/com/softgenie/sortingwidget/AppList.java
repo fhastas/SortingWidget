@@ -1,5 +1,8 @@
 package com.softgenie.sortingwidget;
 
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -8,6 +11,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.icu.util.Calendar;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -24,29 +28,45 @@ public class AppList implements Serializable {
     @SuppressLint("UseCompatLoadingForDrawables")
     public AppList(Context context) {
         PackageManager pm = context.getPackageManager();
-        @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> apps = pm.getInstalledApplications(0);
+        UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
+
+        Calendar calendar = Calendar.getInstance();
+        long endTime = calendar.getTimeInMillis();
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        long startTime = calendar.getTimeInMillis();
+
+        List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startTime, endTime);
 
         int i = 0;
 
-        for (ApplicationInfo app : apps) {
-            if ((app.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                continue;
+        for (UsageStats usageStats : usageStatsList) {
+            String packageName = usageStats.getPackageName();
+            try {
+                ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
+                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0 || (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0) {
+                    continue;
+                }
+                String appName = pm.getApplicationLabel(appInfo).toString();
+
+                Drawable icon = pm.getApplicationIcon(appInfo);
+                Bitmap bitmapIcon = drawableToBitmap(icon);
+                if(bitmapIcon == null){
+                    bitmapIcon = drawableToBitmap(ContextCompat.getDrawable(context, android.R.drawable.stat_notify_error));
+                }
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                bitmapIcon.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+                byte[] byteIcon = outputStream.toByteArray();
+
+                long installationTime = pm.getPackageInfo(packageName, 0).firstInstallTime;
+                long usageTime = usageStats.getTotalTimeInForeground();
+                String className = appInfo.className;
+
+                Log.d(this.getClass().getSimpleName(), (i++) + "App name: " + appName);
+                appList.add(new AppData(appName, byteIcon, installationTime, usageTime, packageName, className));
+
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
             }
-
-            String name = (String) pm.getApplicationLabel(app);
-            Drawable icon = app.loadIcon(pm);
-            Bitmap bitmapIcon = drawableToBitmap(icon);
-            if(bitmapIcon == null){
-                bitmapIcon = drawableToBitmap(ContextCompat.getDrawable(context, android.R.drawable.stat_notify_error));
-            }
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            bitmapIcon.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-            byte[] byteIcon = outputStream.toByteArray();
-
-            long installTime = getUsageTime(app.packageName, context);
-
-            Log.d(this.getClass().getSimpleName(), (i++) + "App name: " + name);
-            appList.add(new AppData(name, byteIcon, installTime, app.packageName, app.className));
         }
     }
 
@@ -69,19 +89,6 @@ public class AppList implements Serializable {
             bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         }
         return bitmap;
-    }
-
-    private long getUsageTime(String packageName, Context mContext) {
-        PackageManager packageManager = mContext.getPackageManager();
-        try {
-            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
-            long installTime = packageInfo.firstInstallTime;
-
-            return System.currentTimeMillis() - installTime;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        return 0;
     }
 
     public List<AppData> getAppList() {

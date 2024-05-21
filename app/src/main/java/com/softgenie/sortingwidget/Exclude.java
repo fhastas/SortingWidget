@@ -4,9 +4,6 @@ import static com.softgenie.sortingwidget.AppList.drawableToBitmap;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -14,7 +11,6 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,33 +31,14 @@ public class Exclude extends AppCompatActivity {
         Intent intent = new Intent(Exclude.this, TempWidget.class);
         UserInfo userInfo = SharedPreferencesHelper.loadUserInfo(this);
 
-        // 앱 목록 가져오기
-        @SuppressLint("QueryPermissionsNeeded") List<ApplicationInfo> installedApps = getPackageManager().getInstalledApplications(0);
-        List<String> appNames = new ArrayList<>();
-        for (ApplicationInfo appInfo : installedApps) {
-            appNames.add(getAppName(appInfo));
-        }
-
-        // 앱 데이터 리스트 생성
-        List<AppData> appDataList = new ArrayList<>();
-        for (ApplicationInfo appInfo : installedApps) {
-            if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                continue; // 시스템 앱은 제외
-            }
-            String appName = getAppName(appInfo);
-            Drawable appIconDrawable = appInfo.loadIcon(getPackageManager());
-            Bitmap bitmapIcon = drawableToBitmap(appIconDrawable);
-
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            bitmapIcon.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-            byte[] byteIcon = outputStream.toByteArray();
-            // 앱 데이터 객체 생성 후 리스트에 추가
-            AppData appData = new AppData(appName, byteIcon, 0, appInfo.packageName, appInfo.className);
-            appDataList.add(appData);
+        AppList appList = SharedPreferencesHelper.loadAppList(this);
+        if (appList == null) {
+            appList = new AppList(getApplicationContext());
+            SharedPreferencesHelper.saveAppList(this, appList);
         }
 
         // 리스트뷰에 앱 목록 표시
-        AppDataAdapter adapter = new AppDataAdapter(this, appDataList);
+        adapter = new AppDataAdapter(this, appList.getAppList());
         appListView.setAdapter(adapter);
         appListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
@@ -69,7 +46,10 @@ public class Exclude extends AppCompatActivity {
         Button doneButton = findViewById(R.id.next4);
         doneButton.setOnClickListener(v -> {
             List<AppData> selectedApps = getSelectedApps();
-            List<String> selectedAppNames = selectedApps.stream().map(AppData::getAppName).toList();
+            List<String> selectedAppNames = new ArrayList<>();
+            for (AppData app : selectedApps) {
+                selectedAppNames.add(app.getAppName());
+            }
 
             assert userInfo != null;
             userInfo.setExclude(selectedAppNames);
@@ -88,11 +68,6 @@ public class Exclude extends AppCompatActivity {
             finish();
         });
 
-    }
-
-    // ApplicationInfo를 통해 앱 이름 가져오기
-    private String getAppName(ApplicationInfo appInfo) {
-        return getPackageManager().getApplicationLabel(appInfo).toString();
     }
 
     // ListView에서 선택된 앱 가져오기

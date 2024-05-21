@@ -11,15 +11,17 @@ import androidx.annotation.NonNull;
 public class AppData implements Comparable<AppData> {
     private final String appName;
     private final byte[] appIcon;
-    private long installTime;
+    private long installationTime;
+    private long usageTime;
     private final String packageName;
     private final String className;
     private boolean selected;
 
-    public AppData(String appName, byte[] appIcon, long installTime, String packageName, String className) {
+    public AppData(String appName, byte[] appIcon, long installationTime, long usageTime, String packageName, String className) {
         this.appName = appName;
         this.appIcon = appIcon;
-        this.installTime = installTime;
+        this.installationTime = installationTime;
+        this.usageTime = usageTime;
         this.packageName = packageName;
         this.className = className;
         this.selected = false;
@@ -27,7 +29,7 @@ public class AppData implements Comparable<AppData> {
 
     @Override
     public int compareTo(AppData appData) {
-        return Long.compare(this.installTime, appData.installTime);
+        return Long.compare(this.installationTime, appData.installationTime);
     }
 
     @NonNull
@@ -45,12 +47,12 @@ public class AppData implements Comparable<AppData> {
         return new BitmapDrawable(context.getResources(), bitmap);
     }
 
-    public long getInstallTime() {
-        return installTime;
+    public long getInstallationTime() {
+        return installationTime;
     }
 
-    public void setInstallTime(long installTime) {
-        this.installTime = installTime;
+    public void setInstallationTime(long installationTime) {
+        this.installationTime = installationTime;
     }
 
     public String getPackageName() {

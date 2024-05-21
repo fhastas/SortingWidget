@@ -49,12 +49,9 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
 
         // 체크박스 상태 설정
         checkBox.setChecked(currentAppData.getSelected());
-        checkBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CheckBox checkBox = (CheckBox) v;
-                currentAppData.setSelected(checkBox.isChecked()); // 체크박스 상태 업데이트
-            }
+        checkBox.setOnClickListener(v -> {
+            CheckBox checkBox1 = (CheckBox) v;
+            currentAppData.setSelected(checkBox1.isChecked()); // 체크박스 상태 업데이트
         });
 
         return listItemView;

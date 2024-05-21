@@ -30,4 +30,6 @@
     <string name="temp_widget">임시 위젯</string>
     <string name="temp_widget_button">temp_widget_button</string>
 
+    <string name="accessibility_description">접근성 권한을 필요로 합니다.</string>
+
 </resources>
