@@ -39,6 +39,8 @@ public class Size extends AppCompatActivity {
             setAccessibilityPermissions();
         }
 
+        requestUsageAccessPermission();
+
         startService();
 
         next1 = findViewById(R.id.next1);
@@ -144,12 +146,13 @@ public class Size extends AppCompatActivity {
         AlertDialog.Builder gsDialog = new AlertDialog.Builder(this);
         gsDialog.setTitle("접근성 권한 설정");
         gsDialog.setMessage("접근성 권한을 필요로 합니다");
-        gsDialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // 설정화면으로 보내는 부분
-                startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-            }
+        gsDialog.setPositiveButton("확인", (dialog, which) -> {
+            // 설정화면으로 보내는 부분
+            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
         }).create().show();
     }
-
+    private void requestUsageAccessPermission() {
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        startActivity(intent);
+    }
 }
