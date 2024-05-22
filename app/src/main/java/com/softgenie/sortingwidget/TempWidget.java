@@ -27,7 +27,7 @@ public class TempWidget extends AppCompatActivity {
             , tempWidgetButton51, tempWidgetButton52, tempWidgetButton53, tempWidgetButton54
             , tempWidgetButton61, tempWidgetButton62, tempWidgetButton63, tempWidgetButton64;
 
-    Button done;
+    Button done, edit;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -368,6 +368,11 @@ public class TempWidget extends AppCompatActivity {
         }
 
         done.setOnClickListener(v -> finish());
+
+        edit.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Size.class);
+            finish();
+        });
     }
 
     List<String> sortingPriority(UserInfo userInfo){

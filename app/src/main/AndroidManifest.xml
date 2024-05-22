@@ -39,7 +39,7 @@
             android:permission="android.permission.FOREGROUND_SERVICE"/>
 
         <activity
-            android:name=".Size"
+            android:name=".TempWidget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,10 +50,10 @@
         <activity android:name=".Prioritize" />
         <activity android:name=".Include" />
         <activity android:name=".Exclude" />
-        <activity
-            android:name=".TempWidget"
-            android:exported="false"
-            android:theme="@style/SortingWidgetTheme" />
+<!--        <activity-->
+<!--            android:name=".TempWidget"-->
+<!--            android:exported="false"-->
+<!--            android:theme="@style/SortingWidgetTheme" />-->
     </application>
 
 </manifest>

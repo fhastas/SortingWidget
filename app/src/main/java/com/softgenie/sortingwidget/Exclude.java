@@ -18,7 +18,7 @@ public class Exclude extends AppCompatActivity {
     private static final String TAG = "Exclude";
     private ListView appListView;
     private AppDataAdapter adapter;
-    Button back4;
+    Button back4, next4;
 
     @SuppressLint("WrongThread")
     @Override
@@ -64,6 +64,12 @@ public class Exclude extends AppCompatActivity {
 
         back4.setOnClickListener(v -> {
             intent.setClass(Exclude.this, Include.class); // 이미 정의된 intent 변수를 재사용
+            startActivity(intent);
+            finish();
+        });
+
+        next4.setOnClickListener(v -> {
+            intent.setClass(Exclude.this, TempWidget.class); // 이미 정의된 intent 변수를 재사용
             startActivity(intent);
             finish();
         });
