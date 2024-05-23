@@ -23,6 +23,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Size extends AppCompatActivity {
     private static final String TAG = "Size";
+    private static final String PREFS_NAME = "SortingWidgetPrefs";
+    private static final String KEY_SIZE = "key_size";
 
     Button next1, button4x6, button4x4, button4x2, button2x2;
     ImageView imageViewx46, imageViewx44, imageViewx42, imageViewx22;
@@ -116,6 +118,7 @@ public class Size extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
 
     public void startService(){
         Intent intent = new Intent(this, AppInfoTrackerService.class);

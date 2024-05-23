@@ -56,7 +56,7 @@ public class Include extends AppCompatActivity {
 
             Log.d(TAG, "[UserInfo]\n" + userInfo);
 
-            intent.setClass(Include.this, Exclude.class); // 이미 정의된 intent 변수를 재사용
+            intent.setClass(Include.this, TempWidget.class); // 이미 정의된 intent 변수를 재사용
             startActivity(intent);
             finish();
         });
