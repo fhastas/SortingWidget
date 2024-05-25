@@ -30,6 +30,8 @@ public class AppList implements Serializable {
         PackageManager pm = context.getPackageManager();
         UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
 
+        loadInstalledApps(context);
+
         Calendar calendar = Calendar.getInstance();
         long endTime = calendar.getTimeInMillis();
         calendar.add(Calendar.DAY_OF_MONTH, -1);
@@ -89,6 +91,16 @@ public class AppList implements Serializable {
             bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         }
         return bitmap;
+    }
+    private void loadInstalledApps(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        List<ApplicationInfo> installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
+
+        for (ApplicationInfo appInfo : installedApps) {
+            String appName = appInfo.loadLabel(packageManager).toString();
+            Drawable appIcon = appInfo.loadIcon(packageManager);
+            //appList.add(new AppData(appName, appIcon));
+        }
     }
 
     public List<AppData> getAppList() {

@@ -2,6 +2,8 @@ package com.softgenie.sortingwidget;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +37,7 @@ public class TempWidget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_temp_widget);
+        List<ApplicationInfo> installedApps = getInstalledApps();
 
         AppList appList = SharedPreferencesHelper.loadAppList(this);
         if (appList == null) {
@@ -415,5 +418,9 @@ public class TempWidget extends AppCompatActivity {
         }
 
         return priority;
+    }
+    private List<ApplicationInfo> getInstalledApps() {
+        PackageManager packageManager = getPackageManager();
+        return packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
     }
 }

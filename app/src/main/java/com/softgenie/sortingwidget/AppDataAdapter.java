@@ -19,8 +19,8 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
 
     public AppDataAdapter(@NonNull Context context, @NonNull List<AppData> appDataList) {
         super(context, 0, appDataList);
-        mContext = context;
-        mAppDataList = appDataList;
+        this.mContext = context;
+        this.mAppDataList = appDataList;
     }
 
     @NonNull
