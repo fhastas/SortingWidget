@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 
 import androidx.annotation.NonNull;
 
+
 public class AppData implements Comparable<AppData> {
     private String appName;
     private Drawable appIcon;

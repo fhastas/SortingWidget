@@ -10,8 +10,13 @@ import android.graphics.drawable.Drawable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class AppList {
-    List<AppData> appList = new ArrayList<>();
+    private List<AppData> appList = new ArrayList<>();
+
+    public AppList() {
+        this.appList = null;
+    }
 
     public AppList(Context context) {
         PackageManager pm = context.getPackageManager();
@@ -42,5 +47,9 @@ public class AppList {
 
     public List<AppData> getAppList() {
         return appList;
+    }
+
+    public void setAppList(List<AppData> appList) {
+        this.appList = appList;
     }
 }
