@@ -1,45 +1,38 @@
 package com.softgenie.sortingwidget;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-
-import androidx.annotation.NonNull;
-
-// AppData.java
-import android.graphics.drawable.Drawable;
-import java.io.Serializable;
-
 import android.graphics.drawable.Drawable;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
+import androidx.annotation.NonNull;
 
 public class AppData implements Parcelable {
-    private String appName;
+    private final String appName;
     private transient Drawable appIcon; // transient 키워드를 사용하여 직렬화에서 제외
     private long installationTime;
     private long usageTime;
     private String packageName;
-    private String className;
     private boolean isSelected;
 
-    public AppData(String appName, Drawable appIcon, long installationTime, long usageTime, String packageName, String className) {
+    public AppData(String appName, Drawable appIcon, long installationTime, long usageTime, String packageName) {
         this.appName = appName;
         this.appIcon = appIcon;
         this.installationTime = installationTime;
         this.usageTime = usageTime;
         this.packageName = packageName;
-        this.className = className;
         this.isSelected = false;
     }
     protected AppData(Parcel in) {
         appName = in.readString();
         isSelected = in.readByte() != 0;
         // appIcon handling would go here, but it's more complex since Drawable is not Parcelable.
+    }
+
+    @NonNull
+    @Override
+    public String toString(){
+        return "AppData{" +
+                "appName: " + appName;
     }
     public static final Parcelable.Creator<AppData> CREATOR = new Parcelable.Creator<AppData>() {
         @Override
@@ -68,13 +61,12 @@ public class AppData implements Parcelable {
         return usageTime;
     }
 
+    public void setUsageTime(long usageTime){
+        this.usageTime = usageTime;
+    }
 
     public String getPackageName() {
         return packageName;
-    }
-
-    public String getClassName() {
-        return className;
     }
 
     public boolean getSelected() {

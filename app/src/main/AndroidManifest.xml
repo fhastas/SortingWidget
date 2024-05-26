@@ -4,9 +4,12 @@
 
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
-    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
 
 
     <application
@@ -39,19 +42,16 @@
             android:permission="android.permission.FOREGROUND_SERVICE"/>
 
         <activity
-            android:name="com.softgenie.sortingwidget.Size"
+            android:name=".TempWidget"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Size"/>
         <activity android:name=".Prioritize" />
         <activity android:name=".Include" />
-        <activity
-            android:name=".TempWidget"
-            android:exported="true"
-            android:theme="@style/SortingWidgetTheme" />
 
     </application>
 </manifest>

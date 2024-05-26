@@ -1,11 +1,17 @@
 package com.softgenie.sortingwidget;
 
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.AppOpsManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.view.accessibility.AccessibilityManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import androidx.activity.EdgeToEdge;
@@ -29,10 +35,24 @@ public class TempWidget extends AppCompatActivity {
 
     Button done, edit;
 
+    AppList appList = SharedPreferencesHelper.loadAppList(this);
+    UserInfo userInfo = SharedPreferencesHelper.loadUserInfo(this);
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(!checkAccessibilityPermissions()) {
+            setAccessibilityPermissions();
+        }
+
+        if(checkUsageAccessPermission()) {
+            requestUsageAccessPermission();
+        }
+
+        startService();
+
         ArrayList<Parcelable> Apps = getIntent().getParcelableArrayListExtra("selectedApps");
         if (Apps == null) {
             Log.d(TAG, "No selected apps received from intent");
@@ -40,15 +60,11 @@ public class TempWidget extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_temp_widget);
 
-
-        AppList appList = SharedPreferencesHelper.loadAppList(this);
         if (appList == null) {
             Log.d(TAG, "AppList is null");
             appList = new AppList(this);
             SharedPreferencesHelper.saveAppList(this, appList);
         }
-
-        UserInfo userInfo = SharedPreferencesHelper.loadUserInfo(this);
         if (userInfo == null) {
             Log.d(TAG, "UserInfo is null");
             userInfo = new UserInfo();
@@ -66,8 +82,6 @@ public class TempWidget extends AppCompatActivity {
                 }
             }
         }
-
-        //Collections.sort(appList.getAppList());
 
         tempWidgetButton11 = findViewById(R.id.TempWidgetButton11);
         tempWidgetButton12 = findViewById(R.id.TempWidgetButton12);
@@ -101,7 +115,6 @@ public class TempWidget extends AppCompatActivity {
             return insets;
         });
 
-
         List<String> seqPriority = sortingPriority(userInfo); // 우선 순위에 따른 칸의 인덱스 값 저장
 
         switch (userInfo.getSize()){
@@ -110,7 +123,6 @@ public class TempWidget extends AppCompatActivity {
                 tempWidgetButton61.setVisibility(View.GONE);
                 tempWidgetButton52.setVisibility(View.GONE);
                 tempWidgetButton51.setVisibility(View.GONE);
-                break;
             case 42:
                 tempWidgetButton44.setVisibility(View.GONE);
                 tempWidgetButton43.setVisibility(View.GONE);
@@ -120,7 +132,6 @@ public class TempWidget extends AppCompatActivity {
                 tempWidgetButton33.setVisibility(View.GONE);
                 tempWidgetButton32.setVisibility(View.GONE);
                 tempWidgetButton31.setVisibility(View.GONE);
-                break;
             case 44:
                 tempWidgetButton24.setVisibility(View.GONE);
                 tempWidgetButton23.setVisibility(View.GONE);
@@ -130,7 +141,6 @@ public class TempWidget extends AppCompatActivity {
                 tempWidgetButton13.setVisibility(View.GONE);
                 tempWidgetButton12.setVisibility(View.GONE);
                 tempWidgetButton11.setVisibility(View.GONE);
-                break;
             default:
                 break;
         }
@@ -388,5 +398,51 @@ public class TempWidget extends AppCompatActivity {
         }
 
         return priority;
+    }
+    public void startService(){
+        Intent intent = new Intent(this, AppInfoTrackerService.class);
+        startService(intent);
+    }
+
+    // 접근성 권한이 있는지 없는지 확인하는 부분
+    // 있으면 true, 없으면 false
+    public boolean checkAccessibilityPermissions() {
+        AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
+
+        // getEnabledAccessibilityServiceList는 현재 접근성 권한을 가진 리스트를 가져오게 된다
+        List<AccessibilityServiceInfo> list = accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.DEFAULT);
+
+        for (int i = 0; i < list.size(); i++) {
+            AccessibilityServiceInfo info = list.get(i);
+
+            // 접근성 권한을 가진 앱의 패키지 네임과 패키지 네임이 같으면 현재앱이 접근성 권한을 가지고 있다고 판단함
+            if (info.getResolveInfo().serviceInfo.packageName.equals(getApplication().getPackageName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // 접근성 설정화면으로 넘겨주는 부분
+    public void setAccessibilityPermissions() {
+        AlertDialog.Builder gsDialog = new AlertDialog.Builder(this);
+        gsDialog.setTitle("접근성 권한 설정");
+        gsDialog.setMessage("접근성 권한을 필요로 합니다");
+        gsDialog.setPositiveButton("확인", (dialog, which) -> {
+            // 설정화면으로 보내는 부분
+            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
+        }).create().show();
+    }
+
+    private boolean checkUsageAccessPermission() {
+        AppOpsManager appOps = (AppOpsManager) getSystemService(Context.APP_OPS_SERVICE);
+        int mode;
+        mode = appOps.unsafeCheckOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), getPackageName());
+        return mode == AppOpsManager.MODE_ALLOWED;
+    }
+
+    private void requestUsageAccessPermission() {
+        Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        startActivity(intent);
     }
 }
