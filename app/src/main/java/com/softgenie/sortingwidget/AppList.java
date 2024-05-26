@@ -52,7 +52,7 @@ public class AppList implements Serializable {
         long startTime = calendar.getTimeInMillis();
 
         List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startTime, endTime);
-
+/*
         for (UsageStats usageStats : usageStatsList) {
             String packageName = usageStats.getPackageName();
             try {
@@ -70,7 +70,7 @@ public class AppList implements Serializable {
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 
     @NonNull

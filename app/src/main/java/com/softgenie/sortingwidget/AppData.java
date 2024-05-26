@@ -68,6 +68,7 @@ public class AppData implements Parcelable {
         return usageTime;
     }
 
+
     public String getPackageName() {
         return packageName;
     }
