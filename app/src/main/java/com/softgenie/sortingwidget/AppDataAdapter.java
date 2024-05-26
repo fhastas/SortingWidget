@@ -13,6 +13,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import java.util.List;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
+import java.util.List;
+
 public class AppDataAdapter extends ArrayAdapter<AppData> {
 
     private final Context mContext;
@@ -47,8 +62,8 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
 
         AppData currentAppData = mAppDataList.get(position);
 
-        // 앱 아이콘 설정 (Context를 필요로 하지 않음)
-        Drawable appIcon = currentAppData.getAppIcon(mContext.getApplicationContext());
+        // 앱 아이콘 설정
+        Drawable appIcon = currentAppData.getAppIcon();
         if (appIcon != null) {
             viewHolder.iconImageView.setImageDrawable(appIcon);
         } else {

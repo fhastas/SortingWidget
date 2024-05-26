@@ -18,7 +18,7 @@ import java.util.List;
 
 public class TempWidget extends AppCompatActivity {
     private static final String TAG = "TempWidget";
-    ArrayList<AppData> selectedApps = getIntent().getParcelableArrayListExtra("selectedApps");
+    //ArrayList<AppData> selectedApps = getIntent().getParcelableArrayListExtra("selectedApps");
 
     ImageButton tempWidgetButton11, tempWidgetButton12, tempWidgetButton13, tempWidgetButton14
             , tempWidgetButton21, tempWidgetButton22, tempWidgetButton23, tempWidgetButton24
@@ -63,7 +63,7 @@ public class TempWidget extends AppCompatActivity {
             }
         }
 
-        Collections.sort(appList.getAppList());
+        //Collections.sort(appList.getAppList());
 
         tempWidgetButton11 = findViewById(R.id.TempWidgetButton11);
         tempWidgetButton12 = findViewById(R.id.TempWidgetButton12);
@@ -138,7 +138,7 @@ public class TempWidget extends AppCompatActivity {
                 final int temp = i;
                 switch(Integer.parseInt(seqPriority.get(i))){
                     case 53:
-                        tempWidgetButton64.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton64.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton64.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -146,7 +146,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 52:
-                        tempWidgetButton63.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton63.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton63.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -154,7 +154,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 51:
-                        tempWidgetButton62.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton62.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton62.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -162,7 +162,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 50:
-                        tempWidgetButton61.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton61.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton61.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -170,7 +170,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 43:
-                        tempWidgetButton54.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton54.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton54.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -178,7 +178,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 42:
-                        tempWidgetButton53.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton53.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton53.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -186,7 +186,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 41:
-                        tempWidgetButton52.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton52.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton52.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -194,7 +194,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 40:
-                        tempWidgetButton51.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton51.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton51.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -202,7 +202,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 33:
-                        tempWidgetButton44.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton44.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton44.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -210,7 +210,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 32:
-                        tempWidgetButton43.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton43.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton43.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -218,7 +218,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 31:
-                        tempWidgetButton42.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton42.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton42.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -226,7 +226,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 30:
-                        tempWidgetButton41.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton41.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton41.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -234,7 +234,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 23:
-                        tempWidgetButton34.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton34.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton34.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -242,7 +242,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 22:
-                        tempWidgetButton33.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton33.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton33.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -250,7 +250,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 21:
-                        tempWidgetButton32.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton32.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton32.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -258,7 +258,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 20:
-                        tempWidgetButton31.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton31.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton31.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -266,7 +266,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 13:
-                        tempWidgetButton24.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton24.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton24.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -274,7 +274,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 12:
-                        tempWidgetButton23.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton23.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton23.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -282,7 +282,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 11:
-                        tempWidgetButton22.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton22.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton22.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -290,7 +290,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 10:
-                        tempWidgetButton21.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton21.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton21.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -298,7 +298,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 3:
-                        tempWidgetButton14.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton14.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton14.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -306,7 +306,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 2:
-                        tempWidgetButton13.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton13.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton13.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -314,7 +314,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 1:
-                        tempWidgetButton12.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton12.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton12.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
@@ -322,7 +322,7 @@ public class TempWidget extends AppCompatActivity {
                         });
                         break;
                     case 0:
-                        tempWidgetButton11.setImageDrawable(appList.getAppList().get(i).getAppIcon(getApplicationContext()));
+                        tempWidgetButton11.setImageDrawable(appList.getAppList().get(i).getAppIcon());
                         tempWidgetButton11.setOnClickListener(v -> {
                             Intent intent = new Intent(getPackageManager().getLaunchIntentForPackage(finalAppList.getAppList().get(temp).getPackageName()));
                             startActivity(intent);
