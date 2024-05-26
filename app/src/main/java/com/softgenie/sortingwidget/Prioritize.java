@@ -97,6 +97,7 @@ public class Prioritize extends AppCompatActivity {
                 prioritizeButton61.setVisibility(View.GONE);
                 prioritizeButton52.setVisibility(View.GONE);
                 prioritizeButton51.setVisibility(View.GONE);
+                break;
             case 42:
                 prioritizeButton44.setVisibility(View.GONE);
                 prioritizeButton43.setVisibility(View.GONE);
@@ -106,6 +107,7 @@ public class Prioritize extends AppCompatActivity {
                 prioritizeButton33.setVisibility(View.GONE);
                 prioritizeButton32.setVisibility(View.GONE);
                 prioritizeButton31.setVisibility(View.GONE);
+                break;
             case 44:
                 prioritizeButton24.setVisibility(View.GONE);
                 prioritizeButton23.setVisibility(View.GONE);
@@ -115,6 +117,7 @@ public class Prioritize extends AppCompatActivity {
                 prioritizeButton13.setVisibility(View.GONE);
                 prioritizeButton12.setVisibility(View.GONE);
                 prioritizeButton11.setVisibility(View.GONE);
+                break;
             default:
                 switch (size){
                     case 46:

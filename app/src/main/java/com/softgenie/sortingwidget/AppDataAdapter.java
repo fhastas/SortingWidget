@@ -1,6 +1,7 @@
 package com.softgenie.sortingwidget;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,38 +24,48 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
         this.mAppDataList = appDataList;
     }
 
+    private static class ViewHolder {
+        ImageView iconImageView;
+        TextView nameTextView;
+        CheckBox checkBox;
+    }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View listItemView = convertView;
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(mContext).inflate(
-                    R.layout.appitem, parent, false);
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.appitem, parent, false);
+            viewHolder = new ViewHolder();
+            viewHolder.iconImageView = convertView.findViewById(R.id.appimageView);
+            viewHolder.nameTextView = convertView.findViewById(R.id.apptextView);
+            viewHolder.checkBox = convertView.findViewById(R.id.checkBox);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
 
         AppData currentAppData = mAppDataList.get(position);
 
-        ImageView iconImageView = listItemView.findViewById(R.id.appimageView);
-        TextView nameTextView = listItemView.findViewById(R.id.apptextView);
-        CheckBox checkBox = listItemView.findViewById(R.id.checkBox);
-
-        // 앱 아이콘 설정
-        if(currentAppData.getAppIcon(mContext) != null) {
-            iconImageView.setImageDrawable(currentAppData.getAppIcon(mContext));
-        } else{
-            iconImageView.setImageResource(R.drawable.ic_launcher_foreground);
+        // 앱 아이콘 설정 (Context를 필요로 하지 않음)
+        Drawable appIcon = currentAppData.getAppIcon(mContext.getApplicationContext());
+        if (appIcon != null) {
+            viewHolder.iconImageView.setImageDrawable(appIcon);
+        } else {
+            viewHolder.iconImageView.setImageResource(R.drawable.ic_launcher_foreground);
         }
+
         // 앱 이름 설정
-        nameTextView.setText(currentAppData.getAppName());
+        viewHolder.nameTextView.setText(currentAppData.getAppName());
 
         // 체크박스 상태 설정
-        checkBox.setChecked(currentAppData.getSelected());
-        checkBox.setOnClickListener(v -> {
+        viewHolder.checkBox.setChecked(currentAppData.getSelected());
+        viewHolder.checkBox.setOnClickListener(v -> {
             CheckBox checkBox1 = (CheckBox) v;
             currentAppData.setSelected(checkBox1.isChecked()); // 체크박스 상태 업데이트
         });
 
-        return listItemView;
+        return convertView;
     }
-
 }
+

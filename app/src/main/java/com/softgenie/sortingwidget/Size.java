@@ -42,24 +42,10 @@ public class Size extends AppCompatActivity {
         }
 
         requestUsageAccessPermission();
-
         startService();
 
-        next1 = findViewById(R.id.next1);
-        button4x6 = findViewById(R.id.button4x6); // Initialize button4x6
-        button4x4 = findViewById(R.id.button4x4); // Initialize button4x4
-        button4x2 = findViewById(R.id.button4x2); // Initialize button4x2
-        button2x2 = findViewById(R.id.button2x2); // Initialize button2x2
-        imageViewx46 = findViewById(R.id.PrioritizeX46);
-        imageViewx44 = findViewById(R.id.PrioritizeX44);
-        imageViewx42 = findViewById(R.id.imageViewx42);
-        imageViewx22 = findViewById(R.id.imageViewx22);
-
-        // Initially set x46 image visible and others invisible
-        imageViewx46.setVisibility(View.VISIBLE);
-        imageViewx44.setVisibility(View.INVISIBLE);
-        imageViewx42.setVisibility(View.INVISIBLE);
-        imageViewx22.setVisibility(View.INVISIBLE);
+        initializeViews();
+        setInitialVisibility();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -67,47 +53,7 @@ public class Size extends AppCompatActivity {
             return insets;
         });
 
-        button4x6.setOnClickListener(v -> {
-            size.set(46);
-
-            imageViewx46.setVisibility(View.VISIBLE);
-            imageViewx44.setVisibility(View.INVISIBLE);
-            imageViewx42.setVisibility(View.INVISIBLE);
-            imageViewx22.setVisibility(View.INVISIBLE);
-            // 알고리즘이 있는 클래스와 메소드 명으로 바꾼다
-            // AlgorithmClass.performAlgorithm(x46);
-
-        });
-
-        button4x4.setOnClickListener(v -> {
-            size.set(44);
-
-            imageViewx46.setVisibility(View.INVISIBLE);
-            imageViewx44.setVisibility(View.VISIBLE);
-            imageViewx42.setVisibility(View.INVISIBLE);
-            imageViewx22.setVisibility(View.INVISIBLE);
-            // AlgorithmClass.performAlgorithm(x44);
-        });
-
-        button4x2.setOnClickListener(v -> {
-            size.set(42);
-
-            imageViewx46.setVisibility(View.INVISIBLE);
-            imageViewx44.setVisibility(View.INVISIBLE);
-            imageViewx42.setVisibility(View.VISIBLE);
-            imageViewx22.setVisibility(View.INVISIBLE);
-            // AlgorithmClass.performAlgorithm(x42);
-        });
-
-        button2x2.setOnClickListener(v -> {
-            size.set(22);
-
-            imageViewx46.setVisibility(View.INVISIBLE);
-            imageViewx44.setVisibility(View.INVISIBLE);
-            imageViewx42.setVisibility(View.INVISIBLE);
-            imageViewx22.setVisibility(View.VISIBLE);
-            // AlgorithmClass.performAlgorithm(x22);
-        });
+        setButtonListeners(size);
 
         next1.setOnClickListener(v -> {
             Intent intent = new Intent(this, Prioritize.class);
@@ -119,24 +65,64 @@ public class Size extends AppCompatActivity {
         });
     }
 
+    private void initializeViews() {
+        next1 = findViewById(R.id.next1);
+        button4x6 = findViewById(R.id.button4x6);
+        button4x4 = findViewById(R.id.button4x4);
+        button4x2 = findViewById(R.id.button4x2);
+        button2x2 = findViewById(R.id.button2x2);
+        imageViewx46 = findViewById(R.id.PrioritizeX46);
+        imageViewx44 = findViewById(R.id.PrioritizeX44);
+        imageViewx42 = findViewById(R.id.imageViewx42);
+        imageViewx22 = findViewById(R.id.imageViewx22);
+    }
+
+    private void setInitialVisibility() {
+        imageViewx46.setVisibility(View.VISIBLE);
+        imageViewx44.setVisibility(View.INVISIBLE);
+        imageViewx42.setVisibility(View.INVISIBLE);
+        imageViewx22.setVisibility(View.INVISIBLE);
+    }
+
+    private void setButtonListeners(AtomicInteger size) {
+        button4x6.setOnClickListener(v -> {
+            size.set(46);
+            updateImageViewVisibility(View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE);
+        });
+
+        button4x4.setOnClickListener(v -> {
+            size.set(44);
+            updateImageViewVisibility(View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.INVISIBLE);
+        });
+
+        button4x2.setOnClickListener(v -> {
+            size.set(42);
+            updateImageViewVisibility(View.INVISIBLE, View.INVISIBLE, View.VISIBLE, View.INVISIBLE);
+        });
+
+        button2x2.setOnClickListener(v -> {
+            size.set(22);
+            updateImageViewVisibility(View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.VISIBLE);
+        });
+    }
+
+    private void updateImageViewVisibility(int x46Visibility, int x44Visibility, int x42Visibility, int x22Visibility) {
+        imageViewx46.setVisibility(x46Visibility);
+        imageViewx44.setVisibility(x44Visibility);
+        imageViewx42.setVisibility(x42Visibility);
+        imageViewx22.setVisibility(x22Visibility);
+    }
 
     public void startService(){
         Intent intent = new Intent(this, AppInfoTrackerService.class);
         startService(intent);
     }
 
-    // 접근성 권한이 있는지 없는지 확인하는 부분
-    // 있으면 true, 없으면 false
     public boolean checkAccessibilityPermissions() {
         AccessibilityManager accessibilityManager = (AccessibilityManager) getSystemService(Context.ACCESSIBILITY_SERVICE);
-
-        // getEnabledAccessibilityServiceList는 현재 접근성 권한을 가진 리스트를 가져오게 된다
         List<AccessibilityServiceInfo> list = accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.DEFAULT);
 
-        for (int i = 0; i < list.size(); i++) {
-            AccessibilityServiceInfo info = list.get(i);
-
-            // 접근성 권한을 가진 앱의 패키지 네임과 패키지 네임이 같으면 현재앱이 접근성 권한을 가지고 있다고 판단함
+        for (AccessibilityServiceInfo info : list) {
             if (info.getResolveInfo().serviceInfo.packageName.equals(getApplication().getPackageName())) {
                 return true;
             }
@@ -144,16 +130,15 @@ public class Size extends AppCompatActivity {
         return false;
     }
 
-    // 접근성 설정화면으로 넘겨주는 부분
     public void setAccessibilityPermissions() {
         AlertDialog.Builder gsDialog = new AlertDialog.Builder(this);
         gsDialog.setTitle("접근성 권한 설정");
         gsDialog.setMessage("접근성 권한을 필요로 합니다");
         gsDialog.setPositiveButton("확인", (dialog, which) -> {
-            // 설정화면으로 보내는 부분
             startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
         }).create().show();
     }
+
     private void requestUsageAccessPermission() {
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(intent);

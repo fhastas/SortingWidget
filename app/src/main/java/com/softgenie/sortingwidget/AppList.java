@@ -22,6 +22,36 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+
+import androidx.core.content.ContextCompat;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.annotation.SuppressLint;
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AppList implements Serializable {
     private final List<AppData> appList = new ArrayList<>();
 
@@ -39,32 +69,18 @@ public class AppList implements Serializable {
 
         List<UsageStats> usageStatsList = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY, startTime, endTime);
 
-        int i = 0;
-
         for (UsageStats usageStats : usageStatsList) {
             String packageName = usageStats.getPackageName();
             try {
                 ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
-                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0 || (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0) {
-                    continue;
-                }
                 String appName = pm.getApplicationLabel(appInfo).toString();
-
-                Drawable icon = pm.getApplicationIcon(appInfo);
-                Bitmap bitmapIcon = drawableToBitmap(icon);
-                if(bitmapIcon == null){
-                    bitmapIcon = drawableToBitmap(ContextCompat.getDrawable(context, android.R.drawable.stat_notify_error));
-                }
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                bitmapIcon.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-                byte[] byteIcon = outputStream.toByteArray();
+                Drawable appIcon = pm.getApplicationIcon(appInfo);
 
                 long installationTime = pm.getPackageInfo(packageName, 0).firstInstallTime;
                 long usageTime = usageStats.getTotalTimeInForeground();
                 String className = appInfo.className;
 
-                Log.d(this.getClass().getSimpleName(), (i++) + "App name: " + appName);
-                appList.add(new AppData(appName, byteIcon, installationTime, usageTime, packageName, className));
+                appList.add(new AppData(appName, appIcon, installationTime, usageTime, packageName, className));
 
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
@@ -75,23 +91,13 @@ public class AppList implements Serializable {
     @NonNull
     @Override
     public String toString() {
+        StringBuilder appsInfo = new StringBuilder();
         for (AppData app : appList) {
-            Log.d(this.getClass().getSimpleName(), "App name: " + app.getAppName());
+            appsInfo.append("App name: ").append(app.getAppName()).append("\n");
         }
-        return appList.toString();
+        return appsInfo.toString();
     }
 
-    public static Bitmap drawableToBitmap(Drawable drawable) {
-        Bitmap bitmap;
-        if (drawable instanceof BitmapDrawable) {
-            bitmap = ((BitmapDrawable) drawable).getBitmap();
-        } else {
-            int width = drawable.getIntrinsicWidth();
-            int height = drawable.getIntrinsicHeight();
-            bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        }
-        return bitmap;
-    }
     private void loadInstalledApps(Context context) {
         PackageManager packageManager = context.getPackageManager();
         List<ApplicationInfo> installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
@@ -99,7 +105,14 @@ public class AppList implements Serializable {
         for (ApplicationInfo appInfo : installedApps) {
             String appName = appInfo.loadLabel(packageManager).toString();
             Drawable appIcon = appInfo.loadIcon(packageManager);
-            //appList.add(new AppData(appName, appIcon));
+            long installationTime = 0;
+            try {
+                installationTime = packageManager.getPackageInfo(appInfo.packageName, 0).firstInstallTime;
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+            long usageTime = 0; // 사용 시간은 여기서는 설정하지 않음
+            appList.add(new AppData(appName, appIcon, installationTime, usageTime, appInfo.packageName, appInfo.className));
         }
     }
 

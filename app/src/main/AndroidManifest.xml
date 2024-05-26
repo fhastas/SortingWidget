@@ -48,7 +48,6 @@
         </activity>
         <activity android:name=".Prioritize" />
         <activity android:name=".Include" />
-        <activity android:name=".Exclude" />
         <activity
             android:name=".TempWidget"
             android:exported="false"

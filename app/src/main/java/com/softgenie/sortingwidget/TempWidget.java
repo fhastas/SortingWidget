@@ -21,6 +21,7 @@ import java.util.List;
 
 public class TempWidget extends AppCompatActivity {
     private static final String TAG = "TempWidget";
+    ArrayList<AppData> selectedApps = getIntent().getParcelableArrayListExtra("selectedApps");
 
     ImageButton tempWidgetButton11, tempWidgetButton12, tempWidgetButton13, tempWidgetButton14
             , tempWidgetButton21, tempWidgetButton22, tempWidgetButton23, tempWidgetButton24
@@ -38,6 +39,7 @@ public class TempWidget extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_temp_widget);
         List<ApplicationInfo> installedApps = getInstalledApps();
+
 
         AppList appList = SharedPreferencesHelper.loadAppList(this);
         if (appList == null) {
