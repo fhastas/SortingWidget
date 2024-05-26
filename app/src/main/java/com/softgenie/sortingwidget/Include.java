@@ -73,6 +73,11 @@ public class Include extends AppCompatActivity {
             intent.putParcelableArrayListExtra("selectedApps", selectedApps);
             startActivity(intent);
         });
+        findViewById(R.id.back3).setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), Prioritize.class);
+            finish();
+            startActivity(intent);
+        });
     }
 }
 
