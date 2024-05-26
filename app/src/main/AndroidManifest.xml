@@ -39,7 +39,7 @@
             android:permission="android.permission.FOREGROUND_SERVICE"/>
 
         <activity
-            android:name=".Size"
+            android:name="com.softgenie.sortingwidget.Size"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,13 +50,8 @@
         <activity android:name=".Include" />
         <activity
             android:name=".TempWidget"
-            android:exported="false"
+            android:exported="true"
             android:theme="@style/SortingWidgetTheme" />
 
     </application>
-
-
-
-
-
 </manifest>

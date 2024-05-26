@@ -17,7 +17,6 @@ public class UserInfo implements Serializable {
     private int[][] prioritize;
 
     private List<String> include = new ArrayList<>();
-    private List<String> exclude = new ArrayList<>();
 
     public UserInfo(int size, int[][] prioritize) {
         this.size = size;
@@ -29,14 +28,12 @@ public class UserInfo implements Serializable {
         initPrioritize();
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "UserInfo{" +
                 "\nsize=" + size +
                 "\n, prioritize=" + Arrays.deepToString(prioritize) +
                 "\ninclude=" + include.toString() +
-                "\nexclude=" + exclude.toString() +
                 '}';
     }
 
@@ -56,15 +53,9 @@ public class UserInfo implements Serializable {
     public List<String> getInclude() {
         return this.include;
     }
-    public List<String> getExclude() {
-        return this.exclude;
-    }
 
     public void setInclude(List<String> include) {
         this.include = include;
-    }
-    public void setExclude(List<String> exclude) {
-        this.exclude = exclude;
     }
 
     public int getPriority(int x, int y) {
