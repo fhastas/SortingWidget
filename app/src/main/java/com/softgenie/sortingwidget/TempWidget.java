@@ -33,15 +33,17 @@ public class TempWidget extends AppCompatActivity {
             , tempWidgetButton51, tempWidgetButton52, tempWidgetButton53, tempWidgetButton54
             , tempWidgetButton61, tempWidgetButton62, tempWidgetButton63, tempWidgetButton64;
 
-    Button done, edit;
+    Button done, setting;
 
-    AppList appList = SharedPreferencesHelper.loadAppList(this);
-    UserInfo userInfo = SharedPreferencesHelper.loadUserInfo(this);
+    AppList appList;
+    UserInfo userInfo;
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint({"UseCompatLoadingForDrawables", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_temp_widget);
 
         if(!checkAccessibilityPermissions()) {
             setAccessibilityPermissions();
@@ -54,17 +56,18 @@ public class TempWidget extends AppCompatActivity {
         startService();
 
         ArrayList<Parcelable> Apps = getIntent().getParcelableArrayListExtra("selectedApps");
+
         if (Apps == null) {
             Log.d(TAG, "No selected apps received from intent");
         }
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_temp_widget);
 
+        appList = SharedPreferencesHelper.loadAppList(this);
         if (appList == null) {
             Log.d(TAG, "AppList is null");
             appList = new AppList(this);
             SharedPreferencesHelper.saveAppList(this, appList);
         }
+        userInfo = SharedPreferencesHelper.loadUserInfo(this);
         if (userInfo == null) {
             Log.d(TAG, "UserInfo is null");
             userInfo = new UserInfo();
@@ -107,6 +110,7 @@ public class TempWidget extends AppCompatActivity {
         tempWidgetButton62 = findViewById(R.id.TempWidgetButton62);
         tempWidgetButton63 = findViewById(R.id.TempWidgetButton63);
         tempWidgetButton64 = findViewById(R.id.TempWidgetButton64);
+        setting = findViewById(R.id.setting);
         done = findViewById(R.id.done);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -145,7 +149,7 @@ public class TempWidget extends AppCompatActivity {
                 break;
         }
 
-        edit.setOnClickListener(v -> {
+        setting.setOnClickListener(v -> {
             Intent intent = new Intent(this, Size.class);
             startActivity(intent);
         });
