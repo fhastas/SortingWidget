@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Include extends AppCompatActivity {
@@ -42,6 +43,8 @@ public class Include extends AppCompatActivity {
             appList = new AppList(getApplicationContext());
             SharedPreferencesHelper.saveAppList(this, appList);
         }
+
+        Collections.sort(appList.getAppList());
 
         adapter = new AppDataAdapter(this, appList.getAppList());
         appListView.setAdapter(adapter);
@@ -98,9 +101,8 @@ public class Include extends AppCompatActivity {
                 long usageTime = 0; // Usage time should be calculated or retrieved as per requirement
 
                 String packageName = appInfo.packageName;
-                String className = TempWidget(packageManager, packageName);
 
-                apps.add(new AppData(appName, appIcon, installationTime, usageTime, packageName, className));
+                apps.add(new AppData(appName, appIcon, installationTime, usageTime, packageName));
             } catch (PackageManager.NameNotFoundException e) {
                 Log.e(TAG, "Package not found: " + appInfo.packageName, e);
             }

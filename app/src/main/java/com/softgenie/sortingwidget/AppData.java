@@ -13,23 +13,21 @@ public class AppData implements Comparable<AppData> {
     private long installationTime;
     private long usageTime;
     private final String packageName;
-    private final String className;
     private boolean selected;
 
-    public AppData(String appName, byte[] appIcon, long installationTime, long usageTime, String packageName, String className) {
+    public AppData(String appName, byte[] appIcon, long installationTime, long usageTime, String packageName) {
         this.appName = appName;
         this.appIcon = appIcon;
         this.installationTime = installationTime;
         this.usageTime = usageTime;
         this.packageName = packageName;
-        this.className = className;
         this.selected = false;
     }
 
 
     @Override
     public int compareTo(AppData appData) {
-        return Long.compare(this.installationTime, appData.installationTime);
+        return Long.compare(this.usageTime, appData.usageTime);
     }
 
     @NonNull
@@ -56,12 +54,15 @@ public class AppData implements Comparable<AppData> {
         this.installationTime = installationTime;
     }
 
-    public String getPackageName() {
-        return packageName;
+    public long getUsageTime(){
+        return this.usageTime;
+    }
+    public void setUsageTime(long usageTime){
+        this.usageTime = usageTime;
     }
 
-    public String getClassName() {
-        return className;
+    public String getPackageName() {
+        return packageName;
     }
 
     public boolean getSelected() {

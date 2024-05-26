@@ -6,7 +6,6 @@ import android.app.usage.UsageStatsManager;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -30,8 +29,6 @@ public class AppList implements Serializable {
         PackageManager pm = context.getPackageManager();
         UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
 
-        loadInstalledApps(context);
-
         Calendar calendar = Calendar.getInstance();
         long endTime = calendar.getTimeInMillis();
         calendar.add(Calendar.DAY_OF_MONTH, -1);
@@ -45,7 +42,7 @@ public class AppList implements Serializable {
             String packageName = usageStats.getPackageName();
             try {
                 ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
-                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0 || (appInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0) {
+                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                     continue;
                 }
                 String appName = pm.getApplicationLabel(appInfo).toString();
@@ -61,10 +58,9 @@ public class AppList implements Serializable {
 
                 long installationTime = pm.getPackageInfo(packageName, 0).firstInstallTime;
                 long usageTime = usageStats.getTotalTimeInForeground();
-                String className = appInfo.className;
 
                 Log.d(this.getClass().getSimpleName(), (i++) + "App name: " + appName);
-                appList.add(new AppData(appName, byteIcon, installationTime, usageTime, packageName, className));
+                appList.add(new AppData(appName, byteIcon, installationTime, usageTime, packageName));
 
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
@@ -91,16 +87,6 @@ public class AppList implements Serializable {
             bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         }
         return bitmap;
-    }
-    private void loadInstalledApps(Context context) {
-        PackageManager packageManager = context.getPackageManager();
-        List<ApplicationInfo> installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA);
-
-        for (ApplicationInfo appInfo : installedApps) {
-            String appName = appInfo.loadLabel(packageManager).toString();
-            Drawable appIcon = appInfo.loadIcon(packageManager);
-            //appList.add(new AppData(appName, appIcon));
-        }
     }
 
     public List<AppData> getAppList() {
