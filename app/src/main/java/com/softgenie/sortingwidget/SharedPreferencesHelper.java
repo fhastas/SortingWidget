@@ -4,43 +4,61 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 
 public class SharedPreferencesHelper {
-
-    private static final String PREFS_NAME = "user_prefs";
-    private static final String USER_INFO_KEY = "user_info";
-    private static final String APP_LIST_KEY = "app_list";
-
-    public static void saveUserInfo(Context context, UserInfo userInfo) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(userInfo);
-        editor.putString(USER_INFO_KEY, json);
-        editor.apply();
-    }
-
-    public static UserInfo loadUserInfo(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString(USER_INFO_KEY, null);
-        return gson.fromJson(json, UserInfo.class);
-    }
+    private static final String appListPREF = "AppListPref";
+    private static final String userInfoPREF = "UserInfoPref";
 
     public static void saveAppList(Context context, AppList appList) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        SharedPreferences preferences = context.getSharedPreferences(appListPREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(appList);
-        editor.putString(APP_LIST_KEY, json);
+        String json = gson.toJson(appList, AppList.class);
+
+        editor.remove("appList");
+        editor.putString("appList", json);
+
         editor.apply();
     }
 
     public static AppList loadAppList(Context context) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+        SharedPreferences preferences = context.getSharedPreferences(appListPREF, Context.MODE_PRIVATE);
+        if (preferences != null) {
+            Gson gson = new Gson();
+            String json = preferences.getString("appList", null);
+            if (json != null) {
+                Type type = new TypeToken<AppList>(){}.getType();
+                return gson.fromJson(json, type);
+            }
+        }
+        return null;
+    }
+
+    public static void saveUserInfo(Context context, UserInfo userInfo){
+        SharedPreferences preferences = context.getSharedPreferences(userInfoPREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
         Gson gson = new Gson();
-        String json = sharedPreferences.getString(APP_LIST_KEY, null);
-        return gson.fromJson(json, AppList.class);
+        String json = gson.toJson(userInfo, UserInfo.class);
+
+        editor.clear();
+        editor.putString("userInfo", json);
+
+        editor.apply();
+    }
+
+    public static UserInfo loadUserInfo(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(userInfoPREF, Context.MODE_PRIVATE);
+        if (preferences != null) {
+            Gson gson = new Gson();
+            String json = preferences.getString("userInfo", null);
+            if (json != null) {
+                Type type = new TypeToken<UserInfo>() {}.getType();
+                return gson.fromJson(json, type);
+            }
+        }
+        return null;
     }
 }
-
