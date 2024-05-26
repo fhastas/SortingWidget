@@ -7,13 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -136,6 +134,11 @@ public class TempWidget extends AppCompatActivity {
             default:
                 break;
         }
+
+        edit.setOnClickListener(v -> {
+            Intent intent = new Intent(this, Size.class);
+            finish();
+        });
 
         final AppList finalAppList = appList;
         try{
@@ -366,13 +369,7 @@ public class TempWidget extends AppCompatActivity {
         catch (Exception e){
             e.printStackTrace();
         }
-
         done.setOnClickListener(v -> finish());
-
-        edit.setOnClickListener(v -> {
-            Intent intent = new Intent(this, Size.class);
-            finish();
-        });
     }
 
     List<String> sortingPriority(UserInfo userInfo){

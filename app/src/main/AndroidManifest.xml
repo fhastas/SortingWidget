@@ -43,17 +43,16 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Prioritize" />
         <activity android:name=".Include" />
         <activity android:name=".Exclude" />
-<!--        <activity-->
-<!--            android:name=".TempWidget"-->
-<!--            android:exported="false"-->
-<!--            android:theme="@style/SortingWidgetTheme" />-->
+        <activity
+            android:name=".Size"
+            android:exported="false"
+            android:theme="@style/SortingWidgetTheme" />
     </application>
 
 </manifest>
