@@ -110,6 +110,7 @@ public class TempWidget extends AppCompatActivity {
                 tempWidgetButton61.setVisibility(View.GONE);
                 tempWidgetButton52.setVisibility(View.GONE);
                 tempWidgetButton51.setVisibility(View.GONE);
+                break;
             case 42:
                 tempWidgetButton44.setVisibility(View.GONE);
                 tempWidgetButton43.setVisibility(View.GONE);
@@ -119,6 +120,7 @@ public class TempWidget extends AppCompatActivity {
                 tempWidgetButton33.setVisibility(View.GONE);
                 tempWidgetButton32.setVisibility(View.GONE);
                 tempWidgetButton31.setVisibility(View.GONE);
+                break;
             case 44:
                 tempWidgetButton24.setVisibility(View.GONE);
                 tempWidgetButton23.setVisibility(View.GONE);
@@ -128,6 +130,7 @@ public class TempWidget extends AppCompatActivity {
                 tempWidgetButton13.setVisibility(View.GONE);
                 tempWidgetButton12.setVisibility(View.GONE);
                 tempWidgetButton11.setVisibility(View.GONE);
+                break;
             default:
                 break;
         }
