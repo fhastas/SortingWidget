@@ -27,6 +27,7 @@ public class AppData implements Comparable<AppData> {
         this.selected = false;
     }
 
+
     @Override
     public int compareTo(AppData appData) {
         return Long.compare(this.installationTime, appData.installationTime);
@@ -41,6 +42,7 @@ public class AppData implements Comparable<AppData> {
     public String getAppName() {
         return appName;
     }
+
 
     public Drawable getAppIcon(Context context) {
         Bitmap bitmap = BitmapFactory.decodeByteArray(appIcon, 0, appIcon.length);
@@ -70,4 +72,5 @@ public class AppData implements Comparable<AppData> {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
 }
