@@ -141,6 +141,7 @@ public class TempWidget extends AppCompatActivity {
         edit.setOnClickListener(v -> {
             Intent intent = new Intent(this, Size.class);
             finish();
+            startActivity(intent);
         });
 
         final AppList finalAppList = appList;

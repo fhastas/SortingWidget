@@ -1,7 +1,6 @@
 package com.softgenie.sortingwidget;
 
 import static com.softgenie.sortingwidget.AppList.drawableToBitmap;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
