@@ -34,6 +34,17 @@ public class AppList implements Serializable {
         for (UsageStats usageStats : usageStatsList) {
             String packageName = usageStats.getPackageName();
             try {
+                // 중복 확인 로직 추가
+                boolean isAlreadyAdded = false;
+                for (AppData appData : appList) {
+                    if (appData.getPackageName().equals(packageName)) {
+                        isAlreadyAdded = true;
+                        break;
+                    }
+                }
+                if (isAlreadyAdded) {
+                    continue; // 이미 리스트에 추가된 앱이면 다음으로 넘어감
+                }
                 ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
                 if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) { // 시스템 앱이 아닌 경우만 추가
                     String appName = pm.getApplicationLabel(appInfo).toString();

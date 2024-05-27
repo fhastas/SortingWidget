@@ -32,9 +32,7 @@ public class TempWidget extends AppCompatActivity {
             , tempWidgetButton41, tempWidgetButton42, tempWidgetButton43, tempWidgetButton44
             , tempWidgetButton51, tempWidgetButton52, tempWidgetButton53, tempWidgetButton54
             , tempWidgetButton61, tempWidgetButton62, tempWidgetButton63, tempWidgetButton64;
-
     Button done, setting;
-
     AppList appList;
     UserInfo userInfo;
 
