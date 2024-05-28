@@ -37,11 +37,11 @@ public class Size extends AppCompatActivity {
 
         AtomicInteger size = new AtomicInteger(46); // 다음 Activity에 전달할 변수 데이터 생성과 함께 초기화
 
-        if(!checkAccessibilityPermissions()) {
-            setAccessibilityPermissions();
-        }
+        //if(!checkAccessibilityPermissions()) {
+        //    setAccessibilityPermissions();
+        //}
 
-        requestUsageAccessPermission();
+        //requestUsageAccessPermission();
         startService();
 
         initializeViews();
@@ -129,7 +129,7 @@ public class Size extends AppCompatActivity {
         }
         return false;
     }
-
+/*
     public void setAccessibilityPermissions() {
         AlertDialog.Builder gsDialog = new AlertDialog.Builder(this);
         gsDialog.setTitle("접근성 권한 설정");
@@ -143,4 +143,6 @@ public class Size extends AppCompatActivity {
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(intent);
     }
+
+ */
 }

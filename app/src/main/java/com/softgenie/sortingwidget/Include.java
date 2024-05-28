@@ -32,6 +32,7 @@ public class Include extends AppCompatActivity {
     private List<AppData> appDataList;
     private ListView appListView;
     private ArrayAdapter<AppData> adapter;
+    UserInfo userInfo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,25 +42,9 @@ public class Include extends AppCompatActivity {
         AppList appList = new AppList(this);
         appDataList = appList.getAppList();
         appListView = findViewById(R.id.appListView);
+        userInfo = new UserInfo(); // UserInfo 객체 초기화
 
-        adapter = new ArrayAdapter<AppData>(this, R.layout.appitem, R.id.apptextView, appDataList) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = super.getView(position, convertView, parent);
-                TextView appNameTextView = view.findViewById(R.id.apptextView);
-                ImageView appIconImageView = view.findViewById(R.id.appimageView);
-                CheckBox checkBox = view.findViewById(R.id.checkBox);
-
-                AppData appData = appDataList.get(position);
-                appNameTextView.setText(appData.getAppName());
-                appIconImageView.setImageDrawable(appData.getAppIcon());
-                checkBox.setChecked(appData.getSelected());
-                checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> appData.setSelected(isChecked));
-
-                return view;
-            }
-        };
-
+        adapter = new AppDataAdapter(this, appDataList); // AppDataAdapter 사용
         appListView.setAdapter(adapter);
 
         findViewById(R.id.next3).setOnClickListener(v -> {
@@ -71,13 +56,15 @@ public class Include extends AppCompatActivity {
             }
             Intent intent = new Intent(Include.this, TempWidget.class);
             intent.putParcelableArrayListExtra("selectedApps", selectedApps);
+            intent.putExtra("userInfo", userInfo); // UserInfo 객체를 Intent에 추가
             startActivity(intent);
         });
+
         findViewById(R.id.back3).setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Prioritize.class);
             finish();
             startActivity(intent);
         });
     }
-}
 
+}

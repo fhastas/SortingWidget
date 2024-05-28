@@ -8,21 +8,30 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Calendar;
-
+import java.util.Set;
+//사용자의 설치된 앱 목록, 사용 시간 관리
 public class AppList implements Serializable {
     private final List<AppData> appList = new ArrayList<>();
+    private final Set<String> addedPackages = new HashSet<>();
 
     @SuppressLint("UseCompatLoadingForDrawables")
     public AppList(Context context) {
         PackageManager pm = context.getPackageManager();
         UsageStatsManager usageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
+
+        // 권한 확인
+        if (usageStatsManager == null) {
+            throw new IllegalStateException("UsageStatsManager not available");
+        }
 
         Calendar calendar = Calendar.getInstance();
         long endTime = calendar.getTimeInMillis();
@@ -34,19 +43,12 @@ public class AppList implements Serializable {
         for (UsageStats usageStats : usageStatsList) {
             String packageName = usageStats.getPackageName();
             try {
-                // 중복 확인 로직 추가
-                boolean isAlreadyAdded = false;
-                for (AppData appData : appList) {
-                    if (appData.getPackageName().equals(packageName)) {
-                        isAlreadyAdded = true;
-                        break;
-                    }
+                if (addedPackages.contains(packageName)) {
+                    continue;
                 }
-                if (isAlreadyAdded) {
-                    continue; // 이미 리스트에 추가된 앱이면 다음으로 넘어감
-                }
+
                 ApplicationInfo appInfo = pm.getApplicationInfo(packageName, 0);
-                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) { // 시스템 앱이 아닌 경우만 추가
+                if ((appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0) {
                     String appName = pm.getApplicationLabel(appInfo).toString();
                     Drawable appIcon = pm.getApplicationIcon(appInfo);
 
@@ -54,9 +56,11 @@ public class AppList implements Serializable {
                     long usageTime = usageStats.getTotalTimeInForeground();
 
                     appList.add(new AppData(appName, appIcon, installationTime, usageTime, packageName));
+                    addedPackages.add(packageName);
                 }
             } catch (PackageManager.NameNotFoundException e) {
-                e.printStackTrace();
+                // 사용자에게 피드백을 제공하거나 로그를 기록하는 것이 좋습니다.
+                Log.e("AppList", "Application not found for package: " + packageName, e);
             }
         }
     }

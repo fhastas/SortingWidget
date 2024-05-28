@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.provider.Settings;
@@ -42,18 +43,19 @@ public class TempWidget extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_temp_widget);
+        ArrayList<Parcelable> Apps = getIntent().getParcelableArrayListExtra("selectedApps");
 
         if(!checkAccessibilityPermissions()) {
             setAccessibilityPermissions();
         }
 
-        if(checkUsageAccessPermission()) {
+        if(!checkUsageAccessPermission()) {
             requestUsageAccessPermission();
         }
 
         startService();
 
-        ArrayList<Parcelable> Apps = getIntent().getParcelableArrayListExtra("selectedApps");
+
 
         if (Apps == null) {
             Log.d(TAG, "No selected apps received from intent");

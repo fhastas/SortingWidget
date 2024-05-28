@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-
+//AppList와 AppData를 저장하고 로드
 public class SharedPreferencesHelper {
     private static final String appListPREF = "AppListPref";
     private static final String userInfoPREF = "UserInfoPref";

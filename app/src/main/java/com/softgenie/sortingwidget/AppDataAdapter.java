@@ -27,60 +27,44 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.List;
-
+// 앱 이름, 아이콘, 체크박스
 public class AppDataAdapter extends ArrayAdapter<AppData> {
+    private Context context;
+    private List<AppData> appDataList;
 
-    private final Context mContext;
-    private final List<AppData> mAppDataList;
-
-    public AppDataAdapter(@NonNull Context context, @NonNull List<AppData> appDataList) {
-        super(context, 0, appDataList);
-        this.mContext = context;
-        this.mAppDataList = appDataList;
-    }
-
-    private static class ViewHolder {
-        ImageView iconImageView;
-        TextView nameTextView;
-        CheckBox checkBox;
+    public AppDataAdapter(@NonNull Context context, @NonNull List<AppData> objects) {
+        super(context, R.layout.appitem, objects);
+        this.context = context;
+        this.appDataList = objects;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        ViewHolder viewHolder;
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.appitem, parent, false);
-            viewHolder = new ViewHolder();
-            viewHolder.iconImageView = convertView.findViewById(R.id.appimageView);
-            viewHolder.nameTextView = convertView.findViewById(R.id.apptextView);
-            viewHolder.checkBox = convertView.findViewById(R.id.checkBox);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.appitem, parent, false);
         }
 
-        AppData currentAppData = mAppDataList.get(position);
+        TextView appNameTextView = convertView.findViewById(R.id.apptextView);
+        ImageView appIconImageView = convertView.findViewById(R.id.appimageView);
+        CheckBox checkBox = convertView.findViewById(R.id.checkBox);
 
-        // 앱 아이콘 설정
-        Drawable appIcon = currentAppData.getAppIcon();
-        if (appIcon != null) {
-            viewHolder.iconImageView.setImageDrawable(appIcon);
-        } else {
-            viewHolder.iconImageView.setImageResource(R.drawable.ic_launcher_foreground);
-        }
+        AppData appData = appDataList.get(position);
+        appNameTextView.setText(appData.getAppName());
+        appIconImageView.setImageDrawable(appData.getAppIcon());
+        checkBox.setChecked(appData.getSelected());
 
-        // 앱 이름 설정
-        viewHolder.nameTextView.setText(currentAppData.getAppName());
-
-        // 체크박스 상태 설정
-        viewHolder.checkBox.setChecked(currentAppData.getSelected());
-        viewHolder.checkBox.setOnClickListener(v -> {
-            CheckBox checkBox1 = (CheckBox) v;
-            currentAppData.setSelected(checkBox1.isChecked()); // 체크박스 상태 업데이트
+        checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            appData.setSelected(isChecked);
+            if (isChecked) {
+                // 선택된 경우 UserInfo에 앱 이름 추가
+                ((Include) context).userInfo.addInclude(appData.getAppName());
+            } else {
+                // 선택 해제된 경우 UserInfo에서 앱 이름 제거
+                // UserInfo 클래스에 선택 해제 메소드 추가 필요
+            }
         });
-
         return convertView;
     }
 }
-
