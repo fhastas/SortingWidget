@@ -22,7 +22,7 @@ public class Prioritize extends AppCompatActivity {
 
     private static final String TAG = "Prioritize";
 
-    ImageView imageViewx46, imageViewx44, imageViewx42, imageViewx22;
+    ImageView imageViewX46, imageViewX44, imageViewX42, imageViewX22;
     ImageButton prioritizeButton11, prioritizeButton12, prioritizeButton13, prioritizeButton14,
             prioritizeButton21, prioritizeButton22, prioritizeButton23, prioritizeButton24,
             prioritizeButton31, prioritizeButton32, prioritizeButton33, prioritizeButton34,
@@ -41,7 +41,7 @@ public class Prioritize extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_prioritize);
 
-        int size = getIntent().getIntExtra("size", 46);
+        int size = getIntent().getIntExtra("size", 64);
         AtomicInteger prioritize = new AtomicInteger(1);
         int[][] priorityList = new int[6][4];
         for (int i = 0; i < 6; i++) {
@@ -50,10 +50,10 @@ public class Prioritize extends AppCompatActivity {
             }
         }
 
-        imageViewx46 = findViewById(R.id.PrioritizeX46);
-        imageViewx44 = findViewById(R.id.PrioritizeX44);
-        imageViewx42 = findViewById(R.id.PrioritizeX42);
-        imageViewx22 = findViewById(R.id.PrioritizeX22);
+        imageViewX46 = findViewById(R.id.PrioritizeX46);
+        imageViewX44 = findViewById(R.id.PrioritizeX44);
+        imageViewX42 = findViewById(R.id.PrioritizeX42);
+        imageViewX22 = findViewById(R.id.PrioritizeX22);
         prioritizeButton11 = findViewById(R.id.prioritizeButton11);
         prioritizeButton12 = findViewById(R.id.prioritizeButton12);
         prioritizeButton13 = findViewById(R.id.prioritizeButton13);
@@ -97,8 +97,7 @@ public class Prioritize extends AppCompatActivity {
                 prioritizeButton61.setVisibility(View.GONE);
                 prioritizeButton52.setVisibility(View.GONE);
                 prioritizeButton51.setVisibility(View.GONE);
-                break;
-            case 42:
+            case 24:
                 prioritizeButton44.setVisibility(View.GONE);
                 prioritizeButton43.setVisibility(View.GONE);
                 prioritizeButton42.setVisibility(View.GONE);
@@ -107,7 +106,6 @@ public class Prioritize extends AppCompatActivity {
                 prioritizeButton33.setVisibility(View.GONE);
                 prioritizeButton32.setVisibility(View.GONE);
                 prioritizeButton31.setVisibility(View.GONE);
-                break;
             case 44:
                 prioritizeButton24.setVisibility(View.GONE);
                 prioritizeButton23.setVisibility(View.GONE);
@@ -117,20 +115,19 @@ public class Prioritize extends AppCompatActivity {
                 prioritizeButton13.setVisibility(View.GONE);
                 prioritizeButton12.setVisibility(View.GONE);
                 prioritizeButton11.setVisibility(View.GONE);
-                break;
             default:
                 switch (size){
-                    case 46:
-                        imageViewx46.setVisibility(View.VISIBLE);
+                    case 64:
+                        imageViewX46.setVisibility(View.VISIBLE);
                         break;
                     case 44:
-                        imageViewx44.setVisibility(View.VISIBLE);
+                        imageViewX44.setVisibility(View.VISIBLE);
                         break;
-                    case 42:
-                        imageViewx42.setVisibility(View.VISIBLE);
+                    case 24:
+                        imageViewX42.setVisibility(View.VISIBLE);
                         break;
                     case 22:
-                        imageViewx22.setVisibility(View.VISIBLE);
+                        imageViewX22.setVisibility(View.VISIBLE);
                         break;
                     default:
                         break;
@@ -570,8 +567,6 @@ public class Prioritize extends AppCompatActivity {
             }
         });
 
-        userInfo = new UserInfo(size, priorityList);
-
         number1.setOnClickListener(v -> prioritize.set(1));
         number2.setOnClickListener(v -> prioritize.set(2));
         number3.setOnClickListener(v -> prioritize.set(3));
@@ -586,6 +581,7 @@ public class Prioritize extends AppCompatActivity {
         next2.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Include.class);
 
+            userInfo = new UserInfo(size, priorityList);
             SharedPreferencesHelper.saveUserInfo(this, userInfo);
 
             Log.d(TAG, "[UserInfo]\n" + userInfo.toString());

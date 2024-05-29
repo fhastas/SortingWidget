@@ -28,6 +28,8 @@
     <string name="show_item_image">grid_item_image</string>
     <string name="show_item_text">grid_item_text</string>
 
+    <string name="list_item_image">list_item_image</string>
+
     <string name="temp_widget">임시 위젯</string>
     <string name="temp_widget_button">temp_widget_button</string>
 

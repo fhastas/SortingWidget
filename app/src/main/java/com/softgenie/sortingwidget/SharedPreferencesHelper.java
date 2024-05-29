@@ -7,11 +7,12 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 public class SharedPreferencesHelper {
     private static final String appListPREF = "AppListPref";
     private static final String userInfoPREF = "UserInfoPref";
-
+    private static final String includePREF = "IncludePref";
     public static void saveAppList(Context context, AppList appList) {
         SharedPreferences preferences = context.getSharedPreferences(appListPREF, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -56,6 +57,31 @@ public class SharedPreferencesHelper {
             String json = preferences.getString("userInfo", null);
             if (json != null) {
                 Type type = new TypeToken<UserInfo>() {}.getType();
+                return gson.fromJson(json, type);
+            }
+        }
+        return null;
+    }
+
+    public static void saveIncludeInfo(Context context, ArrayList<String> appNames){
+        SharedPreferences preferences = context.getSharedPreferences(includePREF, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        Gson gson = new Gson();
+        String json = gson.toJson(appNames, ArrayList.class);
+
+        editor.clear();
+        editor.putString("include", json);
+
+        editor.apply();
+    }
+    public static ArrayList<String> loadIncludeInfo(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences(includePREF, Context.MODE_PRIVATE);
+        if (preferences != null) {
+            Gson gson = new Gson();
+            String json = preferences.getString("include", null);
+            if (json != null) {
+                Type type = new TypeToken<ArrayList<String>>() {}.getType();
                 return gson.fromJson(json, type);
             }
         }

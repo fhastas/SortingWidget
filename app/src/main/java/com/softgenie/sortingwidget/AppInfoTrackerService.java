@@ -29,7 +29,6 @@ public class AppInfoTrackerService extends Service {
         // 스레드에서 AppList 객체 생성 작업 수행
         new Thread(() -> {
             AppList appList = new AppList(getApplicationContext());
-            appList.getAppList().sort(Comparator.comparing(AppData::getAppName));
             SharedPreferencesHelper.saveAppList(getApplicationContext(), appList);
 
             stopSelf();

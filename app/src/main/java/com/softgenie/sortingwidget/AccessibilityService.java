@@ -9,12 +9,12 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
-        Log.e(TAG, "Catch Event : " + event.toString());
-        Log.e(TAG, "Catch Event Package Name : " + event.getPackageName());
-        Log.e(TAG, "Catch Event TEXT : " + event.getText());
-        Log.e(TAG, "Catch Event ContentDescription  : " + event.getContentDescription());
-        Log.e(TAG, "Catch Event getSource : " + event.getSource());
-        Log.e(TAG, "=========================================================================");
+//        Log.d(TAG, "Catch Event : " + event.toString());
+//        Log.d(TAG, "Catch Event Package Name : " + event.getPackageName());
+//        Log.d(TAG, "Catch Event TEXT : " + event.getText());
+//        Log.d(TAG, "Catch Event ContentDescription  : " + event.getContentDescription());
+//        Log.d(TAG, "Catch Event getSource : " + event.getSource());
+//        Log.d(TAG, "=========================================================================");
     }
 
     @Override

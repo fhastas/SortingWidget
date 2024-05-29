@@ -18,7 +18,7 @@
         android:textSize="16sp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/apptextView"
+        android:id="@+id/appTextView"
         android:layout_weight="1" />
 
     <CheckBox

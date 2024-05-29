@@ -12,11 +12,9 @@ public class UserInfo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
-    final int initSize = 46;
-    private int size;  // 46, 44, 42, 22
+    final int initSize = 64;
+    private int size;  // 64, 44, 24, 22
     private int[][] prioritize;
-
-    private List<String> include = new ArrayList<>();
 
     public UserInfo(int size, int[][] prioritize) {
         this.size = size;
@@ -34,7 +32,6 @@ public class UserInfo implements Serializable {
         return "UserInfo{" +
                 "\nsize=" + size +
                 "\n, prioritize=" + Arrays.deepToString(prioritize) +
-                "\ninclude=" + include.toString() +
                 '}';
     }
 
@@ -49,14 +46,6 @@ public class UserInfo implements Serializable {
 
     public int getSize() {
         return this.size;
-    }
-
-    public List<String> getInclude() {
-        return this.include;
-    }
-
-    public void setInclude(List<String> include) {
-        this.include = include;
     }
 
     public int getPriority(int x, int y) {

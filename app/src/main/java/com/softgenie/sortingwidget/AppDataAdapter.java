@@ -1,6 +1,7 @@
 package com.softgenie.sortingwidget;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,21 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import java.util.List;
-
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.util.List;
 
 public class AppDataAdapter extends ArrayAdapter<AppData> {
@@ -53,7 +39,7 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.appitem, parent, false);
             viewHolder = new ViewHolder();
             viewHolder.iconImageView = convertView.findViewById(R.id.appimageView);
-            viewHolder.nameTextView = convertView.findViewById(R.id.apptextView);
+            viewHolder.nameTextView = convertView.findViewById(R.id.appTextView);
             viewHolder.checkBox = convertView.findViewById(R.id.checkBox);
             convertView.setTag(viewHolder);
         } else {
@@ -63,9 +49,9 @@ public class AppDataAdapter extends ArrayAdapter<AppData> {
         AppData currentAppData = mAppDataList.get(position);
 
         // 앱 아이콘 설정
-        Drawable appIcon = currentAppData.getAppIcon();
+        Bitmap appIcon = currentAppData.getAppIcon();
         if (appIcon != null) {
-            viewHolder.iconImageView.setImageDrawable(appIcon);
+            viewHolder.iconImageView.setImageBitmap(appIcon);
         } else {
             viewHolder.iconImageView.setImageResource(R.drawable.ic_launcher_foreground);
         }
