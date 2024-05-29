@@ -238,18 +238,14 @@ public class TempWidget extends AppCompatActivity {
         AlertDialog.Builder accessDialog = new AlertDialog.Builder(this);
         accessDialog.setTitle("권한 설정");
         accessDialog.setMessage("접근성 권한을 필요로 합니다");
-        accessDialog.setPositiveButton("확인", ((dialog, which) -> {
-            startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-        })).create().show();
+        accessDialog.setPositiveButton("확인", ((dialog, which) -> startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)))).create().show();
     }
 
     private void requestUsageAccessPermission(){ // 앱 정보 접근 설정 화면으로 넘기기
         AlertDialog.Builder accessDialog = new AlertDialog.Builder(this);
         accessDialog.setTitle("권한 설정");
         accessDialog.setMessage("앱 정보 접근 권한을 필요로 합니다");
-        accessDialog.setPositiveButton("확인", ((dialog, which) -> {
-            startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
-        })).create().show();
+        accessDialog.setPositiveButton("확인", ((dialog, which) -> startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS)))).create().show();
     }
     List<Integer> toSortPriority(){
         List<Integer> priority1 = new ArrayList<>();

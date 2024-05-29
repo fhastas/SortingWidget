@@ -4,9 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 //사이즈, 우선순위, 포함하는 앱 목록 관리
 public class UserInfo implements Serializable {
 
