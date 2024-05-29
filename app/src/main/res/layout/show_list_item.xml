@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="80"
-            android:background="@drawable/app_widget_inner_view_background"
-            android:contentDescription="@string/show_item_image" />
+            android:contentDescription="@string/show_item_image"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,11 +32,9 @@
                 android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="80"
                 android:background="#B7F0B1"
                 android:gravity="center"
-                android:text="@string/show_item_text"
-                tools:ignore="NestedWeights" />
+                android:text="@string/show_item_text" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

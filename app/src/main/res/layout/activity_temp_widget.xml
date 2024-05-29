@@ -20,7 +20,8 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/gray_square" />
+        app:srcCompat="@drawable/gray_square"
+        tools:listitem="@layout/show_list_item"/>
 
     <ImageView
         android:id="@+id/TempWidgetButton14"

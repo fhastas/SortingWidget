@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+//사이즈, 우선순위, 포함하는 앱 목록 관리
 public class UserInfo implements Serializable {
 
     @Serial
@@ -26,6 +26,7 @@ public class UserInfo implements Serializable {
         initPrioritize();
     }
 
+
     @NonNull
     @Override
     public String toString() {
@@ -34,7 +35,9 @@ public class UserInfo implements Serializable {
                 "\n, prioritize=" + Arrays.deepToString(prioritize) +
                 '}';
     }
-
+    public void addInclude(String appName) {
+        this.include.add(appName);
+    }
     private void initPrioritize(){
         this.prioritize[0] = new int[]{4, 4, 4, 4};
         this.prioritize[1] = new int[]{4, 4, 4, 4};
