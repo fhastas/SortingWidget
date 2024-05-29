@@ -35,9 +35,6 @@ public class UserInfo implements Serializable {
                 "\n, prioritize=" + Arrays.deepToString(prioritize) +
                 '}';
     }
-    public void addInclude(String appName) {
-        this.include.add(appName);
-    }
     private void initPrioritize(){
         this.prioritize[0] = new int[]{4, 4, 4, 4};
         this.prioritize[1] = new int[]{4, 4, 4, 4};

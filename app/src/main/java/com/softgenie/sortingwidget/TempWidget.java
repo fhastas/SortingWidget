@@ -91,7 +91,7 @@ public class TempWidget extends AppCompatActivity {
 
         tempWidgetButtons = new ImageView[DEFAULT_SIZE_MAX];
 
-        setupImageButtons(tempWidgetButtons);
+        setupImageViews(tempWidgetButtons);
         done = findViewById(R.id.done);
         setting = findViewById(R.id.setting);
 
@@ -186,7 +186,7 @@ public class TempWidget extends AppCompatActivity {
 
     // 초기 버튼 정보를 가져와서 배열로 담기 위한 도우미
     // 최초 초기화 이후에 다시 호출하지 말 것.
-    private void setupImageButtons(ImageView[] buttons) {
+    private void setupImageViews(ImageView[] buttons) {
         final String pattern = "TempWidgetButton";
 
         Field[] fields = R.id.class.getDeclaredFields();
@@ -360,13 +360,15 @@ public class TempWidget extends AppCompatActivity {
                 int index = sortedPriority.get(i);
                 Log.d("TEST", String.valueOf(index));
                 if(sortedAppList.get(i).getAppIcon() != null) {
-                    tempWidgetButtons[index].setImageBitmap(sortedAppList.get(index).getAppIcon());
+                    tempWidgetButtons[index].setImageBitmap(sortedAppList.get(i).getAppIcon());
                 } else{
                     Log.d("settingImageButtons_debug", "appIcon is null");
                     tempWidgetButtons[index].setImageResource(R.drawable.ic_launcher_foreground);
                 }
+
+                int finalI = i;
                 tempWidgetButtons[index].setOnClickListener(v -> {
-                    Intent intent = getPackageManager().getLaunchIntentForPackage(sortedAppList.get(index).getPackageName());
+                    Intent intent = getPackageManager().getLaunchIntentForPackage(sortedAppList.get(finalI).getPackageName());
                     startActivity(intent);
                     finish();
                 });
