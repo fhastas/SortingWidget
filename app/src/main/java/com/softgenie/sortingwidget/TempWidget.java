@@ -99,11 +99,12 @@ public class TempWidget extends AppCompatActivity {
         if(updateGridSize(userInfo.getSize() / 10, userInfo.getSize() % 10)) {
             Log.d(TAG, "Successful size update");
         } else{
-            Log.e(TAG, "Not Change Size ");
+            Log.d(TAG, "Not Change Size ");
         }
 
         List<AppData> sortedAppList = toSortAppList();
         List<Integer> sortedPriority = toSortPriority();
+        Log.d(TAG, "앱 갯수: " + sortedAppList.size());
         Log.d(TAG, sortedAppList + "\n" + sortedPriority.toString());
 
         // ImageView[]의 이미지와 클릭 반응 설정
@@ -298,6 +299,7 @@ public class TempWidget extends AppCompatActivity {
         // Include에서 선택된 앱들 appList에 반영
         ArrayList<String> includeApps = SharedPreferencesHelper.loadIncludeInfo(this);
         if(includeApps == null){
+            Log.d("toSortAppList", "includeApps is null");
             includeApps = new ArrayList<>();
         }
 
@@ -305,6 +307,7 @@ public class TempWidget extends AppCompatActivity {
             for (int i = 0; i < appList.getAppList().size(); i++) {
                 for (int j = 0; j < includeApps.size(); j++) {
                     if (appList.getAppList().get(i).getAppName().equals(includeApps.get(j))) {
+                        Log.d("Include",  appList.getAppList().get(i).toString() + "\n");
                         appList.getAppList().get(i).setSelected(true);
                     }
                 }
@@ -323,15 +326,23 @@ public class TempWidget extends AppCompatActivity {
             if (selectedApps.size() > maxSize) {
                 // 선택된 앱들이 24를 넘을 경우 선택된 앱들을 정렬 후 반환
                 selectedApps.sort(Comparator.comparingLong(AppData::getUsageTime));
-                if(selectedApps.size() > maxSize)
-                    selectedApps.subList(0, maxSize);
+                if(selectedApps.size() > maxSize){
+                    while (selectedApps.size() > maxSize) {
+                        selectedApps.remove(selectedApps.size() - 1);
+                    }
+                }
 
                 return selectedApps;
             } else if (notSelectedApps.size() > maxSize - selectedApps.size()) {
                 // 선택된 앱들이 24개를 넘지 않을 경우 선택되지 않은 앱들도 포함하여 정렬 후 반환
+                Log.d("toSortedAppList", "Check Point");
                 notSelectedApps.sort(Comparator.comparingLong(AppData::getUsageTime));
-                if(notSelectedApps.size() > maxSize - selectedApps.size())
-                    notSelectedApps.subList(0, maxSize - selectedApps.size());
+                if(notSelectedApps.size() > maxSize - selectedApps.size()){
+                    while (notSelectedApps.size() > (maxSize - selectedApps.size())) {
+                        notSelectedApps.remove(notSelectedApps.size() - 1);
+                    }
+                }
+
 
                 List<AppData> sortedAppList = new ArrayList<>();
                 sortedAppList.addAll(selectedApps);
@@ -345,8 +356,12 @@ public class TempWidget extends AppCompatActivity {
         Log.d("toSortedAppList", "Include is null");
         notSelectedApps.addAll(appList.getAppList());
         notSelectedApps.sort(Comparator.comparingLong(AppData::getUsageTime));
-        if(notSelectedApps.size() > maxSize)
-            notSelectedApps.subList(0, maxSize);
+        if(notSelectedApps.size() > maxSize){
+            while (notSelectedApps.size() > maxSize) {
+                notSelectedApps.remove(notSelectedApps.size() - 1);
+            }
+        }
+
         return notSelectedApps;
     }
 
@@ -354,7 +369,6 @@ public class TempWidget extends AppCompatActivity {
         try{
             for(int i = 0; i < sortedPriority.size(); i++){
                 int index = sortedPriority.get(i);
-                Log.d("TEST", String.valueOf(index));
                 if(sortedAppList.get(i).getAppIcon() != null) {
                     tempWidgetButtons[index].setImageBitmap(sortedAppList.get(i).getAppIcon());
                 } else{
