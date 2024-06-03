@@ -12,11 +12,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="116dp"
         android:text="@string/prioritize"
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton14"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.515" />
 
     <Button
         android:id="@+id/back2"
@@ -33,10 +34,11 @@
         android:id="@+id/horizontalScrollView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="28dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/back2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
@@ -98,241 +100,289 @@
         android:id="@+id/prioritizeButton14"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="25dp"
         android:clickable="true"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="99dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton13"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="99dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton23"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton14"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton12"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="99dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton22"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton13"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton11"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="99dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton21"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton12"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton21"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="173dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton31"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton22"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton22"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="173dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton32"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton23"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton23"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="173dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton33"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton24"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton24"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="173dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton34"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton31"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="249dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton41"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton32"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton32"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="249dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton42"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton33"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton33"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="249dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton43"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton34"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton34"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="249dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton44"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton41"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton51"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton42"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton42"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton52"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton43"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton43"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton53"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton44"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton44"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton54"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton51"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton61"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton52"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton52"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton62"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton53"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton53"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton63"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton54"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton54"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="25dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="396dp" />
+        app:layout_constraintBottom_toTopOf="@+id/prioritizeButton64"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton61"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="52dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="59dp"
-        tools:layout_editor_absoluteY="471dp" />
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView3"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton62"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton62"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="53dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="134dp"
-        tools:layout_editor_absoluteY="471dp" />
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView3"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton63"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton63"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="53dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="471dp" />
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView3"
+        app:layout_constraintEnd_toStartOf="@+id/prioritizeButton64"
+        app:srcCompat="@drawable/gray_square" />
 
     <ImageButton
         android:id="@+id/prioritizeButton64"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="58dp"
+        android:layout_marginBottom="53dp"
         android:contentDescription="@string/prioritize"
         android:visibility="visible"
-        app:srcCompat="@drawable/gray_square"
-        tools:layout_editor_absoluteX="284dp"
-        tools:layout_editor_absoluteY="471dp" />
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/gray_square" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
