@@ -2,7 +2,7 @@
     <string name="app_name">App Soring Genie</string>
     <string name="exclude">위젯에 반드시 제외할 앱을 골라주세요</string>
     <string name="include">위젯에 반드시 포함될 앱을 골라주세요</string>
-    <string name="prioritize">우선순위 칸를 설정해 주세요</string>
+    <string name="prioritize">우선순위 칸을 설정해 주세요</string>
     <string name="size">위젯에 반영될 크기를 골라주세요</string>
 
     <string name="next">Next</string>
