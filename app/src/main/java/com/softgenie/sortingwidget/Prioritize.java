@@ -22,7 +22,6 @@ public class Prioritize extends AppCompatActivity {
 
     private static final String TAG = "Prioritize";
 
-    ImageView imageViewX46, imageViewX44, imageViewX42, imageViewX22;
     ImageButton prioritizeButton11, prioritizeButton12, prioritizeButton13, prioritizeButton14,
             prioritizeButton21, prioritizeButton22, prioritizeButton23, prioritizeButton24,
             prioritizeButton31, prioritizeButton32, prioritizeButton33, prioritizeButton34,
@@ -50,10 +49,6 @@ public class Prioritize extends AppCompatActivity {
             }
         }
 
-        imageViewX46 = findViewById(R.id.PrioritizeX46);
-        imageViewX44 = findViewById(R.id.PrioritizeX44);
-        imageViewX42 = findViewById(R.id.PrioritizeX42);
-        imageViewX22 = findViewById(R.id.PrioritizeX22);
         prioritizeButton11 = findViewById(R.id.prioritizeButton11);
         prioritizeButton12 = findViewById(R.id.prioritizeButton12);
         prioritizeButton13 = findViewById(R.id.prioritizeButton13);
@@ -115,23 +110,9 @@ public class Prioritize extends AppCompatActivity {
                 prioritizeButton13.setVisibility(View.GONE);
                 prioritizeButton12.setVisibility(View.GONE);
                 prioritizeButton11.setVisibility(View.GONE);
+                break;
             default:
-                switch (size){
-                    case 64:
-                        imageViewX46.setVisibility(View.VISIBLE);
-                        break;
-                    case 44:
-                        imageViewX44.setVisibility(View.VISIBLE);
-                        break;
-                    case 24:
-                        imageViewX42.setVisibility(View.VISIBLE);
-                        break;
-                    case 22:
-                        imageViewX22.setVisibility(View.VISIBLE);
-                        break;
-                    default:
-                        break;
-                }
+                break;
         }
 
         prioritizeButton11.setOnClickListener(v -> {

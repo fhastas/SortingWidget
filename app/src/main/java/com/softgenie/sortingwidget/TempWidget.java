@@ -326,31 +326,25 @@ public class TempWidget extends AppCompatActivity {
             if (selectedApps.size() > maxSize) {
                 // 선택된 앱들이 24를 넘을 경우 선택된 앱들을 정렬 후 반환
                 selectedApps.sort(Comparator.comparingLong(AppData::getUsageTime));
-                if(selectedApps.size() > maxSize){
-                    while (selectedApps.size() > maxSize) {
-                        selectedApps.remove(selectedApps.size() - 1);
-                    }
+                while (selectedApps.size() > maxSize) {
+                    selectedApps.remove(selectedApps.size() - 1);
                 }
 
                 return selectedApps;
             } else if (notSelectedApps.size() > maxSize - selectedApps.size()) {
                 // 선택된 앱들이 24개를 넘지 않을 경우 선택되지 않은 앱들도 포함하여 정렬 후 반환
-                Log.d("toSortedAppList", "Check Point");
                 notSelectedApps.sort(Comparator.comparingLong(AppData::getUsageTime));
-                if(notSelectedApps.size() > maxSize - selectedApps.size()){
-                    while (notSelectedApps.size() > (maxSize - selectedApps.size())) {
-                        notSelectedApps.remove(notSelectedApps.size() - 1);
-                    }
+                while (notSelectedApps.size() > (maxSize - selectedApps.size())) {
+                    notSelectedApps.remove(notSelectedApps.size() - 1);
                 }
-
-
-                List<AppData> sortedAppList = new ArrayList<>();
-                sortedAppList.addAll(selectedApps);
-                sortedAppList.addAll(notSelectedApps);
-
-                sortedAppList.sort(Comparator.comparingLong(AppData::getUsageTime));
-                return sortedAppList;
             }
+
+            List<AppData> sortedAppList = new ArrayList<>();
+            sortedAppList.addAll(selectedApps);
+            sortedAppList.addAll(notSelectedApps);
+
+            sortedAppList.sort(Comparator.comparingLong(AppData::getUsageTime));
+            return sortedAppList;
         }
         // 선택된 앱들이 아무 것도 없을 경우 선택되지 않은 앱들을 정렬 후 반환
         Log.d("toSortedAppList", "Include is null");
